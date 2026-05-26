@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Контакты — LUXOMIX® · 4 склада в России, Казахстане и Беларуси</title>
+<meta name="description" content="Контакты LUXOMIX® (ООО «БАРГУС продакшн»): 4 склада — Москва, Санкт-Петербург, Алматы, Гомель. Телефон 8 (800) 707-08-70, email managers-owner@bargus-trade.ru.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================ ТОКЕНЫ БРЕНДА (ТЗ §2.3, §2.4) ============================ */
+:root {
+    --c-primary: #0E2D17; --c-primary-alt: #1F7A3A;
+    --c-accent: #6980FF; --c-accent-hover: #4A60E0;
+    --c-bg: #FFFFFF; --c-surface: #F5F6F8;
+    --c-text: #1A1A1A; --c-text-muted: #6B7280; --c-border: #E5E7EB;
+    --dye-yellow:#F5C518; --dye-orange:#F39200; --dye-red-orange:#E84E1B; --dye-red:#D52B1E;
+    --dye-pink:#E6007E; --dye-purple:#7E3A93; --dye-dark-purple:#3B1E5E; --dye-blue:#2E5A87;
+    --dye-turquoise:#1E7A7A; --dye-green:#9DC23B; --dye-brown:#6B4423; --dye-red-brown:#8B2E1F; --dye-black:#1A1A1A;
+    --f-heading: 'Bebas Neue', 'Impact', sans-serif;
+    --f-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --fs-h1: 56px; --fs-h2: 40px; --fs-h3: 24px;
+    --fs-body-l: 18px; --fs-body-m: 16px; --fs-body-s: 14px;
+    --container: 1280px; --container-pad: 24px; --header-h: 80px;
+}
+
+/* ============================ БАЗА ============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--f-body); font-size: var(--fs-body-m); line-height: 1.55; color: var(--c-text); background: var(--c-bg); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--container-pad); }
+h1, h2, h3 { font-family: var(--f-heading); font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-family: var(--f-body); font-size: var(--fs-h3); font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.3; }
+
+/* ============================ ШАПКА ============================ */
+.header { position: sticky; top: 0; z-index: 100; background: var(--c-bg); border-bottom: 1px solid var(--c-border); height: var(--header-h); }
+.header__inner { display: flex; align-items: center; gap: 24px; height: 100%; }
+.logo { display: flex; flex-direction: column; line-height: 1; margin-right: 8px; flex-shrink: 0; }
+.logo__mark { font-family: var(--f-heading); font-size: 32px; color: var(--c-primary); letter-spacing: 1px; position: relative; text-transform: lowercase; }
+.logo__mark::after { content: '®'; font-family: var(--f-heading); font-size: 16px; vertical-align: super; margin-left: 2px; color: inherit; }
+.logo__tagline { font-size: 11px; font-weight: 300; color: var(--c-text-muted); letter-spacing: 1.5px; margin-top: -2px; }
+.btn-catalog { display: inline-flex; align-items: center; gap: 10px; background: var(--c-accent); color: #fff; padding: 12px 22px; border-radius: 999px; font-family: var(--f-heading); font-size: 16px; letter-spacing: 1px; transition: background .15s ease; }
+.btn-catalog:hover { background: var(--c-accent-hover); }
+.btn-catalog svg { width: 18px; height: 18px; }
+.btn-catalog__chevron { transition: transform .25s ease; }
+.btn-catalog.is-open .btn-catalog__chevron { transform: rotate(180deg); }
+.nav { display: flex; gap: 28px; }
+.nav a { font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); position: relative; transition: color .15s ease; }
+.nav a:hover { color: var(--c-accent); }
+.nav a.is-current { color: var(--c-accent); }
+.nav a.is-current::after { content: ''; position: absolute; left: 0; right: 0; bottom: -28px; height: 3px; background: var(--c-accent); border-radius: 2px 2px 0 0; }
+.header__phone { margin-left: auto; font-weight: 600; color: var(--c-primary); white-space: nowrap; font-size: var(--fs-body-m); }
+.btn-burger { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 12px; background: var(--c-surface); color: var(--c-text); transition: background .15s ease; flex-shrink: 0; }
+.btn-burger:hover { background: var(--c-border); }
+.btn-burger svg { width: 22px; height: 22px; }
+.btn-burger .icon-close { display: none; }
+.btn-burger.is-open .icon-burger { display: none; }
+.btn-burger.is-open .icon-close { display: block; }
+.mobile-nav { position: fixed; top: var(--header-h); left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--c-border); box-shadow: 0 24px 48px -16px rgba(14, 45, 23, 0.18); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; z-index: 95; display: none; }
+.mobile-nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.mobile-nav .container { display: flex; flex-direction: column; gap: 2px; padding-top: 20px; padding-bottom: 20px; }
+.mobile-nav a { padding: 14px 16px; font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); border-radius: 10px; transition: background .15s, color .15s; }
+.mobile-nav a:hover { background: var(--c-surface); color: var(--c-accent); }
+.mobile-nav__phone { margin-top: 8px; padding-top: 18px !important; border-top: 1px solid var(--c-border); color: var(--c-primary) !important; font-weight: 600 !important; border-radius: 0 !important; }
+
+/* ============================ МЕГАМЕНЮ ============================ */
+.megamenu-overlay { position: fixed; inset: var(--header-h) 0 0 0; background: rgba(0,0,0,.4); z-index: 90; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.megamenu-overlay.is-open { opacity: 1; pointer-events: auto; }
+.megamenu { position: fixed; top: var(--header-h); left: 0; right: 0; background: #fff; z-index: 95; border-bottom: 1px solid var(--c-border); box-shadow: 0 24px 48px -16px rgba(14, 45, 23, 0.18); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
+.megamenu.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.megamenu__inner { display: grid; grid-template-columns: 280px 1fr; min-height: 480px; gap: 0; padding: 32px 0; }
+.megamenu__left { border-right: 1px solid var(--c-border); padding-right: 16px; display: flex; flex-direction: column; gap: 2px; }
+.mm-item { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 16px; border-radius: 10px; font-family: var(--f-body); font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); text-align: left; transition: background .15s, color .15s; cursor: pointer; }
+.mm-item:hover, .mm-item.is-active { background: var(--c-surface); color: var(--c-primary); }
+.mm-item.is-active { background: rgba(105, 128, 255, 0.08); color: var(--c-accent); }
+.mm-item svg { width: 16px; height: 16px; opacity: 0.5; transition: transform .15s; }
+.megamenu__right { padding: 8px 0 8px 48px; }
+.mm-panel { display: none; }
+.mm-panel.is-active { display: block; }
+.mm-panel__title { font-family: var(--f-heading); font-size: 32px; text-transform: uppercase; color: var(--c-primary); margin-bottom: 8px; }
+.mm-panel__lead { font-size: var(--fs-body-s); color: var(--c-text-muted); margin-bottom: 28px; max-width: 520px; }
+.mm-subgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
+.mm-sublink { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; color: var(--c-text); font-size: var(--fs-body-m); transition: background .12s, color .12s; }
+.mm-sublink:hover { background: var(--c-surface); color: var(--c-accent); }
+.mm-sublink__swatch { width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.06); }
+.mm-sublink__bullet { color: var(--c-text-muted); font-size: 12px; width: 18px; text-align: center; }
+.megamenu__close { display: none; }
+@media (max-width: 900px) {
+    .megamenu { top: 0; height: 100vh; max-height: 100vh; }
+    .megamenu-overlay { display: none; }
+    .megamenu__inner { grid-template-columns: 1fr; padding: 24px 16px; min-height: 0; }
+    .megamenu__left { border-right: none; border-bottom: 1px solid var(--c-border); padding: 0 0 16px; margin-bottom: 16px; }
+    .megamenu__right { padding: 0; }
+    .mm-subgrid { grid-template-columns: 1fr; }
+    .megamenu__close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--c-surface); border-radius: 50%; cursor: pointer; }
+}
+
+/* ============================ ПОИСК-ПОЛОСА ============================ */
+.search-strip { position: sticky; top: var(--header-h); z-index: 80; background: #fff; border-bottom: 1px solid var(--c-border); padding: 16px 0; }
+.search-strip__inner { position: relative; width: 100%; }
+.search-strip input { width: 100%; height: 56px; border: 1px solid var(--c-border); border-radius: 14px; padding: 0 130px 0 56px; font-family: inherit; font-size: var(--fs-body-m); background: var(--c-surface); transition: background .15s, border-color .15s; }
+.search-strip input:focus { outline: none; border-color: var(--c-accent); background: #fff; }
+.search-strip .icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; color: var(--c-text-muted); pointer-events: none; }
+.search-strip > .container > .search-strip__inner > button { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); height: 42px; padding: 0 24px; background: var(--c-accent); color: #fff; border-radius: 10px; font-family: var(--f-heading); font-size: 14px; letter-spacing: 1px; transition: background .15s; }
+.search-strip > .container > .search-strip__inner > button:hover { background: var(--c-accent-hover); }
+
+/* ============================ ХЛЕБНЫЕ КРОШКИ ============================ */
+.breadcrumbs { padding: 24px 0 0; font-size: var(--fs-body-s); color: var(--c-text-muted); }
+.breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.breadcrumbs li { display: flex; align-items: center; gap: 8px; }
+.breadcrumbs li::after { content: '/'; color: var(--c-border); }
+.breadcrumbs li:last-child::after { display: none; }
+.breadcrumbs a { color: var(--c-text-muted); transition: color .12s; }
+.breadcrumbs a:hover { color: var(--c-accent); }
+.breadcrumbs li:last-child { color: var(--c-text); font-weight: 500; }
+
+/* ============================ PAGE HEAD ============================ */
+.page-head { padding: 32px 0 40px; }
+.page-head__eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--c-accent); font-weight: 600; margin-bottom: 14px; padding: 4px 12px; border: 1px solid rgba(105,128,255,.25); border-radius: 999px; background: rgba(105,128,255,.05); }
+.page-head__title { color: var(--c-primary); margin-bottom: 18px; max-width: 880px; }
+.page-head__title .accent { color: var(--c-accent); }
+.page-head__lead { font-size: var(--fs-body-l); color: var(--c-text-muted); line-height: 1.55; max-width: 720px; }
+
+/* ============================ БЫСТРЫЕ КОНТАКТЫ ============================ */
+.quick-contacts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 56px;
+}
+.quick-card {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 18px;
+    padding: 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.quick-card:hover { border-color: var(--c-accent); transform: translateY(-3px); box-shadow: 0 20px 40px -20px rgba(14, 45, 23, 0.15); }
+.quick-card__icon {
+    width: 48px; height: 48px;
+    border-radius: 12px;
+    background: rgba(105,128,255,.1);
+    color: var(--c-accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+.quick-card__icon svg { width: 22px; height: 22px; }
+.quick-card__icon--green { background: rgba(31, 122, 58, 0.1); color: var(--c-primary-alt); }
+.quick-card__icon--dark { background: rgba(14, 45, 23, 0.08); color: var(--c-primary); }
+.quick-card__label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--c-text-muted); margin-bottom: 6px; }
+.quick-card__value { font-size: var(--fs-body-l); font-weight: 600; color: var(--c-primary); line-height: 1.3; }
+.quick-card__value a:hover { color: var(--c-accent); }
+.quick-card__sub { font-size: 12px; color: var(--c-text-muted); margin-top: 4px; }
+
+/* ============================ ТАБЫ СКЛАДОВ ============================ */
+.warehouses-section { padding-bottom: 80px; }
+.section-eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--c-accent); font-weight: 600; margin-bottom: 14px; padding: 4px 12px; border: 1px solid rgba(105,128,255,.25); border-radius: 999px; background: rgba(105,128,255,.05); }
+.section-head { margin-bottom: 32px; max-width: 760px; }
+.section-head h2 { color: var(--c-primary); margin-bottom: 14px; }
+.section-head p { font-size: var(--fs-body-l); color: var(--c-text-muted); line-height: 1.55; }
+
+.warehouse-tabs {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    margin-bottom: 28px;
+    padding-bottom: 4px;
+}
+.warehouse-tab {
+    flex-shrink: 0;
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 14px 22px;
+    background: var(--c-surface);
+    color: var(--c-text);
+    border-radius: 14px;
+    font-size: var(--fs-body-m);
+    font-weight: 500;
+    transition: background .12s, color .12s;
+    border: 1px solid transparent;
+}
+.warehouse-tab:hover { background: var(--c-border); }
+.warehouse-tab.is-active { background: var(--c-primary); color: #fff; border-color: var(--c-primary); }
+.warehouse-tab__flag {
+    width: 24px; height: 18px;
+    border-radius: 3px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: linear-gradient(to bottom, #fff 33%, #0033A0 33%, #0033A0 66%, #DA291C 66%);
+}
+.warehouse-tab__flag--kz { background: #00AFCA; position: relative; }
+.warehouse-tab__flag--kz::after { content: '★'; position: absolute; inset: 0; color: #FEC50C; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+.warehouse-tab__flag--by { background: linear-gradient(to bottom, #C8313E 0%, #C8313E 65%, #009A3E 65%); }
+.warehouse-tab__name { font-weight: 600; }
+.warehouse-tab__country { font-size: 11px; color: var(--c-text-muted); margin-left: 2px; }
+.warehouse-tab.is-active .warehouse-tab__country { color: rgba(255,255,255,0.6); }
+
+.warehouse-panel {
+    display: none;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 24px;
+    overflow: hidden;
+    grid-template-columns: 1fr 1.2fr;
+    animation: fadeIn .25s ease;
+}
+.warehouse-panel.is-active { display: grid; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+.warehouse-panel__info { padding: 36px; display: flex; flex-direction: column; gap: 22px; }
+.warehouse-panel__title { font-family: var(--f-heading); font-size: 36px; color: var(--c-primary); text-transform: uppercase; letter-spacing: 0.5px; line-height: 1; }
+.warehouse-panel__title-sub { display: block; font-family: var(--f-body); font-size: 14px; font-weight: 500; color: var(--c-text-muted); text-transform: none; letter-spacing: 0; margin-top: 6px; }
+.warehouse-panel__row { display: flex; gap: 14px; align-items: flex-start; }
+.warehouse-panel__row-icon { width: 38px; height: 38px; border-radius: 10px; background: var(--c-surface); color: var(--c-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.warehouse-panel__row-icon svg { width: 18px; height: 18px; }
+.warehouse-panel__row-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--c-text-muted); margin-bottom: 4px; }
+.warehouse-panel__row-value { font-size: var(--fs-body-m); color: var(--c-text); line-height: 1.5; font-weight: 500; }
+.warehouse-panel__row-value a:hover { color: var(--c-accent); }
+
+.warehouse-panel__actions { display: flex; gap: 10px; margin-top: 4px; flex-wrap: wrap; }
+.btn-map {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 18px;
+    background: var(--c-accent); color: #fff;
+    border-radius: 10px;
+    font-family: var(--f-heading);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background .15s;
+}
+.btn-map:hover { background: var(--c-accent-hover); }
+.btn-map svg { width: 16px; height: 16px; }
+.btn-call {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 18px;
+    background: transparent; color: var(--c-primary);
+    border: 1px solid var(--c-border);
+    border-radius: 10px;
+    font-family: var(--f-heading);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background .15s, border-color .15s;
+}
+.btn-call:hover { background: var(--c-surface); border-color: var(--c-primary); }
+.btn-call svg { width: 16px; height: 16px; }
+
+.warehouse-panel__map {
+    position: relative;
+    min-height: 380px;
+    background: var(--c-surface);
+    background-image:
+        linear-gradient(0deg, transparent 24%, rgba(105,128,255,.08) 25%, rgba(105,128,255,.08) 26%, transparent 27%, transparent 74%, rgba(105,128,255,.08) 75%, rgba(105,128,255,.08) 76%, transparent 77%),
+        linear-gradient(90deg, transparent 24%, rgba(105,128,255,.08) 25%, rgba(105,128,255,.08) 26%, transparent 27%, transparent 74%, rgba(105,128,255,.08) 75%, rgba(105,128,255,.08) 76%, transparent 77%);
+    background-size: 32px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.warehouse-panel__map::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, transparent 35%, rgba(245, 246, 248, 0.85) 75%);
+    pointer-events: none;
+}
+.warehouse-panel__pin {
+    position: relative;
+    z-index: 1;
+    width: 64px; height: 64px;
+    border-radius: 50% 50% 50% 0;
+    background: var(--c-accent);
+    transform: rotate(-45deg);
+    box-shadow: 0 16px 32px -8px rgba(105, 128, 255, 0.5);
+    display: flex; align-items: center; justify-content: center;
+    animation: pinBounce 2s ease-in-out infinite;
+}
+.warehouse-panel__pin::after {
+    content: '';
+    position: absolute;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #fff;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+@keyframes pinBounce { 0%, 100% { transform: rotate(-45deg) translateY(0); } 50% { transform: rotate(-45deg) translateY(-8px); } }
+.warehouse-panel__map-label {
+    position: absolute;
+    bottom: 24px; left: 24px; right: 24px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: var(--fs-body-s);
+    color: var(--c-text);
+    font-weight: 500;
+    border: 1px solid var(--c-border);
+    z-index: 2;
+}
+.warehouse-panel__map-label strong { display: block; color: var(--c-primary); font-weight: 700; margin-bottom: 2px; }
+
+/* ============================ ФОРМА + WHATSAPP ============================ */
+.contact-section { background: var(--c-surface); padding: 80px 0; }
+.contact-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+.contact-form-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 24px 48px -24px rgba(14, 45, 23, 0.15);
+}
+.contact-form-card__title { font-family: var(--f-heading); font-size: 32px; color: var(--c-primary); text-transform: uppercase; line-height: 1; margin-bottom: 10px; letter-spacing: 0.5px; }
+.contact-form-card__lead { font-size: var(--fs-body-s); color: var(--c-text-muted); margin-bottom: 28px; line-height: 1.55; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-field { margin-bottom: 14px; }
+.form-field input, .form-field textarea {
+    width: 100%; padding: 14px 16px;
+    border: 1px solid var(--c-border); border-radius: 10px;
+    font-family: inherit; font-size: var(--fs-body-m);
+    color: var(--c-text); background: #fff;
+    transition: border-color .15s;
+}
+.form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--c-accent); }
+.form-field textarea { resize: vertical; min-height: 110px; }
+.form-checkbox { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: var(--c-text-muted); margin: 6px 0 18px; }
+.form-checkbox input { flex-shrink: 0; margin-top: 2px; }
+.form-checkbox a { color: var(--c-accent); text-decoration: underline; }
+.btn-submit {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%;
+    background: var(--c-accent); color: #fff;
+    padding: 18px 28px; border-radius: 14px;
+    font-family: var(--f-heading); font-size: 18px; letter-spacing: 1px;
+    transition: background .15s; text-transform: uppercase;
+}
+.btn-submit:hover { background: var(--c-accent-hover); }
+.btn-submit svg { width: 18px; height: 18px; }
+
+/* WhatsApp карточка */
+.wa-card {
+    background: var(--c-primary);
+    color: #fff;
+    border-radius: 24px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+}
+.wa-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 90% 0%, rgba(37, 211, 102, 0.25), transparent 55%);
+    pointer-events: none;
+}
+.wa-card > * { position: relative; z-index: 1; }
+.wa-card__head { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.wa-card__head-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+}
+.wa-card__head-icon svg { width: 24px; height: 24px; }
+.wa-card__title { font-family: var(--f-heading); font-size: 28px; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1; }
+.wa-card__sub { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 4px; text-transform: uppercase; letter-spacing: 1.5px; }
+.wa-card__lead { font-size: var(--fs-body-s); color: rgba(255,255,255,0.78); line-height: 1.55; margin-bottom: 24px; }
+.wa-card__qr-wrap {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 20px;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 16px;
+}
+.wa-card__qr {
+    width: 140px; height: 140px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 1px;
+}
+.wa-card__qr span { background: var(--c-primary); border-radius: 1px; }
+.wa-card__qr-meta { font-size: var(--fs-body-s); color: rgba(255,255,255,0.85); line-height: 1.5; }
+.wa-card__qr-meta strong { display: block; color: #fff; font-weight: 600; margin-bottom: 4px; }
+.wa-card__qr-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: #25D366; color: #fff;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background .15s;
+}
+.wa-card__qr-btn:hover { background: #1DA851; }
+.wa-card__qr-btn svg { width: 14px; height: 14px; }
+
+/* ============================ РЕКВИЗИТЫ ============================ */
+.requisites { padding: 80px 0; }
+.requisites-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.requisites-card {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 20px;
+    padding: 28px;
+}
+.requisites-card__type { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--c-accent); font-weight: 600; margin-bottom: 10px; }
+.requisites-card__name { font-family: var(--f-heading); font-size: 24px; color: var(--c-primary); letter-spacing: 0.5px; margin-bottom: 18px; }
+.requisites-card__list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.requisites-card__list li {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--c-border);
+    font-size: var(--fs-body-s);
+}
+.requisites-card__list li:last-child { border-bottom: none; }
+.requisites-card__list .label { color: var(--c-text-muted); }
+.requisites-card__list .val { color: var(--c-text); font-weight: 500; }
+
+/* ============================ ПОДВАЛ ============================ */
+.footer { background: var(--c-primary); color: rgba(255,255,255,0.78); padding: 64px 0 0; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 48px; }
+.footer .logo__mark { color: #fff; }
+.footer .logo__tagline { color: rgba(255,255,255,0.5); }
+.footer__about { font-size: var(--fs-body-s); color: rgba(255,255,255,0.7); margin: 20px 0 18px; line-height: 1.55; }
+.footer__certs { display: flex; gap: 8px; flex-wrap: wrap; }
+.footer__cert { display: inline-flex; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; font-size: 11px; letter-spacing: 1px; color: #fff; }
+.footer__col h4 { font-family: var(--f-heading); font-size: 16px; color: #fff; letter-spacing: 1px; margin-bottom: 18px; text-transform: uppercase; font-weight: 400; }
+.footer__col ul { list-style: none; }
+.footer__col li { margin-bottom: 12px; }
+.footer__col a { font-size: var(--fs-body-s); transition: color .15s; }
+.footer__col a:hover { color: #fff; }
+.footer__contact-item { margin-bottom: 14px; display: flex; flex-direction: column; gap: 2px; }
+.footer__contact-item strong { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.55); font-weight: 500; }
+.footer__contact-item a { color: #fff; font-weight: 500; }
+.footer__warehouses { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.footer__warehouse { padding: 10px 12px; background: rgba(255,255,255,0.06); border-radius: 10px; font-size: 11px; color: rgba(255,255,255,0.78); }
+.footer__warehouse strong { color: #fff; display: block; margin-bottom: 2px; font-weight: 500; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.55); flex-wrap: wrap; gap: 16px; }
+.footer__bottom a { color: rgba(255,255,255,0.7); }
+.footer__bottom a:hover { color: #fff; }
+.color-strip { display: flex; height: 10px; width: 100%; }
+.color-strip span { flex: 1; }
+
+/* ============================ АДАПТИВ ============================ */
+@media (max-width: 1080px) {
+    .nav, .header__phone { display: none; }
+    .btn-burger { display: flex; margin-left: auto; }
+    .mobile-nav { display: block; }
+    .header__inner { gap: 14px; }
+    .quick-contacts { grid-template-columns: 1fr; }
+    .warehouse-panel.is-active { grid-template-columns: 1fr; }
+    .warehouse-panel__map { min-height: 280px; order: -1; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .requisites-grid { grid-template-columns: 1fr; }
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+    h1 { font-size: 40px; }
+    h2 { font-size: 30px; }
+    .warehouse-tabs { gap: 6px; }
+    .warehouse-tab { padding: 12px 16px; font-size: 13px; }
+    .warehouse-tab__country { display: none; }
+    .warehouse-panel__info { padding: 24px; }
+    .warehouse-panel__title { font-size: 28px; }
+    .contact-section { padding: 56px 0; }
+    .contact-form-card { padding: 28px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .wa-card { padding: 24px; }
+    .wa-card__qr-wrap { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+    .requisites { padding: 56px 0; }
+    .requisites-card__list li { grid-template-columns: 1fr; gap: 2px; }
+    .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer__warehouses { grid-template-columns: 1fr; }
+    .search-strip input { height: 50px; font-size: var(--fs-body-s); padding: 0 90px 0 48px; }
+    .search-strip > .container > .search-strip__inner > button { padding: 0 16px; font-size: 12px; height: 38px; }
+    .breadcrumbs { padding: 18px 0 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="/" class="logo">
+            <span class="logo__mark">luxomix</span>
+            <span class="logo__tagline">natural color</span>
+        </a>
+        <button class="btn-catalog" id="catalogBtn" aria-label="Открыть каталог" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            КАТАЛОГ
+            <svg class="btn-catalog__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <nav class="nav">
+            <a href="/about">О нас</a>
+            <a href="/in-product">В продукте</a>
+            <a href="/blog">Блог</a>
+            <a href="/contacts" class="is-current">Контакты</a>
+        </nav>
+        <a href="tel:88007070870" class="header__phone">8 (800) 707-08-70</a>
+        <button class="btn-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+            <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="container">
+        <a href="/about">О нас</a>
+        <a href="/in-product">В продукте</a>
+        <a href="/blog">Блог</a>
+        <a href="/contacts">Контакты</a>
+        <a href="tel:88007070870" class="mobile-nav__phone">8 (800) 707-08-70</a>
+    </div>
+</nav>
+
+<!-- ============ МЕГАМЕНЮ ============ -->
+<div class="megamenu-overlay" id="mmOverlay"></div>
+<nav class="megamenu" id="megamenu" aria-hidden="true">
+    <button class="megamenu__close" id="mmClose" aria-label="Закрыть меню">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="container megamenu__inner">
+        <div class="megamenu__left">
+            <button class="mm-item is-active" data-target="po-cvetu">По цвету <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="po-primeneniyu">По применению <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="bestsellers">Бестселлеры <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="novinki">Новинки <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+        <div class="megamenu__right">
+            <div class="mm-panel is-active" id="mm-po-cvetu">
+                <h3 class="mm-panel__title">По цвету</h3>
+                <p class="mm-panel__lead">13 оттенков от жёлтого куркумина до чёрного растительного угля.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F5C518"></span>Жёлтый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F39200"></span>Оранжевый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#D52B1E"></span>Красный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#E6007E"></span>Малиновый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#7E3A93"></span>Фиолетовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#2E5A87"></span>Синий</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#9DC23B"></span>Зелёный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#6B4423"></span>Коричневый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#1A1A1A"></span>Чёрный</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-po-primeneniyu">
+                <h3 class="mm-panel__title">По применению</h3>
+                <p class="mm-panel__lead">Готовые решения для конкретной отрасли пищевого производства.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Кондитерская</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Молочная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Напитки</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Мясная</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-bestsellers"><h3 class="mm-panel__title">Бестселлеры</h3></div>
+            <div class="mm-panel" id="mm-novinki"><h3 class="mm-panel__title">Новинки</h3></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ ПОИСК-ПОЛОСА ============ -->
+<div class="search-strip">
+    <div class="container">
+        <div class="search-strip__inner">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="Поиск по красителям, оттенкам, применению…" autocomplete="off">
+            <button>Найти</button>
+        </div>
+    </div>
+</div>
+
+<main>
+
+    <!-- ============ ХЛЕБНЫЕ КРОШКИ ============ -->
+    <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ol>
+                <li><a href="/">Главная</a></li>
+                <li>Контакты</li>
+            </ol>
+        </nav>
+
+        <!-- ============ ЗАГОЛОВОК ============ -->
+        <header class="page-head">
+            <span class="page-head__eyebrow">Контакты</span>
+            <h1 class="page-head__title">Свяжитесь с нами <span class="accent">·</span><br>4 склада в трёх странах</h1>
+            <p class="page-head__lead">Москва, Санкт-Петербург, Алматы и Гомель — четыре собственных склада с самовывозом и доставкой по России, Казахстану и Беларуси. Технологи на связи в рабочие дни с 9:00 до 18:00 (МСК).</p>
+        </header>
+
+        <!-- ============ БЫСТРЫЕ КОНТАКТЫ ============ -->
+        <div class="quick-contacts">
+            <div class="quick-card">
+                <div class="quick-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92 v3 a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67 A2 2 0 0 1 4.11 2 h3 a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11 L8.09 9.91 a16 16 0 0 0 6 6 l1.27-1.27 a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                    <div class="quick-card__label">Телефон</div>
+                    <div class="quick-card__value"><a href="tel:88007070870">8 (800) 707-08-70</a></div>
+                    <div class="quick-card__sub">Бесплатный по России · с 9:00 до 18:00 МСК</div>
+                </div>
+            </div>
+            <div class="quick-card">
+                <div class="quick-card__icon quick-card__icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4 h16 c1.1 0 2 .9 2 2 v12 c0 1.1-.9 2-2 2 H4 c-1.1 0-2-.9-2-2 V6 c0-1.1 .9-2 2-2 z"/><polyline points="22 6 12 13 2 6"/></svg>
+                </div>
+                <div>
+                    <div class="quick-card__label">E-mail</div>
+                    <div class="quick-card__value"><a href="mailto:managers-owner@bargus-trade.ru">managers-owner@bargus-trade.ru</a></div>
+                    <div class="quick-card__sub">Отвечаем в течение рабочего дня</div>
+                </div>
+            </div>
+            <div class="quick-card">
+                <div class="quick-card__icon quick-card__icon--dark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                    <div class="quick-card__label">Часы работы</div>
+                    <div class="quick-card__value">пн–пт · 9:00–18:00</div>
+                    <div class="quick-card__sub">Заявки на сайте принимаем 24/7</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ============ ТАБЫ СКЛАДОВ (ТЗ §10.2) ============ -->
+        <section class="warehouses-section">
+            <div class="section-head">
+                <span class="section-eyebrow">Склады и офисы</span>
+                <h2>4 склада в России, Казахстане и Беларуси</h2>
+                <p>Логистика отлажена для партий от 5 кг до тонн. Отгрузка со склада в день оплаты, самовывоз или доставка ТК и собственным транспортом.</p>
+            </div>
+
+            <div class="warehouse-tabs" id="warehouseTabs" role="tablist">
+                <button class="warehouse-tab is-active" data-warehouse="msk" role="tab">
+                    <span class="warehouse-tab__flag"></span>
+                    <span class="warehouse-tab__name">Москва</span>
+                    <span class="warehouse-tab__country">· Россия</span>
+                </button>
+                <button class="warehouse-tab" data-warehouse="spb" role="tab">
+                    <span class="warehouse-tab__flag"></span>
+                    <span class="warehouse-tab__name">Санкт-Петербург</span>
+                    <span class="warehouse-tab__country">· Россия</span>
+                </button>
+                <button class="warehouse-tab" data-warehouse="alm" role="tab">
+                    <span class="warehouse-tab__flag warehouse-tab__flag--kz"></span>
+                    <span class="warehouse-tab__name">Алматы</span>
+                    <span class="warehouse-tab__country">· Казахстан</span>
+                </button>
+                <button class="warehouse-tab" data-warehouse="gml" role="tab">
+                    <span class="warehouse-tab__flag warehouse-tab__flag--by"></span>
+                    <span class="warehouse-tab__name">Гомель</span>
+                    <span class="warehouse-tab__country">· Беларусь</span>
+                </button>
+            </div>
+
+            <!-- МОСКВА -->
+            <div class="warehouse-panel is-active" id="wh-msk" role="tabpanel">
+                <div class="warehouse-panel__info">
+                    <div>
+                        <div class="warehouse-panel__title">Москва
+                            <span class="warehouse-panel__title-sub">Самовывоз и доставка по ЦФО</span>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10 c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Адрес</div>
+                            <div class="warehouse-panel__row-value">г. Балашиха, ул. Саввинская, дом 14, строение 1-14</div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Телефон</div>
+                            <div class="warehouse-panel__row-value"><a href="tel:88007070870">8 (800) 707-08-70</a></div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Режим работы</div>
+                            <div class="warehouse-panel__row-value">пн–пт · 9:00–18:00 (МСК)</div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__actions">
+                        <a class="btn-map" href="https://yandex.ru/maps/?text=Балашиха,%20Саввинская%2014" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg>
+                            Открыть на карте
+                        </a>
+                        <a class="btn-call" href="tel:88007070870">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Позвонить
+                        </a>
+                    </div>
+                </div>
+                <div class="warehouse-panel__map">
+                    <div class="warehouse-panel__pin"></div>
+                    <div class="warehouse-panel__map-label">
+                        <strong>Склад в Балашихе</strong>
+                        Саввинская, 14/1-14 · самовывоз и доставка
+                    </div>
+                </div>
+            </div>
+
+            <!-- САНКТ-ПЕТЕРБУРГ -->
+            <div class="warehouse-panel" id="wh-spb" role="tabpanel">
+                <div class="warehouse-panel__info">
+                    <div>
+                        <div class="warehouse-panel__title">Санкт-Петербург
+                            <span class="warehouse-panel__title-sub">Головной склад · отгрузки по СЗФО</span>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10 c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Адрес</div>
+                            <div class="warehouse-panel__row-value">Ленинградская область, Ломоносовский р-н, д. Санино, 42 Б</div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Телефон</div>
+                            <div class="warehouse-panel__row-value"><a href="tel:88007070870">8 (800) 707-08-70</a></div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Режим работы</div>
+                            <div class="warehouse-panel__row-value">пн–пт · 9:00–18:00 (МСК)</div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__actions">
+                        <a class="btn-map" href="https://yandex.ru/maps/?text=Ленинградская%20область%20Санино%2042Б" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg>
+                            Открыть на карте
+                        </a>
+                        <a class="btn-call" href="tel:88007070870">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Позвонить
+                        </a>
+                    </div>
+                </div>
+                <div class="warehouse-panel__map">
+                    <div class="warehouse-panel__pin"></div>
+                    <div class="warehouse-panel__map-label">
+                        <strong>Головной склад в Санино</strong>
+                        Ломоносовский р-н · самовывоз и доставка
+                    </div>
+                </div>
+            </div>
+
+            <!-- АЛМАТЫ -->
+            <div class="warehouse-panel" id="wh-alm" role="tabpanel">
+                <div class="warehouse-panel__info">
+                    <div>
+                        <div class="warehouse-panel__title">Алматы
+                            <span class="warehouse-panel__title-sub">Поставки по Республике Казахстан</span>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10 c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Адрес</div>
+                            <div class="warehouse-panel__row-value">Республика Казахстан, г. Алматы, ул. Котельникова, д. 2</div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Телефон</div>
+                            <div class="warehouse-panel__row-value"><a href="tel:88007070870">8 (800) 707-08-70</a></div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Режим работы</div>
+                            <div class="warehouse-panel__row-value">пн–пт · 9:00–18:00 (UTC+5)</div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__actions">
+                        <a class="btn-map" href="https://yandex.ru/maps/?text=Алматы%20Котельникова%202" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg>
+                            Открыть на карте
+                        </a>
+                        <a class="btn-call" href="tel:88007070870">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Позвонить
+                        </a>
+                    </div>
+                </div>
+                <div class="warehouse-panel__map">
+                    <div class="warehouse-panel__pin"></div>
+                    <div class="warehouse-panel__map-label">
+                        <strong>Склад в Алматы</strong>
+                        ул. Котельникова, 2 · поставки по РК
+                    </div>
+                </div>
+            </div>
+
+            <!-- ГОМЕЛЬ -->
+            <div class="warehouse-panel" id="wh-gml" role="tabpanel">
+                <div class="warehouse-panel__info">
+                    <div>
+                        <div class="warehouse-panel__title">Гомель
+                            <span class="warehouse-panel__title-sub">Поставки по Республике Беларусь</span>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10 c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Адрес</div>
+                            <div class="warehouse-panel__row-value">Республика Беларусь, г. Гомель, Инженерный проезд, 1А</div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Телефон</div>
+                            <div class="warehouse-panel__row-value"><a href="tel:88007070870">8 (800) 707-08-70</a></div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__row">
+                        <div class="warehouse-panel__row-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+                        <div>
+                            <div class="warehouse-panel__row-label">Режим работы</div>
+                            <div class="warehouse-panel__row-value">пн–пт · 9:00–18:00 (МСК)</div>
+                        </div>
+                    </div>
+                    <div class="warehouse-panel__actions">
+                        <a class="btn-map" href="https://yandex.ru/maps/?text=Гомель%20Инженерный%20проезд%201А" target="_blank" rel="noopener">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/></svg>
+                            Открыть на карте
+                        </a>
+                        <a class="btn-call" href="tel:88007070870">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            Позвонить
+                        </a>
+                    </div>
+                </div>
+                <div class="warehouse-panel__map">
+                    <div class="warehouse-panel__pin"></div>
+                    <div class="warehouse-panel__map-label">
+                        <strong>Склад в Гомеле</strong>
+                        Инженерный проезд, 1А · поставки по РБ
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ============ ФОРМА + WHATSAPP ============ -->
+    <section class="contact-section">
+        <div class="container contact-grid">
+            <form class="contact-form-card" onsubmit="event.preventDefault(); alert('Сообщение отправлено (демо). Менеджер свяжется с вами в течение рабочего дня.');">
+                <div class="contact-form-card__title">Напишите нам</div>
+                <p class="contact-form-card__lead">Опишите задачу или вопрос — менеджер свяжется в течение рабочего дня. Для срочных запросов используйте телефон или WhatsApp.</p>
+                <div class="form-grid">
+                    <div class="form-field"><input type="text" placeholder="Имя*" required></div>
+                    <div class="form-field"><input type="tel" placeholder="Телефон*" required></div>
+                </div>
+                <div class="form-field"><input type="email" placeholder="E-mail*" required></div>
+                <div class="form-field"><input type="text" placeholder="Компания"></div>
+                <div class="form-field"><textarea placeholder="Ваше сообщение" required></textarea></div>
+                <label class="form-checkbox">
+                    <input type="checkbox" required>
+                    <span>Согласен на обработку персональных данных в соответствии с <a href="/privacy">политикой конфиденциальности</a></span>
+                </label>
+                <button type="submit" class="btn-submit">
+                    Отправить сообщение
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </form>
+
+            <div class="wa-card">
+                <div class="wa-card__head">
+                    <div class="wa-card__head-icon">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15s-.77.97-.95 1.17c-.18.2-.35.22-.65.07a8.2 8.2 0 0 1-2.4-1.49 9.06 9.06 0 0 1-1.67-2.07c-.17-.3-.02-.46.13-.61.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.47 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.07 4.49.71.3 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"/><path d="M21.6 4.4A11.92 11.92 0 0 0 12 0 12.04 12.04 0 0 0 1.7 18.07L0 24l6.1-1.6a12.04 12.04 0 0 0 5.9 1.5h.01A12 12 0 0 0 24 12c0-3.2-1.24-6.22-3.5-8.55l1.1.95zM12 22a10 10 0 0 1-5.1-1.4l-.36-.21-3.6.94.97-3.51-.24-.37A10 10 0 0 1 12 2a10 10 0 0 1 7.07 17.07A10 10 0 0 1 12 22z"/></svg>
+                    </div>
+                    <div>
+                        <div class="wa-card__title">WhatsApp</div>
+                        <div class="wa-card__sub">Быстрый старт чата</div>
+                    </div>
+                </div>
+                <p class="wa-card__lead">Отсканируйте QR-код камерой телефона или нажмите кнопку — и сразу попадёте в чат с менеджером. Отвечаем в рабочие часы в течение 10 минут.</p>
+                <div class="wa-card__qr-wrap">
+                    <div class="wa-card__qr" id="qrCanvas" aria-label="QR-код для WhatsApp"></div>
+                    <div class="wa-card__qr-meta">
+                        <strong>+7 (800) 707-08-70</strong>
+                        Менеджер по техническим вопросам и подбору красителей.
+                        <a class="wa-card__qr-btn" href="https://wa.me/78007070870" target="_blank" rel="noopener">
+                            Открыть в WhatsApp
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ РЕКВИЗИТЫ ============ -->
+    <section class="requisites">
+        <div class="container">
+            <div class="section-head">
+                <span class="section-eyebrow">Реквизиты</span>
+                <h2>Юридические лица</h2>
+                <p>Производитель и торговая компания. Договоры поставки оформляет ООО «БАРГУС ТРЕЙД».</p>
+            </div>
+
+            <div class="requisites-grid">
+                <div class="requisites-card">
+                    <div class="requisites-card__type">Производитель</div>
+                    <div class="requisites-card__name">ООО «БАРГУС продакшн»</div>
+                    <ul class="requisites-card__list">
+                        <li><span class="label">Производственная площадка</span><span class="val">Ленинградская обл., д. Санино, 42 Б</span></li>
+                        <li><span class="label">Бренд</span><span class="val">LUXOMIX®</span></li>
+                        <li><span class="label">Сертификация</span><span class="val">ISO 22000:2018 · FSSC 22000 v6</span></li>
+                        <li><span class="label">На рынке</span><span class="val">с 2004 года</span></li>
+                    </ul>
+                </div>
+                <div class="requisites-card">
+                    <div class="requisites-card__type">Продавец / поставщик</div>
+                    <div class="requisites-card__name">ООО «БАРГУС ТРЕЙД»</div>
+                    <ul class="requisites-card__list">
+                        <li><span class="label">Назначение</span><span class="val">Оформление договоров поставки и логистика</span></li>
+                        <li><span class="label">Email</span><span class="val"><a href="mailto:managers-owner@bargus-trade.ru" style="color:var(--c-accent)">managers-owner@bargus-trade.ru</a></span></li>
+                        <li><span class="label">Телефон</span><span class="val"><a href="tel:88007070870" style="color:var(--c-accent)">8 (800) 707-08-70</a></span></li>
+                        <li><span class="label">География поставок</span><span class="val">Россия, Казахстан, Беларусь</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div>
+                <div class="logo">
+                    <span class="logo__mark" style="color:#fff">luxomix</span>
+                    <span class="logo__tagline">natural color</span>
+                </div>
+                <p class="footer__about">Натуральные пищевые красители и растительные экстракты для производителей продукции категории «чистая этикетка». ООО «БАРГУС продакшн», с 2004 года.</p>
+                <div class="footer__certs">
+                    <span class="footer__cert">ISO 22000</span>
+                    <span class="footer__cert">FSSC 22000</span>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h4>Каталог</h4>
+                <ul>
+                    <li><a href="/category/po-cvetu">По цвету</a></li>
+                    <li><a href="/category/po-primeneniyu">По применению</a></li>
+                    <li><a href="/category/bestsellers">Бестселлеры</a></li>
+                    <li><a href="/category/novinki">Новинки</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/in-product">В продукте</a></li>
+                    <li><a href="/blog">Блог</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
+                    <li><a href="/about#certs">Сертификаты</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Контакты</h4>
+                <div class="footer__contact-item">
+                    <strong>Телефон</strong>
+                    <a href="tel:88007070870">8 (800) 707-08-70</a>
+                </div>
+                <div class="footer__contact-item">
+                    <strong>E-mail</strong>
+                    <a href="mailto:managers-owner@bargus-trade.ru">managers-owner@bargus-trade.ru</a>
+                </div>
+                <div class="footer__warehouses">
+                    <div class="footer__warehouse"><strong>Москва</strong>склад · самовывоз</div>
+                    <div class="footer__warehouse"><strong>СПб</strong>склад · доставка</div>
+                    <div class="footer__warehouse"><strong>Алматы</strong>склад · РК</div>
+                    <div class="footer__warehouse"><strong>Гомель</strong>склад · РБ</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>© 2004–2026 LUXOMIX® · ООО «БАРГУС продакшн»</span>
+            <span>
+                <a href="/privacy">Политика конфиденциальности</a> ·
+                <a href="/terms">Пользовательское соглашение</a>
+            </span>
+        </div>
+    </div>
+    <div class="color-strip">
+        <span style="background:var(--dye-yellow)"></span>
+        <span style="background:var(--dye-orange)"></span>
+        <span style="background:var(--dye-red-orange)"></span>
+        <span style="background:var(--dye-red)"></span>
+        <span style="background:var(--dye-pink)"></span>
+        <span style="background:var(--dye-purple)"></span>
+        <span style="background:var(--dye-dark-purple)"></span>
+        <span style="background:var(--dye-blue)"></span>
+        <span style="background:var(--dye-turquoise)"></span>
+        <span style="background:var(--dye-green)"></span>
+        <span style="background:var(--dye-brown)"></span>
+        <span style="background:var(--dye-red-brown)"></span>
+        <span style="background:var(--dye-black)"></span>
+    </div>
+</footer>
+
+<script>
+/* ============================ ТАБЫ СКЛАДОВ ============================ */
+(function() {
+    const tabs = document.querySelectorAll('.warehouse-tab');
+    const panels = document.querySelectorAll('.warehouse-panel');
+    const map = { msk: 'wh-msk', spb: 'wh-spb', alm: 'wh-alm', gml: 'wh-gml' };
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const target = tab.dataset.warehouse;
+            tabs.forEach(t => t.classList.toggle('is-active', t === tab));
+            panels.forEach(p => p.classList.toggle('is-active', p.id === map[target]));
+        });
+    });
+})();
+
+/* ============================ ГЕНЕРАТОР ДЕКОРАТИВНОГО QR ============================ */
+/* Это псевдо-QR паттерн (не настоящий QR-код), используется как визуальный плейсхолдер.
+   В продакшне здесь должен быть реальный QR с ссылкой wa.me/78007070870 — генерируется
+   серверным рендером или клиентской библиотекой (qrcode.js). */
+(function() {
+    const canvas = document.getElementById('qrCanvas');
+    if (!canvas) return;
+    const N = 10;
+    const corner = (r, c) => (r < 3 && c < 3) || (r < 3 && c >= N - 3) || (r >= N - 3 && c < 3);
+    const innerCorner = (r, c) => (r === 1 && (c === 1 || c === N - 2)) || (r === N - 2 && c === 1);
+    let seed = 42;
+    const rnd = () => { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; };
+    for (let r = 0; r < N; r++) {
+        for (let c = 0; c < N; c++) {
+            const cell = document.createElement('span');
+            const isCornerArea = corner(r, c);
+            const isInnerCorner = innerCorner(r, c);
+            const isCornerBorder = isCornerArea && (r === 0 || r === 2 || c === 0 || c === 2 || r === N - 1 || r === N - 3 || c === N - 1 || c === N - 3);
+            const filled = isCornerBorder || isInnerCorner || (!isCornerArea && rnd() > 0.5);
+            if (!filled) cell.style.background = 'transparent';
+            canvas.appendChild(cell);
+        }
+    }
+})();
+
+/* ============================ МЕГАМЕНЮ ============================ */
+(function() {
+    const btn = document.getElementById('catalogBtn');
+    const menu = document.getElementById('megamenu');
+    const overlay = document.getElementById('mmOverlay');
+    const closeBtn = document.getElementById('mmClose');
+    const items = menu.querySelectorAll('.mm-item');
+    const panels = menu.querySelectorAll('.mm-panel');
+    function open() {
+        if (window.__closeBurger) window.__closeBurger();
+        menu.classList.add('is-open'); overlay.classList.add('is-open'); btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        menu.classList.remove('is-open'); overlay.classList.remove('is-open'); btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    function switchPanel(t) {
+        items.forEach(i => i.classList.toggle('is-active', i.dataset.target === t));
+        panels.forEach(p => p.classList.toggle('is-active', p.id === 'mm-' + t));
+    }
+    btn.addEventListener('click', () => menu.classList.contains('is-open') ? close() : open());
+    overlay.addEventListener('click', close);
+    closeBtn.addEventListener('click', close);
+    items.forEach(item => {
+        item.addEventListener('mouseenter', () => switchPanel(item.dataset.target));
+        item.addEventListener('focus', () => switchPanel(item.dataset.target));
+        item.addEventListener('click', () => switchPanel(item.dataset.target));
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('is-open')) close(); });
+    menu.querySelectorAll('.mm-sublink').forEach(a => a.addEventListener('click', close));
+    window.__closeMegamenu = close;
+})();
+
+/* ============================ БУРГЕР ============================ */
+(function() {
+    const btn = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileNav');
+    if (!btn || !menu) return;
+    function close() { menu.classList.remove('is-open'); btn.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true'); }
+    btn.addEventListener('click', () => {
+        if (menu.classList.contains('is-open')) close();
+        else {
+            if (window.__closeMegamenu) window.__closeMegamenu();
+            menu.classList.add('is-open'); btn.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+        }
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('is-open')) close(); });
+    document.addEventListener('click', e => {
+        if (!menu.classList.contains('is-open')) return;
+        if (menu.contains(e.target) || btn.contains(e.target)) return;
+        close();
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth > 1080 && menu.classList.contains('is-open')) close(); });
+    window.__closeBurger = close;
+})();
+</script>
+
+</body>
+</html>

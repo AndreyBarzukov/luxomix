@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Шоколад и глазурь — Luxomix® · Натуральные красители для кондитерской промышленности</title>
+<meta name="description" content="Натуральные жирорастворимые красители Luxomix® для шоколадных масс и кондитерских глазурей. Стабильный цвет до +180 °C, без расслоения, рекомендуемые SKU, дозировки, форма вопроса технологу.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================ ТОКЕНЫ БРЕНДА (ТЗ §2.3, §2.4) ============================ */
+:root {
+    --c-primary:        #0E2D17;
+    --c-primary-alt:    #1F7A3A;
+    --c-accent:         #6980FF;
+    --c-accent-hover:   #4A60E0;
+    --c-bg:             #FFFFFF;
+    --c-surface:        #F5F6F8;
+    --c-text:           #1A1A1A;
+    --c-text-muted:     #6B7280;
+    --c-border:         #E5E7EB;
+
+    --dye-yellow:       #F5C518;
+    --dye-orange:       #F39200;
+    --dye-red-orange:   #E84E1B;
+    --dye-red:          #D52B1E;
+    --dye-pink:         #E6007E;
+    --dye-purple:       #7E3A93;
+    --dye-dark-purple:  #3B1E5E;
+    --dye-blue:         #2E5A87;
+    --dye-turquoise:    #1E7A7A;
+    --dye-green:        #9DC23B;
+    --dye-brown:        #6B4423;
+    --dye-red-brown:    #8B2E1F;
+    --dye-black:        #1A1A1A;
+
+    --f-heading: 'Bebas Neue', 'Impact', sans-serif;
+    --f-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --fs-h1: 56px;
+    --fs-h2: 40px;
+    --fs-h3: 24px;
+    --fs-body-l: 18px;
+    --fs-body-m: 16px;
+    --fs-body-s: 14px;
+
+    --container: 1280px;
+    --container-pad: 24px;
+    --header-h: 80px;
+}
+
+/* ============================ БАЗА ============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--f-body); font-size: var(--fs-body-m); line-height: 1.55; color: var(--c-text); background: var(--c-bg); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--container-pad); }
+h1, h2, h3 { font-family: var(--f-heading); font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-family: var(--f-body); font-size: var(--fs-h3); font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.3; }
+
+/* ============================ ШАПКА ============================ */
+.header { position: sticky; top: 0; z-index: 100; background: var(--c-bg); border-bottom: 1px solid var(--c-border); height: var(--header-h); }
+.header__inner { display: flex; align-items: center; gap: 24px; height: 100%; }
+.logo { display: flex; flex-direction: column; line-height: 1; margin-right: 8px; flex-shrink: 0; }
+.logo__mark { font-family: var(--f-heading); font-size: 32px; color: var(--c-primary); letter-spacing: 1px; position: relative; text-transform: lowercase; }
+.logo__mark::after { content: '®'; font-family: var(--f-heading); font-size: 16px; vertical-align: super; margin-left: 2px; color: inherit; }
+.logo__tagline { font-size: 11px; font-weight: 300; color: var(--c-text-muted); letter-spacing: 1.5px; margin-top: -2px; }
+
+.btn-catalog { display: inline-flex; align-items: center; gap: 10px; background: var(--c-accent); color: #fff; padding: 12px 22px; border-radius: 999px; font-family: var(--f-heading); font-size: 16px; letter-spacing: 1px; transition: background .15s ease; }
+.btn-catalog:hover { background: var(--c-accent-hover); }
+.btn-catalog svg { width: 18px; height: 18px; }
+.btn-catalog__chevron { transition: transform .25s ease; }
+.btn-catalog.is-open .btn-catalog__chevron { transform: rotate(180deg); }
+
+.nav { display: flex; gap: 28px; }
+.nav a { font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); position: relative; transition: color .15s ease; }
+.nav a:hover { color: var(--c-accent); }
+.nav a.is-current { color: var(--c-accent); }
+.nav a.is-current::after { content: ''; position: absolute; left: 0; right: 0; bottom: -28px; height: 3px; background: var(--c-accent); border-radius: 2px 2px 0 0; }
+.header__phone { margin-left: auto; font-weight: 600; color: var(--c-primary); white-space: nowrap; font-size: var(--fs-body-m); }
+
+.btn-burger { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 12px; background: var(--c-surface); color: var(--c-text); transition: background .15s ease; flex-shrink: 0; }
+.btn-burger:hover { background: var(--c-border); }
+.btn-burger svg { width: 22px; height: 22px; }
+.btn-burger .icon-close { display: none; }
+.btn-burger.is-open .icon-burger { display: none; }
+.btn-burger.is-open .icon-close { display: block; }
+
+.mobile-nav { position: fixed; top: var(--header-h); left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--c-border); box-shadow: 0 24px 48px -16px rgba(14, 45, 23, 0.18); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; z-index: 95; display: none; }
+.mobile-nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.mobile-nav .container { display: flex; flex-direction: column; gap: 2px; padding-top: 20px; padding-bottom: 20px; }
+.mobile-nav a { padding: 14px 16px; font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); border-radius: 10px; transition: background .15s, color .15s; }
+.mobile-nav a:hover { background: var(--c-surface); color: var(--c-accent); }
+.mobile-nav__phone { margin-top: 8px; padding-top: 18px !important; border-top: 1px solid var(--c-border); color: var(--c-primary) !important; font-weight: 600 !important; border-radius: 0 !important; }
+
+/* ============================ МЕГАМЕНЮ ============================ */
+.megamenu-overlay { position: fixed; inset: var(--header-h) 0 0 0; background: rgba(0,0,0,.4); z-index: 90; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.megamenu-overlay.is-open { opacity: 1; pointer-events: auto; }
+.megamenu { position: fixed; top: var(--header-h); left: 0; right: 0; background: #fff; z-index: 95; border-bottom: 1px solid var(--c-border); box-shadow: 0 24px 48px -16px rgba(14, 45, 23, 0.18); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
+.megamenu.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.megamenu__inner { display: grid; grid-template-columns: 280px 1fr; min-height: 480px; gap: 0; padding: 32px 0; }
+.megamenu__left { border-right: 1px solid var(--c-border); padding-right: 16px; display: flex; flex-direction: column; gap: 2px; }
+.mm-item { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 16px; border-radius: 10px; font-family: var(--f-body); font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); text-align: left; transition: background .15s, color .15s; cursor: pointer; }
+.mm-item:hover, .mm-item.is-active { background: var(--c-surface); color: var(--c-primary); }
+.mm-item.is-active { background: rgba(105, 128, 255, 0.08); color: var(--c-accent); }
+.mm-item svg { width: 16px; height: 16px; opacity: 0.5; transition: transform .15s; }
+.megamenu__right { padding: 8px 0 8px 48px; }
+.mm-panel { display: none; }
+.mm-panel.is-active { display: block; }
+.mm-panel__title { font-family: var(--f-heading); font-size: 32px; text-transform: uppercase; color: var(--c-primary); margin-bottom: 8px; }
+.mm-panel__lead { font-size: var(--fs-body-s); color: var(--c-text-muted); margin-bottom: 28px; max-width: 520px; }
+.mm-subgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
+.mm-sublink { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; color: var(--c-text); font-size: var(--fs-body-m); transition: background .12s, color .12s; }
+.mm-sublink:hover { background: var(--c-surface); color: var(--c-accent); }
+.mm-sublink__swatch { width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.06); }
+.mm-sublink__bullet { color: var(--c-text-muted); font-size: 12px; width: 18px; text-align: center; }
+.megamenu__close { display: none; }
+@media (max-width: 900px) {
+    .megamenu { top: 0; height: 100vh; max-height: 100vh; }
+    .megamenu-overlay { display: none; }
+    .megamenu__inner { grid-template-columns: 1fr; padding: 24px 16px; min-height: 0; }
+    .megamenu__left { border-right: none; border-bottom: 1px solid var(--c-border); padding: 0 0 16px; margin-bottom: 16px; }
+    .megamenu__right { padding: 0; }
+    .mm-subgrid { grid-template-columns: 1fr; }
+    .megamenu__close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--c-surface); border-radius: 50%; cursor: pointer; }
+}
+
+/* ============================ ПОИСК-ПОЛОСА ============================ */
+.search-strip { position: sticky; top: var(--header-h); z-index: 80; background: #fff; border-bottom: 1px solid var(--c-border); padding: 16px 0; }
+.search-strip__inner { position: relative; width: 100%; }
+.search-strip input { width: 100%; height: 56px; border: 1px solid var(--c-border); border-radius: 14px; padding: 0 130px 0 56px; font-family: inherit; font-size: var(--fs-body-m); background: var(--c-surface); transition: background .15s, border-color .15s; }
+.search-strip input:focus { outline: none; border-color: var(--c-accent); background: #fff; }
+.search-strip .icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; color: var(--c-text-muted); pointer-events: none; }
+.search-strip > .container > .search-strip__inner > button { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); height: 42px; padding: 0 24px; background: var(--c-accent); color: #fff; border-radius: 10px; font-family: var(--f-heading); font-size: 14px; letter-spacing: 1px; transition: background .15s; }
+.search-strip > .container > .search-strip__inner > button:hover { background: var(--c-accent-hover); }
+
+/* ============================ ХЛЕБНЫЕ КРОШКИ ============================ */
+.breadcrumbs { padding: 24px 0 0; font-size: var(--fs-body-s); color: var(--c-text-muted); }
+.breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.breadcrumbs li { display: flex; align-items: center; gap: 8px; }
+.breadcrumbs li::after { content: '/'; color: var(--c-border); }
+.breadcrumbs li:last-child::after { display: none; }
+.breadcrumbs a { color: var(--c-text-muted); transition: color .12s; }
+.breadcrumbs a:hover { color: var(--c-accent); }
+.breadcrumbs li:last-child { color: var(--c-text); font-weight: 500; }
+
+/* ============================ HERO СТАТЬИ ============================ */
+.article-hero {
+    position: relative;
+    margin: 24px 0 0;
+    border-radius: 24px;
+    overflow: hidden;
+    min-height: 460px;
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+}
+.article-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+        linear-gradient(180deg, rgba(14, 45, 23, 0.3) 0%, rgba(14, 45, 23, 0.92) 100%),
+        var(--hero-img, url('https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=1800&q=80')) center/cover no-repeat;
+    z-index: 0;
+}
+.article-hero__inner {
+    position: relative;
+    z-index: 1;
+    padding: 48px;
+    width: 100%;
+    max-width: 900px;
+}
+.article-hero__tag {
+    display: inline-flex;
+    align-items: center; 
+    gap: 8px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+    font-weight: 500;
+}
+.article-hero__tag svg { width: 14px; height: 14px; }
+.article-hero__title {
+    font-size: clamp(40px, 5.4vw, 64px);
+    line-height: 1.02;
+    margin-bottom: 18px;
+    color: #fff;
+}
+.article-hero__lead {
+    font-size: var(--fs-body-l);
+    color: rgba(255,255,255,0.88);
+    font-weight: 300;
+    max-width: 720px;
+    line-height: 1.5;
+}
+.article-hero__meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    font-size: var(--fs-body-s);
+    color: rgba(255,255,255,0.72);
+}
+.article-hero__meta-item { display: inline-flex; align-items: center; gap: 8px; }
+.article-hero__meta-item svg { width: 16px; height: 16px; color: var(--dye-yellow); }
+
+/* ============================ ОСНОВНОЙ КОНТЕНТ ============================ */
+.article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 64px;
+    padding: 56px 0 32px;
+}
+
+.article-body h2 {
+    font-size: 32px;
+    color: var(--c-primary);
+    margin: 40px 0 18px;
+}
+.article-body h2:first-child { margin-top: 0; }
+.article-body h3 {
+    font-family: var(--f-body);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--c-primary);
+    margin: 32px 0 12px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+.article-body p {
+    font-size: var(--fs-body-m);
+    color: var(--c-text);
+    line-height: 1.75;
+    margin-bottom: 18px;
+}
+.article-body p strong { color: var(--c-primary); font-weight: 600; }
+.article-body ul, .article-body ol { padding-left: 0; list-style: none; margin-bottom: 20px; }
+.article-body li {
+    font-size: var(--fs-body-m);
+    color: var(--c-text);
+    line-height: 1.65;
+    padding-left: 28px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.article-body li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--c-accent);
+}
+.article-body ol { counter-reset: ol; }
+.article-body ol li::before {
+    counter-increment: ol;
+    content: counter(ol);
+    background: var(--c-primary);
+    color: #fff;
+    width: 22px; height: 22px;
+    top: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+}
+.article-body ol li { padding-left: 36px; }
+
+/* Цитата-выноска */
+.callout {
+    margin: 28px 0;
+    padding: 24px 28px;
+    background: var(--c-surface);
+    border-left: 4px solid var(--c-accent);
+    border-radius: 0 14px 14px 0;
+}
+.callout__label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--c-accent); font-weight: 600; margin-bottom: 8px; }
+.callout p { margin: 0; font-size: var(--fs-body-m); color: var(--c-text); line-height: 1.6; }
+
+/* Параметры применения — таблица */
+.specs-table {
+    margin: 28px 0;
+    border: 1px solid var(--c-border);
+    border-radius: 16px;
+    overflow: hidden;
+}
+.specs-table__row {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    border-bottom: 1px solid var(--c-border);
+}
+.specs-table__row:last-child { border-bottom: none; }
+.specs-table__row:nth-child(even) { background: var(--c-surface); }
+.specs-table__label {
+    padding: 14px 20px;
+    font-size: var(--fs-body-s);
+    color: var(--c-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border-right: 1px solid var(--c-border);
+}
+.specs-table__value {
+    padding: 14px 20px;
+    font-size: var(--fs-body-m);
+    color: var(--c-text);
+    font-weight: 500;
+}
+.specs-table__value strong { color: var(--c-primary); font-weight: 700; }
+
+/* ============================ САЙДБАР ============================ */
+.sidebar { position: sticky; top: calc(var(--header-h) + 88px); align-self: start; display: flex; flex-direction: column; gap: 16px; }
+.sidebar-card {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 18px;
+    padding: 22px 22px 24px;
+}
+.sidebar-card__label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--c-text-muted); margin-bottom: 14px; }
+.sidebar-card__title { font-family: var(--f-heading); font-size: 24px; color: var(--c-primary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; }
+.sidebar-card__text { font-size: var(--fs-body-s); color: var(--c-text-muted); line-height: 1.55; margin-bottom: 16px; }
+.sidebar-card__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 18px;
+    background: var(--c-accent);
+    color: #fff;
+    border-radius: 10px;
+    font-family: var(--f-heading);
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: background .15s;
+    text-transform: uppercase;
+}
+.sidebar-card__btn:hover { background: var(--c-accent-hover); }
+.sidebar-card__btn svg { width: 14px; height: 14px; }
+
+.sidebar-card--dark { background: var(--c-primary); color: #fff; border: none; }
+.sidebar-card--dark .sidebar-card__label { color: rgba(255,255,255,0.55); }
+.sidebar-card--dark .sidebar-card__title { color: #fff; }
+.sidebar-card--dark .sidebar-card__text { color: rgba(255,255,255,0.78); }
+
+.sidebar-meta { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.sidebar-meta li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--c-border);
+    font-size: var(--fs-body-s);
+}
+.sidebar-meta li:last-child { border-bottom: none; }
+.sidebar-meta__label { color: var(--c-text-muted); }
+.sidebar-meta__val { color: var(--c-primary); font-weight: 600; text-align: right; }
+
+/* ============================ БЛОК «РЕКОМЕНДУЕМЫЕ ПРОДУКТЫ» (ТЗ §11.2) — горизонтальная карусель ============================ */
+.products-block { padding: 32px 0 64px; }
+.products-block__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+.products-block__title { font-size: 32px; color: var(--c-primary); }
+.products-block__sub { font-size: var(--fs-body-m); color: var(--c-text-muted); max-width: 480px; margin-top: 8px; }
+.products-block__nav { display: flex; gap: 8px; }
+.products-arrow {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    color: var(--c-primary);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background .12s, color .12s, border-color .12s;
+}
+.products-arrow:hover:not(:disabled) { background: var(--c-accent); color: #fff; border-color: var(--c-accent); }
+.products-arrow:disabled { opacity: 0.35; cursor: not-allowed; }
+.products-arrow svg { width: 18px; height: 18px; }
+
+.products-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+    margin: 0 -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+.products-carousel::-webkit-scrollbar { height: 6px; }
+.products-carousel::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 3px; }
+
+.product-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.product-card:hover { border-color: var(--c-accent); transform: translateY(-3px); box-shadow: 0 24px 48px -20px rgba(14, 45, 23, 0.18); }
+.product-card__visual {
+    aspect-ratio: 4/3;
+    background: var(--card-bg, var(--c-surface));
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.product-card__swatch {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    background: var(--swatch, #F5C518);
+    box-shadow: 0 12px 30px -8px var(--swatch, #F5C518);
+    position: relative;
+}
+.product-card__swatch::after {
+    content: '';
+    position: absolute;
+    top: 14%; left: 20%;
+    width: 28%; height: 28%;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    filter: blur(6px);
+}
+.product-card__badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: rgba(14,45,23,0.85);
+    color: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    font-weight: 500;
+}
+.product-card__body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+.product-card__name {
+    font-weight: 600;
+    font-size: var(--fs-body-m);
+    color: var(--c-primary);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+.product-card__meta {
+    font-size: 12px;
+    color: var(--c-text-muted);
+    margin-bottom: 14px;
+    line-height: 1.5;
+    flex: 1;
+}
+.product-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-body-s);
+    color: var(--c-accent);
+    font-weight: 600;
+    transition: gap .15s;
+}
+.product-card:hover .product-card__cta { gap: 10px; }
+.product-card__cta svg { width: 14px; height: 14px; }
+
+/* ============================ ФОРМА «ВОПРОС ТЕХНОЛОГУ» (ТЗ §11.2) ============================ */
+.tech-form {
+    padding: 64px 0 64px;
+    background: var(--c-surface);
+}
+.tech-form__wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 48px;
+    align-items: start;
+}
+.tech-form__intro h2 { color: var(--c-primary); margin-bottom: 18px; }
+.tech-form__intro p { font-size: var(--fs-body-l); color: var(--c-text-muted); line-height: 1.55; margin-bottom: 24px; }
+.tech-form__features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+.tech-form__feature { display: flex; align-items: center; gap: 10px; font-size: var(--fs-body-s); color: var(--c-text); }
+.tech-form__feature svg { width: 18px; height: 18px; color: var(--c-primary-alt); flex-shrink: 0; }
+.tech-form__contact {
+    padding: 18px 20px;
+    background: #fff;
+    border-radius: 12px;
+    border-left: 4px solid var(--c-accent);
+    margin-top: 10px;
+}
+.tech-form__contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--c-text-muted); margin-bottom: 4px; }
+.tech-form__contact-value { font-size: var(--fs-body-l); font-weight: 600; color: var(--c-primary); }
+
+.tech-form__card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 24px 48px -24px rgba(14, 45, 23, 0.15);
+}
+.tech-form__card-title { font-family: var(--f-heading); font-size: 28px; color: var(--c-primary); text-transform: uppercase; line-height: 1; margin-bottom: 24px; letter-spacing: 0.5px; }
+
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; }
+.form-field { margin-bottom: 14px; }
+.form-field input, .form-field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--c-border);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: var(--fs-body-m);
+    color: var(--c-text);
+    background: #fff;
+    transition: border-color .15s;
+}
+.form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--c-accent); }
+.form-field textarea { resize: vertical; min-height: 110px; }
+.form-checkbox { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: var(--c-text-muted); margin: 6px 0 18px; }
+.form-checkbox input { flex-shrink: 0; margin-top: 2px; }
+.form-checkbox a { color: var(--c-accent); text-decoration: underline; }
+.btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--c-accent);
+    color: #fff;
+    padding: 18px 28px;
+    border-radius: 14px;
+    font-family: var(--f-heading);
+    font-size: 18px;
+    letter-spacing: 1px;
+    transition: background .15s;
+    text-transform: uppercase;
+}
+.btn-submit:hover { background: var(--c-accent-hover); }
+.btn-submit svg { width: 18px; height: 18px; }
+
+/* ============================ ДРУГИЕ ПРИМЕНЕНИЯ ============================ */
+.related-articles { padding: 64px 0; }
+.related-articles h2 { color: var(--c-primary); margin-bottom: 32px; font-size: 32px; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.related-card {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+    display: flex;
+    flex-direction: column;
+}
+.related-card:hover { border-color: var(--c-accent); transform: translateY(-3px); }
+.related-card__visual { aspect-ratio: 16/9; overflow: hidden; }
+.related-card__visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.related-card:hover .related-card__visual img { transform: scale(1.05); }
+.related-card__body { padding: 18px 20px 22px; }
+.related-card__tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--c-accent); font-weight: 600; margin-bottom: 8px; }
+.related-card__name { font-weight: 600; font-size: var(--fs-body-l); color: var(--c-primary); margin-bottom: 6px; line-height: 1.3; }
+.related-card__desc { font-size: var(--fs-body-s); color: var(--c-text-muted); line-height: 1.5; }
+
+/* ============================ ПОДВАЛ ============================ */
+.footer { background: var(--c-primary); color: rgba(255,255,255,0.78); padding: 64px 0 0; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 48px; }
+.footer .logo__mark { color: #fff; }
+.footer .logo__tagline { color: rgba(255,255,255,0.5); }
+.footer__about { font-size: var(--fs-body-s); color: rgba(255,255,255,0.7); margin: 20px 0 18px; line-height: 1.55; }
+.footer__certs { display: flex; gap: 8px; flex-wrap: wrap; }
+.footer__cert { display: inline-flex; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; font-size: 11px; letter-spacing: 1px; color: #fff; }
+.footer__col h4 { font-family: var(--f-heading); font-size: 16px; color: #fff; letter-spacing: 1px; margin-bottom: 18px; text-transform: uppercase; font-weight: 400; }
+.footer__col ul { list-style: none; }
+.footer__col li { margin-bottom: 12px; }
+.footer__col a { font-size: var(--fs-body-s); transition: color .15s; }
+.footer__col a:hover { color: #fff; }
+.footer__contact-item { margin-bottom: 14px; display: flex; flex-direction: column; gap: 2px; }
+.footer__contact-item strong { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.55); font-weight: 500; }
+.footer__contact-item a { color: #fff; font-weight: 500; }
+.footer__warehouses { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.footer__warehouse { padding: 10px 12px; background: rgba(255,255,255,0.06); border-radius: 10px; font-size: 11px; color: rgba(255,255,255,0.78); }
+.footer__warehouse strong { color: #fff; display: block; margin-bottom: 2px; font-weight: 500; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.55); flex-wrap: wrap; gap: 16px; }
+.footer__bottom a { color: rgba(255,255,255,0.7); }
+.footer__bottom a:hover { color: #fff; }
+.color-strip { display: flex; height: 10px; width: 100%; }
+.color-strip span { flex: 1; }
+
+/* ============================ АДАПТИВ ============================ */
+@media (max-width: 1080px) {
+    .nav, .header__phone { display: none; }
+    .btn-burger { display: flex; margin-left: auto; }
+    .mobile-nav { display: block; }
+    .header__inner { gap: 14px; }
+
+    .article-layout { grid-template-columns: 1fr; gap: 32px; }
+    .sidebar { position: static; flex-direction: row; flex-wrap: wrap; }
+    .sidebar > * { flex: 1 1 280px; }
+    .tech-form__wrap { grid-template-columns: 1fr; gap: 32px; }
+    .related-grid { grid-template-columns: 1fr 1fr; }
+    .article-hero { min-height: 360px; }
+    .article-hero__inner { padding: 32px; }
+}
+@media (max-width: 720px) {
+    h2 { font-size: 30px; }
+    .article-hero { min-height: 320px; margin-top: 16px; border-radius: 16px; }
+    .article-hero__inner { padding: 24px; }
+    .article-hero__meta { gap: 16px; }
+    .article-layout { padding: 40px 0 24px; gap: 28px; }
+    .article-body h2 { font-size: 26px; }
+    .specs-table__row { grid-template-columns: 1fr; }
+    .specs-table__label { border-right: none; border-bottom: 1px solid var(--c-border); }
+    .product-card { flex: 0 0 240px; }
+    .tech-form { padding: 48px 0; }
+    .tech-form__card { padding: 24px; }
+    .form-grid { grid-template-columns: 1fr; }
+    .related-articles { padding: 48px 0; }
+    .related-grid { grid-template-columns: 1fr; }
+    .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer__warehouses { grid-template-columns: 1fr; }
+    .search-strip input { height: 50px; font-size: var(--fs-body-s); padding: 0 90px 0 48px; }
+    .search-strip > .container > .search-strip__inner > button { padding: 0 16px; font-size: 12px; height: 38px; }
+    .breadcrumbs { padding: 18px 0 0; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="/" class="logo">
+            <span class="logo__mark">luxomix</span>
+            <span class="logo__tagline">natural color</span>
+        </a>
+        <button class="btn-catalog" id="catalogBtn" aria-label="Открыть каталог" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            КАТАЛОГ
+            <svg class="btn-catalog__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <nav class="nav">
+            <a href="/about">О нас</a>
+            <a href="/in-product" class="is-current">В продукте</a>
+            <a href="/blog">Блог</a>
+            <a href="/contacts">Контакты</a>
+        </nav>
+        <a href="tel:88007070870" class="header__phone">8 (800) 707-08-70</a>
+        <button class="btn-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+            <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+</header>
+
+<!-- Мобильное меню -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="container">
+        <a href="/about">О нас</a>
+        <a href="/in-product">В продукте</a>
+        <a href="/blog">Блог</a>
+        <a href="/contacts">Контакты</a>
+        <a href="tel:88007070870" class="mobile-nav__phone">8 (800) 707-08-70</a>
+    </div>
+</nav>
+
+<!-- ============ МЕГАМЕНЮ ============ -->
+<div class="megamenu-overlay" id="mmOverlay"></div>
+<nav class="megamenu" id="megamenu" aria-hidden="true">
+    <button class="megamenu__close" id="mmClose" aria-label="Закрыть меню">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="container megamenu__inner">
+        <div class="megamenu__left" role="tablist">
+            <button class="mm-item is-active" data-target="po-cvetu">По цвету <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="po-primeneniyu">По применению <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="bestsellers">Бестселлеры <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="novinki">Новинки <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+        <div class="megamenu__right">
+            <div class="mm-panel is-active" id="mm-po-cvetu">
+                <h3 class="mm-panel__title">По цвету</h3>
+                <p class="mm-panel__lead">13 оттенков от жёлтого куркумина до чёрного растительного угля.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F5C518"></span>Жёлтый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F39200"></span>Оранжевый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#D52B1E"></span>Красный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#E6007E"></span>Малиновый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#7E3A93"></span>Фиолетовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#2E5A87"></span>Синий</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#9DC23B"></span>Зелёный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#6B4423"></span>Коричневый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#1A1A1A"></span>Чёрный</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-po-primeneniyu">
+                <h3 class="mm-panel__title">По применению</h3>
+                <p class="mm-panel__lead">Готовые решения для конкретной отрасли пищевого производства.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Кондитерская</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Молочная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Напитки</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Мясная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Хлебопекарная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Масложировая</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-bestsellers"><h3 class="mm-panel__title">Бестселлеры</h3></div>
+            <div class="mm-panel" id="mm-novinki"><h3 class="mm-panel__title">Новинки</h3></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ ПОИСК-ПОЛОСА ============ -->
+<div class="search-strip">
+    <div class="container">
+        <div class="search-strip__inner">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="Поиск по красителям, оттенкам, применению…" autocomplete="off">
+            <button>Найти</button>
+        </div>
+    </div>
+</div>
+
+<main>
+
+    <!-- ============ ХЛЕБНЫЕ КРОШКИ ============ -->
+    <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ol>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/in-product">В продукте</a></li>
+                <li>Шоколад и глазурь</li>
+            </ol>
+        </nav>
+
+        <!-- ============ HERO ============ -->
+        <section class="article-hero" style="--hero-img: url('https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=1800&q=80');">
+            <div class="article-hero__inner">
+                <span class="article-hero__tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2 L2 7 L12 12 L22 7 Z"/><path d="M2 17 L12 22 L22 17"/><path d="M2 12 L12 17 L22 12"/></svg>
+                    Кондитерская промышленность
+                </span>
+                <h1 class="article-hero__title">Шоколад<br>и глазурь</h1>
+                <p class="article-hero__lead">Натуральные жирорастворимые красители Luxomix® для шоколадных масс, кондитерских и кулинарных глазурей. Стабильный цвет до +180 °C, без расслоения, с пониженным расходом за счёт высокой красящей способности.</p>
+                <div class="article-hero__meta">
+                    <span class="article-hero__meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        7 минут чтения
+                    </span>
+                    <span class="article-hero__meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16 V8 a2 2 0 0 0-1-1.73l-7-4 a2 2 0 0 0-2 0l-7 4 A2 2 0 0 0 3 8 v8 a2 2 0 0 0 1 1.73l7 4 a2 2 0 0 0 2 0l7-4 A2 2 0 0 0 21 16z"/></svg>
+                        6 рекомендуемых SKU
+                    </span>
+                    <span class="article-hero__meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Обновлено: апрель 2026
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ КОНТЕНТ + САЙДБАР ============ -->
+        <div class="article-layout">
+            <article class="article-body">
+                <h2>Технологическая задача</h2>
+                <p>Шоколад — это <strong>липофильная среда</strong>: на 30–55% состоит из какао-масла или эквивалентных растительных жиров. Водорастворимые красители в ней мгновенно расслаиваются, образуя пятна и неоднородный цвет. При темперировании и формовании, когда масса проходит через зоны нагрева до +50 °C, а в кулинарных глазурях — до +180 °C, обычный пигмент теряет насыщенность и оттенок.</p>
+                <p>Добавим к этому требования <strong>чистой этикетки</strong>: премиальный шоколад и крафтовые глазури сегодня переходят на натуральные ингредиенты. Производителю нужен краситель без E-кодов или с минимальным набором, но при этом — с тем же визуальным результатом, что и синтетика.</p>
+
+                <div class="callout">
+                    <div class="callout__label">Ключевой вызов</div>
+                    <p>Получить стабильный, насыщенный цвет в жирной среде при температурах до +180 °C, без расслоения и без потери оттенка при хранении готового изделия 6+ месяцев.</p>
+                </div>
+
+                <h2>Что предлагает Luxomix®</h2>
+                <p>Для шоколадных масс и глазурей мы поставляем натуральные красители в <strong>жирорастворимой</strong> или <strong>жиродисперсной</strong> форме. Пигменты-носители распределены в матрице из растительных масел или эмульгаторов, совместимых с какао-маслом — это гарантирует равномерное распределение цвета без отслоений.</p>
+
+                <h3>Ключевые группы пигментов</h3>
+                <ul>
+                    <li><strong>Куркумин (E100)</strong> и <strong>аннато (E160b)</strong> — для жёлтых и жёлто-оранжевых оттенков, термостойкость 9/10, идеальны для белого шоколада и кремовых глазурей.</li>
+                    <li><strong>Бета-каротин (E160a)</strong> — насыщенный жёлтый, дополнительно работает как природный антиоксидант, продлевает срок годности.</li>
+                    <li><strong>Паприка-олеорезин (E160c)</strong> — оранжево-красная гамма, особенно для тёмных шоколадных глазурей.</li>
+                    <li><strong>Кармин (E120)</strong> в жирорастворимой форме — малиновые и розовые оттенки для клубничного и ягодного шоколада.</li>
+                    <li><strong>Сахарный колер MP 2</strong> — коричневая гамма для имитации тёмного шоколада в светлых массах.</li>
+                </ul>
+
+                <h2>Параметры применения</h2>
+                <p>Усреднённые технологические параметры для линейки красителей Luxomix® в шоколадных и кондитерских средах. Под конкретную рецептуру технолог уточнит дозировку и подберёт SKU.</p>
+
+                <div class="specs-table">
+                    <div class="specs-table__row">
+                        <div class="specs-table__label">Растворимость</div>
+                        <div class="specs-table__value"><strong>Жирорастворимая / жиродисперсная</strong></div>
+                    </div>
+                    <div class="specs-table__row">
+                        <div class="specs-table__label">Термостойкость</div>
+                        <div class="specs-table__value"><strong>10/10</strong> — стабильны до +180 °C при кратковременном нагреве</div>
+                    </div>
+                    <div class="specs-table__row">
+                        <div class="specs-table__label">Светостойкость</div>
+                        <div class="specs-table__value"><strong>8/10</strong> — сохранение оттенка в упаковке 12+ месяцев</div>
+                    </div>
+                    <div class="specs-table__row">
+                        <div class="specs-table__label">pH диапазон</div>
+                        <div class="specs-table__value">5,0–8,0 (нейтральная и слабо-щелочная среда)</div>
+                    </div>
+                    <div class="specs-table__row">
+                        <div class="specs-table__label">Рекомендуемая дозировка</div>
+                        <div class="specs-table__value">0,01–0,3% от массы готового продукта</div>
+                    </div>
+                    <div class="specs-table__row">
+                        <div class="specs-table__label">Способ введения</div>
+                        <div class="specs-table__value">В тёплое какао-масло или жировую фазу на этапе конширования</div>
+                    </div>
+                    <div class="specs-table__row">
+                        <div class="specs-table__label">Срок годности</div>
+                        <div class="specs-table__value">24 месяца в герметичной упаковке при +5…+20 °C</div>
+                    </div>
+                </div>
+
+                <h2>Технологические рекомендации</h2>
+                <ol>
+                    <li>Растворите краситель в небольшом объёме <strong>тёплого какао-масла</strong> (+40…+45 °C) до однородного раствора — это устранит риск точечных скоплений пигмента.</li>
+                    <li>Введите раствор в основную массу на этапе <strong>конширования</strong>, после полного диспергирования сухих ингредиентов.</li>
+                    <li>Перемешивайте 15–20 минут на стандартных оборотах коншера — этого достаточно для равномерного распределения без разрушения структуры жира.</li>
+                    <li>Контролируйте температуру: <strong>не превышайте +60 °C</strong> при длительном нагреве — это сохранит максимальную красящую способность пигмента.</li>
+                    <li>Для кулинарных глазурей с разовым нагревом до +180 °C закладывайте краситель в готовую остывшую массу, либо используйте SKU с повышенной термостойкостью (отметка «TS» в названии).</li>
+                </ol>
+
+                <div class="callout">
+                    <div class="callout__label">Совет технолога</div>
+                    <p>Если работаете с белым шоколадом — учитывайте, что молочный жир может слегка маскировать оттенок. Закладывайте дозировку на 15–20% выше расчётной либо подбирайте более насыщенный пигмент из линейки.</p>
+                </div>
+            </article>
+
+            <!-- ============ САЙДБАР ============ -->
+            <aside class="sidebar">
+                <div class="sidebar-card">
+                    <div class="sidebar-card__label">Краткая справка</div>
+                    <ul class="sidebar-meta">
+                        <li><span class="sidebar-meta__label">Отрасль</span><span class="sidebar-meta__val">Кондитерская</span></li>
+                        <li><span class="sidebar-meta__label">Тип красителя</span><span class="sidebar-meta__val">Жирорастворимый</span></li>
+                        <li><span class="sidebar-meta__label">Термостойкость</span><span class="sidebar-meta__val">до +180 °C</span></li>
+                        <li><span class="sidebar-meta__label">pH среды</span><span class="sidebar-meta__val">5,0–8,0</span></li>
+                        <li><span class="sidebar-meta__label">Дозировка</span><span class="sidebar-meta__val">0,01–0,3%</span></li>
+                        <li><span class="sidebar-meta__label">Clean label</span><span class="sidebar-meta__val">Доступно</span></li>
+                    </ul>
+                </div>
+
+                <div class="sidebar-card sidebar-card--dark">
+                    <div class="sidebar-card__label">Пробная партия</div>
+                    <div class="sidebar-card__title">Бесплатные образцы</div>
+                    <p class="sidebar-card__text">Получите комплект пробных красителей под вашу рецептуру — 3–5 SKU по 50–100 г на тестирование в лаборатории.</p>
+                    <a href="#tech-form" class="sidebar-card__btn">
+                        Запросить образцы
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- ============ РЕКОМЕНДУЕМЫЕ ПРОДУКТЫ (ТЗ §11.2) ============ -->
+    <section class="products-block">
+        <div class="container">
+            <div class="products-block__head">
+                <div>
+                    <h2 class="products-block__title">Рекомендуемые продукты Luxomix®</h2>
+                    <p class="products-block__sub">SKU, проверенные в шоколадных массах и кондитерских глазурях. Технолог поможет с финальным выбором под вашу рецептуру.</p>
+                </div>
+                <div class="products-block__nav">
+                    <button class="products-arrow" id="prodPrev" aria-label="Назад">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                    </button>
+                    <button class="products-arrow" id="prodNext" aria-label="Вперёд">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="products-carousel" id="productsCarousel">
+                <a class="product-card" href="/product/kurkumin-0040">
+                    <div class="product-card__visual">
+                        <span class="product-card__badge">Бестселлер</span>
+                        <span class="product-card__swatch" style="--swatch:#F5C518"></span>
+                    </div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Luxomix® Куркумин 0040</div>
+                        <div class="product-card__meta">E100 · Лимонно-жёлтый · Жидкость · Жирорастворимый</div>
+                        <span class="product-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <a class="product-card" href="/product/annato-kurkumin-0025">
+                    <div class="product-card__visual">
+                        <span class="product-card__swatch" style="--swatch:#F5A623"></span>
+                    </div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Luxomix® Аннато-куркумин 0025</div>
+                        <div class="product-card__meta">E160b + E100 · Жёлто-оранжевый · Жидкость · Жирорастворимый</div>
+                        <span class="product-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <a class="product-card" href="/product/beta-karotin-0001">
+                    <div class="product-card__visual">
+                        <span class="product-card__swatch" style="--swatch:#F39200"></span>
+                    </div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Luxomix® Бета-каротин 0001</div>
+                        <div class="product-card__meta">E160a · Насыщенно-жёлтый · Жидкость · Жирорастворимый</div>
+                        <span class="product-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <a class="product-card" href="/product/paprika-0015">
+                    <div class="product-card__visual">
+                        <span class="product-card__badge">Бестселлер</span>
+                        <span class="product-card__swatch" style="--swatch:#E84E1B"></span>
+                    </div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Luxomix® Паприка-олеорезин 0015</div>
+                        <div class="product-card__meta">E160c · Оранжево-красный · Жидкость · Жирорастворимый</div>
+                        <span class="product-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <a class="product-card" href="/product/karmin-0333-mr">
+                    <div class="product-card__visual">
+                        <span class="product-card__swatch" style="--swatch:#E6007E"></span>
+                    </div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Luxomix® Кармин 0333 МР</div>
+                        <div class="product-card__meta">E120 · Малиновый · Жидкость · Жирорастворимый</div>
+                        <span class="product-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+                <a class="product-card" href="/product/saharnyy-koler-mp2">
+                    <div class="product-card__visual">
+                        <span class="product-card__swatch" style="--swatch:#6B4423"></span>
+                    </div>
+                    <div class="product-card__body">
+                        <div class="product-card__name">Luxomix® Сахарный колер MP 2</div>
+                        <div class="product-card__meta">E150c · Тёмно-коричневый · Жидкость · Жиродисперсный</div>
+                        <span class="product-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ ФОРМА «ВОПРОС ТЕХНОЛОГУ» (ТЗ §11.2) ============ -->
+    <section class="tech-form" id="tech-form">
+        <div class="container tech-form__wrap">
+            <div class="tech-form__intro">
+                <h2>Вопрос технологу<br>по этому применению</h2>
+                <p>Опишите ваш продукт и задачу — технолог LUXOMIX® свяжется в течение рабочего дня, подберёт SKU и пришлёт пробную партию.</p>
+                <div class="tech-form__features">
+                    <div class="tech-form__feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Бесплатные образцы 3–5 SKU
+                    </div>
+                    <div class="tech-form__feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Расчёт дозировки под рецептуру
+                    </div>
+                    <div class="tech-form__feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Сопровождение пробной партии
+                    </div>
+                </div>
+                <div class="tech-form__contact">
+                    <div class="tech-form__contact-label">Прямой контакт</div>
+                    <div class="tech-form__contact-value">sales@bargus-trade.ru · 8 (800) 707-08-70</div>
+                </div>
+            </div>
+
+            <form class="tech-form__card" onsubmit="event.preventDefault(); alert('Вопрос отправлен (демо). Технолог свяжется с вами в течение рабочего дня.');">
+                <div class="tech-form__card-title">Задать вопрос</div>
+                <div class="form-grid">
+                    <div class="form-field"><input type="text" placeholder="Имя*" required></div>
+                    <div class="form-field"><input type="tel" placeholder="Телефон*" required></div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-field"><input type="email" placeholder="E-mail*" required></div>
+                    <div class="form-field"><input type="text" placeholder="Компания"></div>
+                </div>
+                <div class="form-field"><textarea placeholder="Опишите задачу: продукт, желаемый оттенок, особенности рецептуры (pH, температура, фасовка)" required></textarea></div>
+                <label class="form-checkbox">
+                    <input type="checkbox" required>
+                    <span>Согласен на обработку персональных данных в соответствии с <a href="/privacy">политикой конфиденциальности</a></span>
+                </label>
+                <button type="submit" class="btn-submit">
+                    Отправить вопрос
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============ ДРУГИЕ ПРИМЕНЕНИЯ ============ -->
+    <section class="related-articles">
+        <div class="container">
+            <h2>Другие применения в кондитерской отрасли</h2>
+            <div class="related-grid">
+                <a class="related-card" href="/in-product/marmelad-zhele">
+                    <div class="related-card__visual">
+                        <img src="https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=900&q=80" alt="Мармелад и желе" loading="lazy">
+                    </div>
+                    <div class="related-card__body">
+                        <div class="related-card__tag">Кондитерская</div>
+                        <div class="related-card__name">Мармелад и желе</div>
+                        <p class="related-card__desc">Антоциановые и кармин-красители для прозрачных желейных масс. Сохранение оттенка при варке сиропа.</p>
+                    </div>
+                </a>
+                <a class="related-card" href="/in-product/karamel-ledency">
+                    <div class="related-card__visual">
+                        <img src="https://images.unsplash.com/photo-1582716401301-b2407dc7563d?w=900&q=80" alt="Карамель и леденцы" loading="lazy">
+                    </div>
+                    <div class="related-card__body">
+                        <div class="related-card__tag">Кондитерская</div>
+                        <div class="related-card__name">Карамель и леденцы</div>
+                        <p class="related-card__desc">Термостойкие пигменты для леденцовой массы при варке до +160 °C. Полная палитра без потери блеска.</p>
+                    </div>
+                </a>
+                <a class="related-card" href="/in-product/vypechka-konditerskie-izdeliya">
+                    <div class="related-card__visual">
+                        <img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=900&q=80" alt="Выпечка и кондитерские изделия" loading="lazy">
+                    </div>
+                    <div class="related-card__body">
+                        <div class="related-card__tag">Кондитерская</div>
+                        <div class="related-card__name">Выпечка и кондитерские изделия</div>
+                        <p class="related-card__desc">Кремы для тортов, печенье, пряники, бисквиты. Жиро- и водорастворимые красители для всех этапов.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div>
+                <div class="logo">
+                    <span class="logo__mark" style="color:#fff">luxomix</span>
+                    <span class="logo__tagline">natural color</span>
+                </div>
+                <p class="footer__about">Натуральные пищевые красители и растительные экстракты для производителей продукции категории «чистая этикетка». ООО «БАРГУС продакшн», с 2004 года.</p>
+                <div class="footer__certs">
+                    <span class="footer__cert">ISO 22000</span>
+                    <span class="footer__cert">FSSC 22000</span>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h4>Каталог</h4>
+                <ul>
+                    <li><a href="/category/po-cvetu">По цвету</a></li>
+                    <li><a href="/category/po-primeneniyu">По применению</a></li>
+                    <li><a href="/category/bestsellers">Бестселлеры</a></li>
+                    <li><a href="/category/novinki">Новинки</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/in-product">В продукте</a></li>
+                    <li><a href="/blog">Блог</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
+                    <li><a href="/about#certs">Сертификаты</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Контакты</h4>
+                <div class="footer__contact-item">
+                    <strong>Телефон</strong>
+                    <a href="tel:88007070870">8 (800) 707-08-70</a>
+                </div>
+                <div class="footer__contact-item">
+                    <strong>E-mail</strong>
+                    <a href="mailto:sales@bargus-trade.ru">sales@bargus-trade.ru</a>
+                </div>
+                <div class="footer__warehouses">
+                    <div class="footer__warehouse"><strong>Москва</strong>склад · самовывоз</div>
+                    <div class="footer__warehouse"><strong>СПб</strong>склад · доставка</div>
+                    <div class="footer__warehouse"><strong>Алматы</strong>склад · РК</div>
+                    <div class="footer__warehouse"><strong>Гомель</strong>склад · РБ</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>© 2004–2026 LUXOMIX® · ООО «БАРГУС продакшн»</span>
+            <span>
+                <a href="/privacy">Политика конфиденциальности</a> ·
+                <a href="/terms">Пользовательское соглашение</a>
+            </span>
+        </div>
+    </div>
+    <div class="color-strip">
+        <span style="background:var(--dye-yellow)"></span>
+        <span style="background:var(--dye-orange)"></span>
+        <span style="background:var(--dye-red-orange)"></span>
+        <span style="background:var(--dye-red)"></span>
+        <span style="background:var(--dye-pink)"></span>
+        <span style="background:var(--dye-purple)"></span>
+        <span style="background:var(--dye-dark-purple)"></span>
+        <span style="background:var(--dye-blue)"></span>
+        <span style="background:var(--dye-turquoise)"></span>
+        <span style="background:var(--dye-green)"></span>
+        <span style="background:var(--dye-brown)"></span>
+        <span style="background:var(--dye-red-brown)"></span>
+        <span style="background:var(--dye-black)"></span>
+    </div>
+</footer>
+
+<script>
+/* ============================ МЕГАМЕНЮ ============================ */
+(function() {
+    const btn = document.getElementById('catalogBtn');
+    const menu = document.getElementById('megamenu');
+    const overlay = document.getElementById('mmOverlay');
+    const closeBtn = document.getElementById('mmClose');
+    const items = menu.querySelectorAll('.mm-item');
+    const panels = menu.querySelectorAll('.mm-panel');
+    function open() {
+        if (window.__closeBurger) window.__closeBurger();
+        menu.classList.add('is-open'); overlay.classList.add('is-open'); btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        menu.classList.remove('is-open'); overlay.classList.remove('is-open'); btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    function switchPanel(t) {
+        items.forEach(i => i.classList.toggle('is-active', i.dataset.target === t));
+        panels.forEach(p => p.classList.toggle('is-active', p.id === 'mm-' + t));
+    }
+    btn.addEventListener('click', () => menu.classList.contains('is-open') ? close() : open());
+    overlay.addEventListener('click', close);
+    closeBtn.addEventListener('click', close);
+    items.forEach(item => {
+        item.addEventListener('mouseenter', () => switchPanel(item.dataset.target));
+        item.addEventListener('focus', () => switchPanel(item.dataset.target));
+        item.addEventListener('click', () => switchPanel(item.dataset.target));
+    });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('is-open')) close(); });
+    menu.querySelectorAll('.mm-sublink').forEach(a => a.addEventListener('click', close));
+    window.__closeMegamenu = close;
+})();
+
+/* ============================ БУРГЕР ============================ */
+(function() {
+    const btn = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileNav');
+    if (!btn || !menu) return;
+    function close() { menu.classList.remove('is-open'); btn.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); menu.setAttribute('aria-hidden', 'true'); }
+    btn.addEventListener('click', () => {
+        if (menu.classList.contains('is-open')) close();
+        else {
+            if (window.__closeMegamenu) window.__closeMegamenu();
+            menu.classList.add('is-open'); btn.classList.add('is-open');
+            btn.setAttribute('aria-expanded', 'true'); menu.setAttribute('aria-hidden', 'false');
+        }
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('is-open')) close(); });
+    document.addEventListener('click', e => {
+        if (!menu.classList.contains('is-open')) return;
+        if (menu.contains(e.target) || btn.contains(e.target)) return;
+        close();
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth > 1080 && menu.classList.contains('is-open')) close(); });
+    window.__closeBurger = close;
+})();
+
+/* ============================ КАРУСЕЛЬ РЕКОМЕНДУЕМЫХ ТОВАРОВ ============================ */
+(function() {
+    const carousel = document.getElementById('productsCarousel');
+    const prev = document.getElementById('prodPrev');
+    const next = document.getElementById('prodNext');
+    if (!carousel) return;
+
+    function step() {
+        const card = carousel.querySelector('.product-card');
+        if (!card) return 300;
+        const gap = parseInt(getComputedStyle(carousel).gap) || 20;
+        return card.offsetWidth + gap;
+    }
+    function updateArrows() {
+        prev.disabled = carousel.scrollLeft <= 4;
+        next.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 4;
+    }
+    prev.addEventListener('click', () => carousel.scrollBy({ left: -step() * 2, behavior: 'smooth' }));
+    next.addEventListener('click', () => carousel.scrollBy({ left: step() * 2, behavior: 'smooth' }));
+    carousel.addEventListener('scroll', updateArrows, { passive: true });
+    window.addEventListener('resize', updateArrows);
+    updateArrows();
+})();
+</script>
+
+</body>
+</html>

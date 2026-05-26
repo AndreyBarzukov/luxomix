@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXOMIX® — Натуральные пищевые красители и растительные экстракты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================
+   ТОКЕНЫ БРЕНДА (ТЗ §2.3, §2.4)
+   ============================ */
+:root {
+    /* Цвета бренда */
+    --c-primary:        #0E2D17;
+    --c-primary-alt:    #1F7A3A;
+    --c-accent:         #6980FF;
+    --c-accent-hover:   #4A60E0;
+    --c-bg:             #FFFFFF;
+    --c-surface:        #F5F6F8;
+    --c-text:           #1A1A1A;
+    --c-text-muted:     #6B7280;
+    --c-border:         #E5E7EB;
+
+    /* Палитра красителей (ТЗ §2.3) */
+    --dye-yellow:       #F5C518;
+    --dye-orange:       #F39200;
+    --dye-red-orange:   #E84E1B;
+    --dye-red:          #D52B1E;
+    --dye-pink:         #E6007E;
+    --dye-purple:       #7E3A93;
+    --dye-dark-purple:  #3B1E5E;
+    --dye-blue:         #2E5A87;
+    --dye-turquoise:    #1E7A7A;
+    --dye-green:        #9DC23B;
+    --dye-brown:        #6B4423;
+    --dye-red-brown:    #8B2E1F;
+    --dye-black:        #1A1A1A;
+
+    /* Шрифты */
+    --f-heading: 'Bebas Neue', 'Impact', sans-serif;
+    --f-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    /* Размеры (desktop) */
+    --fs-h1: 56px;
+    --fs-h2: 40px;
+    --fs-h3: 24px;
+    --fs-body-l: 18px;
+    --fs-body-m: 16px;
+    --fs-body-s: 14px;
+
+    /* Слой/раскладка */
+    --container: 1280px;
+    --container-pad: 24px;
+}
+
+/* ============================
+   БАЗОВЫЕ СТИЛИ
+   ============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--f-body);
+    font-size: var(--fs-body-m);
+    line-height: 1.55;
+    color: var(--c-text);
+    background: var(--c-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--container-pad);
+}
+
+h1, h2, h3 { font-family: var(--f-heading); font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-family: var(--f-body); font-size: var(--fs-h3); font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.3; }
+
+.section { padding: 96px 0; }
+.section-title { margin-bottom: 48px; }
+
+/* ============================
+   ШАПКА (ТЗ §2.8)
+   ============================ */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--c-bg);
+    border-bottom: 1px solid var(--c-border);
+    height: 80px;
+}
+.header__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 100%;
+}
+
+/* Логотип (ТЗ §2.2) */
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+.logo__mark {
+    font-family: var(--f-heading);
+    font-size: 32px;
+    color: var(--c-primary);
+    letter-spacing: 1px;
+    position: relative;
+    text-transform: lowercase;
+}
+.logo__mark::after {
+    content: '®';
+    font-family: var(--f-heading);
+    font-size: 16px;
+    vertical-align: super;
+    margin-left: 2px;
+    color: inherit;
+}
+.logo__tagline {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--c-text-muted);
+    letter-spacing: 1.5px;
+    margin-top: -2px;
+}
+
+/* Кнопка КАТАЛОГ (ТЗ §2.7) */
+.btn-catalog {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--c-accent);
+    color: #fff;
+    padding: 12px 22px;
+    border-radius: 999px;
+    font-family: var(--f-heading);
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: background .15s ease;
+}
+.btn-catalog:hover { background: var(--c-accent-hover); }
+.btn-catalog svg { width: 18px; height: 18px; }
+
+/* Навигация */
+.nav { display: flex; gap: 28px; }
+.nav a {
+    font-size: var(--fs-body-m);
+    font-weight: 500;
+    color: var(--c-text);
+    position: relative;
+    transition: color .15s ease;
+}
+.nav a:hover { color: var(--c-accent); }
+
+/* Поиск в шапке */
+.search-header {
+    margin-left: auto;
+    position: relative;
+    width: 320px;
+    flex-shrink: 0;
+}
+.search-header input {
+    width: 100%;
+    height: 42px;
+    border: 1px solid var(--c-border);
+    border-radius: 999px;
+    padding: 0 16px 0 44px;
+    font-family: inherit;
+    font-size: var(--fs-body-s);
+    transition: border-color .15s ease;
+    background: var(--c-surface);
+}
+.search-header input:focus { outline: none; border-color: var(--c-accent); background: #fff; }
+.search-header .icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--c-text-muted);
+}
+
+/* Телефон */
+.header__phone {
+    margin-left: auto;
+    font-weight: 600;
+    color: var(--c-primary);
+    white-space: nowrap;
+    font-size: var(--fs-body-m);
+}
+
+.btn-catalog__chevron { transition: transform .25s ease; }
+.btn-catalog.is-open .btn-catalog__chevron { transform: rotate(180deg); }
+
+/* ============================
+   БУРГЕР И МОБИЛЬНОЕ МЕНЮ (≤1080px)
+   ============================ */
+.btn-burger {
+    display: none;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: var(--c-surface);
+    color: var(--c-text);
+    transition: background .15s ease;
+    flex-shrink: 0;
+}
+.btn-burger:hover { background: var(--c-border); }
+.btn-burger svg { width: 22px; height: 22px; }
+.btn-burger .icon-close { display: none; }
+.btn-burger.is-open .icon-burger { display: none; }
+.btn-burger.is-open .icon-close { display: block; }
+
+.mobile-nav {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--c-border);
+    box-shadow: 0 24px 48px -16px rgba(14, 45, 23, 0.18);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    z-index: 95;
+    display: none; /* скрыто на desktop; включается в media-query */
+}
+.mobile-nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.mobile-nav .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.mobile-nav a {
+    padding: 14px 16px;
+    font-size: var(--fs-body-m);
+    font-weight: 500;
+    color: var(--c-text);
+    border-radius: 10px;
+    transition: background .15s, color .15s;
+}
+.mobile-nav a:hover, .mobile-nav a:active { background: var(--c-surface); color: var(--c-accent); }
+.mobile-nav__phone {
+    margin-top: 8px;
+    padding-top: 18px !important;
+    border-top: 1px solid var(--c-border);
+    color: var(--c-primary) !important;
+    font-weight: 600 !important;
+    border-radius: 0 !important;
+}
+
+/* ============================
+   МЕГАМЕНЮ (ТЗ §2.7) — без табов, одноуровневое
+   ============================ */
+.megamenu-overlay {
+    position: fixed;
+    inset: 80px 0 0 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 90;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+}
+.megamenu-overlay.is-open { opacity: 1; pointer-events: auto; }
+
+.megamenu {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 95;
+    border-bottom: 1px solid var(--c-border);
+    box-shadow: 0 24px 48px -16px rgba(14, 45, 23, 0.18);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease, transform .2s ease;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+.megamenu.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+.megamenu__inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 480px;
+    gap: 0;
+    padding: 32px 0;
+}
+
+.megamenu__left {
+    border-right: 1px solid var(--c-border);
+    padding-right: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mm-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 10px;
+    font-family: var(--f-body);
+    font-size: var(--fs-body-m);
+    font-weight: 500;
+    color: var(--c-text);
+    text-align: left;
+    transition: background .15s, color .15s;
+    cursor: pointer;
+}
+.mm-item:hover, .mm-item.is-active {
+    background: var(--c-surface);
+    color: var(--c-primary);
+}
+.mm-item.is-active { background: rgba(105, 128, 255, 0.08); color: var(--c-accent); }
+.mm-item svg { width: 16px; height: 16px; opacity: 0.5; transition: transform .15s; }
+.mm-item:hover svg, .mm-item.is-active svg { transform: translateX(3px); opacity: 1; }
+
+.megamenu__right { padding: 8px 0 8px 48px; }
+
+.mm-panel { display: none; animation: mmFade .25s ease; }
+.mm-panel.is-active { display: block; }
+@keyframes mmFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.mm-panel__title {
+    font-family: var(--f-heading);
+    font-size: 32px;
+    text-transform: uppercase;
+    color: var(--c-primary);
+    margin-bottom: 8px;
+}
+.mm-panel__lead {
+    font-size: var(--fs-body-s);
+    color: var(--c-text-muted);
+    margin-bottom: 28px;
+    max-width: 520px;
+}
+
+.mm-subgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 32px;
+}
+.mm-sublink {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--c-text);
+    font-size: var(--fs-body-m);
+    transition: background .12s, color .12s;
+}
+.mm-sublink:hover { background: var(--c-surface); color: var(--c-accent); }
+.mm-sublink__swatch {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+.mm-sublink__bullet { color: var(--c-text-muted); font-size: 12px; width: 18px; text-align: center; }
+
+@media (max-width: 900px) {
+    .megamenu { top: 0; height: 100vh; max-height: 100vh; }
+    .megamenu-overlay { display: none; }
+    .megamenu__inner { grid-template-columns: 1fr; padding: 24px 16px; min-height: 0; }
+    .megamenu__left { border-right: none; border-bottom: 1px solid var(--c-border); padding: 0 0 16px; margin-bottom: 16px; }
+    .megamenu__right { padding: 0; }
+    .mm-subgrid { grid-template-columns: 1fr; }
+    .megamenu__close {
+        position: absolute;
+        top: 16px; right: 16px;
+        width: 44px; height: 44px;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--c-surface);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+.megamenu__close {
+    display: none;
+}
+@media (max-width: 900px) { .megamenu__close { display: flex; } }
+
+/* ============================
+   БЛОК 1: HERO + ПОИСК (ТЗ §3.2)
+   ============================ */
+.hero {
+    position: relative;
+    padding: 120px 0 140px;
+    background-color: var(--c-primary);
+    color: #fff;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(135deg, rgba(14, 45, 23, 0.78) 0%, rgba(14, 45, 23, 0.55) 100%),
+        url('https://luxomix.ru/assets/img/background-main.jpg') center/cover no-repeat;
+    z-index: 0;
+}
+.hero__inner { position: relative; z-index: 5; text-align: center; }
+.hero__eyebrow {
+    display: inline-block;
+    font-family: var(--f-body);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 24px;
+    padding: 6px 16px;
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+}
+.hero__title {
+    font-size: clamp(40px, 6vw, 72px);
+    max-width: 880px;
+    margin: 0 auto 20px;
+    color: #fff;
+    line-height: 1.02;
+}
+.hero__title .accent {
+    background: linear-gradient(120deg, var(--dye-yellow) 0%, var(--dye-orange) 45%, var(--dye-red-orange) 75%, var(--dye-red) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.hero__subtitle {
+    font-size: var(--fs-body-l);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+}
+
+/* Большая строка поиска hero (ТЗ §3.2) */
+.hero-search {
+    position: relative;
+    max-width: 680px;
+    margin: 0 auto;
+}
+.hero-search input {
+    width: 100%;
+    height: 72px;
+    border: none;
+    border-radius: 999px;
+    padding: 0 180px 0 64px;
+    font-family: inherit;
+    font-size: var(--fs-body-l);
+    background: #fff;
+    color: var(--c-text);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.hero-search input::placeholder { color: var(--c-text-muted); }
+.hero-search input:focus { outline: 2px solid var(--c-accent); outline-offset: 3px; }
+.hero-search .icon {
+    position: absolute;
+    left: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    color: var(--c-text-muted);
+}
+.hero-search > button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 56px;
+    padding: 0 28px;
+    background: var(--c-accent);
+    color: #fff;
+    border-radius: 999px;
+    font-family: var(--f-heading);
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: background .15s;
+}
+.hero-search > button:hover { background: var(--c-accent-hover); }
+
+/* Декоративная полоса-шкала (ТЗ §2.5) */
+.color-strip {
+    display: flex;
+    height: 8px;
+    width: 100%;
+}
+.color-strip span { flex: 1; }
+.hero .color-strip {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    z-index: 1;
+}
+
+/* Hero метрики */
+.hero__metrics {
+    display: flex;
+    justify-content: center;
+    gap: 56px;
+    margin-top: 56px;
+    flex-wrap: wrap;
+}
+.hero__metric { text-align: center; }
+.hero__metric-num {
+    font-family: var(--f-heading);
+    font-size: 44px;
+    color: #fff;
+    line-height: 1;
+}
+.hero__metric-label {
+    font-size: var(--fs-body-s);
+    color: rgba(255,255,255,0.65);
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ============================
+   БЛОК 2: ОСНОВНЫЕ КАТЕГОРИИ (ТЗ §3.3)
+   ============================ */
+.main-cats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+.main-cat {
+    position: relative;
+    padding: 48px;
+    background: var(--c-surface);
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 320px;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+.main-cat:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 30px 60px -20px rgba(14, 45, 23, 0.2);
+}
+.main-cat--color {
+    background: linear-gradient(135deg, var(--dye-red) 0%, var(--dye-orange) 50%, var(--dye-yellow) 100%);
+    color: #fff;
+}
+.main-cat--apply {
+    background:
+        linear-gradient(135deg, rgba(14, 45, 23, 0.78) 0%, rgba(14, 45, 23, 0.55) 60%, rgba(14, 45, 23, 0.7) 100%),
+        url('https://images.stockcake.com/public/5/c/d/5cd797b2-f5bd-4a63-a064-bf491febfe0f_large/bottled-color-collection-stockcake.jpg') center/cover no-repeat;
+    color: #fff;
+}
+.main-cat--apply::before {
+    content: none;
+}
+.main-cat__icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+}
+.main-cat__icon svg { width: 100%; height: 100%; }
+.main-cat__title {
+    font-family: var(--f-heading);
+    font-size: 48px;
+    line-height: 1;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+}
+.main-cat__desc {
+    font-size: var(--fs-body-m);
+    opacity: 0.85;
+    margin-bottom: 32px;
+    max-width: 380px;
+    position: relative;
+    z-index: 1;
+}
+.main-cat__arrow {
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 24px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    border-radius: 999px;
+    font-family: var(--f-heading);
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: background .2s;
+    position: relative;
+    z-index: 1;
+}
+.main-cat:hover .main-cat__arrow { background: rgba(255,255,255,0.25); }
+.main-cat__arrow svg { width: 16px; height: 16px; transition: transform .2s; }
+.main-cat:hover .main-cat__arrow svg { transform: translateX(4px); }
+
+/* ============================
+   БЛОК 3: ЦВЕТОВАЯ ЛИНЕЙКА (ТЗ §3.4)
+   ============================ */
+.section-color-line { background: var(--c-surface); }
+.section-color-line .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 48px;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.section-color-line h2 { max-width: 640px; }
+.section-color-line .section-lead {
+    font-size: var(--fs-body-m);
+    color: var(--c-text-muted);
+    max-width: 380px;
+}
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
+}
+.color-card {
+    aspect-ratio: 1 / 1.2;
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s ease;
+    cursor: pointer;
+}
+.color-card:hover { transform: translateY(-6px); }
+.color-card::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity .3s;
+}
+.color-card:hover::before { opacity: 1; }
+.color-card__name {
+    font-family: var(--f-heading);
+    font-size: 22px;
+    text-transform: uppercase;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+}
+.color-card__hex {
+    font-size: 11px;
+    opacity: 0.7;
+    margin-top: 4px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+    position: relative;
+    z-index: 1;
+}
+.color-card--light { color: var(--c-text); }
+.color-card--light .color-card__hex { opacity: 0.6; }
+
+/* ============================
+   БЛОК 4: СЛАЙДЕР "В ПРОДУКТЕ" (ТЗ §3.5)
+   ============================ */
+.slider-wrap { position: relative; }
+.slider {
+    position: relative;
+    height: 520px;
+    border-radius: 28px;
+    overflow: hidden;
+    background: var(--c-primary);
+}
+.slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .8s ease;
+    display: flex;
+    align-items: center;
+}
+.slide.active { opacity: 1; }
+.slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+.slide::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(14,45,23,0.85) 0%, rgba(14,45,23,0.5) 60%, rgba(14,45,23,0.2) 100%);
+    z-index: 1;
+}
+.slide-1::before { background-image: url('https://images.unsplash.com/photo-1511381939415-e44015466834?w=1600&q=80'); }
+.slide-2::before { background-image: url('https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1600&q=80'); }
+.slide-3::before { background-image: url('https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=1600&q=80'); }
+
+.slide__content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    padding: 0 80px;
+    max-width: 640px;
+}
+.slide__tag {
+    display: inline-block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,0.85);
+}
+.slide__title {
+    font-family: var(--f-heading);
+    font-size: 56px;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.slide__lead {
+    font-size: var(--fs-body-l);
+    margin-bottom: 32px;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+.slide__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    background: #fff;
+    color: var(--c-primary);
+    border-radius: 999px;
+    font-family: var(--f-heading);
+    font-size: 15px;
+    letter-spacing: 1px;
+    transition: transform .2s;
+}
+.slide__btn:hover { transform: translateX(4px); }
+
+/* Контролы слайдера */
+.slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    color: var(--c-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: background .2s;
+}
+.slider-arrow:hover { background: #fff; }
+.slider-arrow--prev { left: 24px; }
+.slider-arrow--next { right: 24px; }
+.slider-arrow svg { width: 20px; height: 20px; }
+
+.slider-dots {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+.slider-dot {
+    width: 28px;
+    height: 4px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.4);
+    transition: background .2s;
+}
+.slider-dot.active { background: #fff; width: 40px; }
+
+/* ============================
+   БЛОК 5: ПРИМЕНЕНИЕ (ТЗ §3.6)
+   ============================ */
+.apply-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.apply-card {
+    background: var(--c-surface);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform .25s ease, box-shadow .25s ease;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.apply-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--c-border);
+    box-shadow: 0 25px 50px -15px rgba(14, 45, 23, 0.15);
+}
+.apply-card__img {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+}
+.apply-card__img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .5s ease;
+}
+.apply-card:hover .apply-card__img img { transform: scale(1.06); }
+.apply-card__body { padding: 24px; }
+.apply-card__title {
+    font-family: var(--f-heading);
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+.apply-card__desc {
+    font-size: var(--fs-body-s);
+    color: var(--c-text-muted);
+    line-height: 1.5;
+}
+
+/* ============================
+   CTA-БАННЕР (ТЗ §6.6 — переиспользуется на главной)
+   ============================ */
+.cta {
+    background: var(--c-primary);
+    color: #fff;
+    border-radius: 28px;
+    padding: 64px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.cta::after {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(105, 128, 255, 0.25) 0%, transparent 70%);
+    pointer-events: none;
+}
+.cta h2 { color: #fff; margin-bottom: 16px; }
+.cta__lead { color: rgba(255,255,255,0.8); font-size: var(--fs-body-l); margin-bottom: 28px; }
+.cta__features { display: flex; gap: 24px; flex-wrap: wrap; }
+.cta__feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--fs-body-s);
+    color: rgba(255,255,255,0.85);
+}
+.cta__feature svg { width: 18px; height: 18px; color: var(--dye-yellow); }
+
+.cta-form {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    z-index: 1;
+}
+.cta-form__title {
+    font-family: var(--f-heading);
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #fff;
+}
+.cta-form input, .cta-form textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 12px;
+    padding: 14px 16px;
+    color: #fff;
+    font-family: inherit;
+    font-size: var(--fs-body-m);
+    margin-bottom: 12px;
+    transition: border-color .15s;
+}
+.cta-form input::placeholder, .cta-form textarea::placeholder { color: rgba(255,255,255,0.5); }
+.cta-form input:focus, .cta-form textarea:focus { outline: none; border-color: var(--c-accent); }
+.cta-form textarea { resize: vertical; min-height: 80px; }
+.cta-form button {
+    width: 100%;
+    background: var(--c-accent);
+    color: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    font-family: var(--f-heading);
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: background .15s;
+    margin-top: 8px;
+}
+.cta-form button:hover { background: var(--c-accent-hover); }
+.cta-form__hint {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 12px;
+    line-height: 1.4;
+}
+
+/* ============================
+   ПОДВАЛ (ТЗ §2.8)
+   ============================ */
+.footer {
+    background: var(--c-primary);
+    color: rgba(255,255,255,0.75);
+    padding: 80px 0 0;
+    position: relative;
+}
+.footer__grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    padding-bottom: 56px;
+}
+.footer .logo__mark { color: #fff; }
+.footer .logo__tagline { color: rgba(255,255,255,0.5); }
+.footer__about {
+    font-size: var(--fs-body-s);
+    margin-top: 24px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.6);
+}
+.footer__certs {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+.footer__cert {
+    padding: 6px 12px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.85);
+}
+.footer__col h4 {
+    font-family: var(--f-heading);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #fff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.footer__col ul { list-style: none; }
+.footer__col li { margin-bottom: 12px; }
+.footer__col a { font-size: var(--fs-body-s); transition: color .15s; }
+.footer__col a:hover { color: #fff; }
+
+.footer__contact-item {
+    font-size: var(--fs-body-s);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+.footer__contact-item strong {
+    display: block;
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+.footer__contact-item a { color: #fff; font-weight: 500; }
+
+.footer__warehouses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+.footer__warehouse {
+    font-size: 12px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+}
+.footer__warehouse strong { color: #fff; display: block; margin-bottom: 2px; font-weight: 500; }
+
+.footer__bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 24px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.footer__bottom a { color: rgba(255,255,255,0.7); }
+.footer__bottom a:hover { color: #fff; }
+
+/* Декоративная полоса-шкала в подвале (ТЗ §2.5) */
+.footer .color-strip { height: 10px; }
+
+/* ============================
+   АДАПТИВ
+   ============================ */
+@media (max-width: 1080px) {
+    .nav { display: none; }
+    .header__phone { display: none; }
+    .btn-burger { display: flex; }
+    .mobile-nav { display: block; }
+    .main-cats { grid-template-columns: 1fr; }
+    .color-grid { grid-template-columns: repeat(4, 1fr); }
+    .apply-grid { grid-template-columns: repeat(2, 1fr); }
+    .cta { grid-template-columns: 1fr; padding: 40px; }
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 640px) {
+    :root { --fs-h1: 40px; --fs-h2: 28px; --fs-h3: 20px; --container-pad: 16px; }
+    .section { padding: 64px 0; }
+    .hero { padding: 80px 0 100px; }
+    .hero__title { font-size: 36px; }
+    .hero-search input { height: 60px; padding: 0 20px 0 50px; font-size: var(--fs-body-m); }
+    .hero-search > button { display: none; }
+    .hero__metrics { gap: 32px; }
+    .hero__metric-num { font-size: 32px; }
+    .nav, .search-header, .header__phone { display: none; }
+    .color-grid { grid-template-columns: repeat(2, 1fr); }
+    .apply-grid { grid-template-columns: 1fr; }
+    .slide__content { padding: 0 32px; }
+    .slide__title { font-size: 32px; }
+    .slider { height: 460px; }
+    .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer__warehouses { grid-template-columns: 1fr; }
+}
+
+/* ============================
+   БЛОК НОВИНКИ (после слайдера, ТЗ §5.3 — бейдж is_new)
+   ============================ */
+.new-products { padding: 96px 0; }
+.new-products__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+}
+.new-products__head h2 { color: var(--c-primary); margin-bottom: 8px; }
+.new-products__head p { font-size: var(--fs-body-m); color: var(--c-text-muted); max-width: 460px; }
+.new-products__head-all {
+    color: var(--c-accent);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap .15s;
+}
+.new-products__head-all:hover { gap: 12px; }
+.new-products__head-all svg { width: 16px; height: 16px; }
+
+.new-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.new-card {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.new-card:hover {
+    border-color: var(--c-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px -20px rgba(14, 45, 23, 0.18);
+}
+.new-card__visual {
+    aspect-ratio: 4/3;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--card-bg, var(--c-surface));
+}
+.new-card__swatch {
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: var(--swatch, #2E5A87);
+    box-shadow: 0 16px 32px -8px var(--swatch, #2E5A87);
+    position: relative;
+    transition: transform .3s ease;
+}
+.new-card:hover .new-card__swatch { transform: scale(1.08); }
+.new-card__swatch::after {
+    content: '';
+    position: absolute;
+    top: 14%; left: 20%;
+    width: 30%; height: 30%;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    filter: blur(6px);
+}
+.new-card__badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(120deg, var(--dye-yellow) 0%, var(--dye-orange) 60%, var(--dye-red) 100%);
+    color: #fff;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-weight: 700;
+    box-shadow: 0 8px 16px -6px rgba(232, 78, 27, 0.4);
+}
+.new-card__badge::before {
+    content: '★';
+    font-size: 12px;
+    line-height: 1;
+}
+.new-card__line {
+    position: absolute;
+    top: 12px; right: 12px;
+    background: rgba(14, 45, 23, 0.08);
+    color: var(--c-primary);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+.new-card__line--eco { background: rgba(31, 122, 58, 0.1); color: var(--c-primary-alt); }
+
+.new-card__body {
+    padding: 18px 20px 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.new-card__name {
+    font-weight: 600;
+    font-size: var(--fs-body-m);
+    color: var(--c-primary);
+    margin-bottom: 6px;
+    line-height: 1.3;
+}
+.new-card__meta {
+    font-size: 12px;
+    color: var(--c-text-muted);
+    margin-bottom: 14px;
+    line-height: 1.5;
+    flex: 1;
+}
+.new-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--fs-body-s);
+    color: var(--c-accent);
+    font-weight: 600;
+    transition: gap .15s;
+}
+.new-card:hover .new-card__cta { gap: 10px; }
+.new-card__cta svg { width: 14px; height: 14px; }
+
+@media (max-width: 1080px) {
+    .new-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+    .new-products { padding: 64px 0; }
+    .new-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- =================
+     ШАПКА
+     ================= -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="/" class="logo">
+            <span class="logo__mark">luxomix</span>
+            <span class="logo__tagline">natural color</span>
+        </a>
+
+        <button class="btn-catalog" id="catalogBtn" aria-label="Открыть каталог" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            КАТАЛОГ
+            <svg class="btn-catalog__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+
+        <nav class="nav">
+            <a href="/about">О нас</a>
+            <a href="/in-product">В продукте</a>
+            <a href="/blog">Блог</a>
+            <a href="/contacts">Контакты</a>
+        </nav>
+
+        <a href="tel:88007070870" class="header__phone">8 (800) 707-08-70</a>
+
+        <button class="btn-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+            <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+</header>
+
+<!-- Мобильное меню (≤1080px) -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="container">
+        <a href="/about">О нас</a>
+        <a href="/in-product">В продукте</a>
+        <a href="/blog">Блог</a>
+        <a href="/contacts">Контакты</a>
+        <a href="tel:88007070870" class="mobile-nav__phone">8 (800) 707-08-70</a>
+    </div>
+</nav>
+
+<!-- =================
+     МЕГАМЕНЮ (ТЗ §2.7) — без табов, «По цвету» и «По применению» — обычные пункты
+     ================= -->
+<div class="megamenu-overlay" id="mmOverlay"></div>
+<nav class="megamenu" id="megamenu" aria-hidden="true">
+    <button class="megamenu__close" id="mmClose" aria-label="Закрыть меню">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="container megamenu__inner">
+        <div class="megamenu__left" role="tablist">
+            <button class="mm-item is-active" data-target="po-cvetu">
+                По цвету
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <button class="mm-item" data-target="po-primeneniyu">
+                По применению
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <button class="mm-item" data-target="bestsellers">
+                Бестселлеры
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+            <button class="mm-item" data-target="novinki">
+                Новинки
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+        </div>
+
+        <div class="megamenu__right">
+            <!-- По цвету -->
+            <div class="mm-panel is-active" id="mm-po-cvetu">
+                <h3 class="mm-panel__title">По цвету</h3>
+                <p class="mm-panel__lead">13 оттенков от жёлтого куркумина до чёрного растительного угля.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F5C518"></span>Жёлтый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F39200"></span>Оранжевый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#E84E1B"></span>Красно-оранжевый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#D52B1E"></span>Красный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#E6007E"></span>Малиновый / розовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#7E3A93"></span>Фиолетовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#3B1E5E"></span>Тёмно-фиолетовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#2E5A87"></span>Синий</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#1E7A7A"></span>Бирюзовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#9DC23B"></span>Зелёный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#6B4423"></span>Коричневый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#8B2E1F"></span>Красно-коричневый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#1A1A1A"></span>Чёрный</a>
+                </div>
+            </div>
+
+            <!-- По применению -->
+            <div class="mm-panel" id="mm-po-primeneniyu">
+                <h3 class="mm-panel__title">По применению</h3>
+                <p class="mm-panel__lead">Готовые решения для конкретной отрасли пищевого производства.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Кондитерская</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Молочная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Напитки</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Мясная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Хлебопекарная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Масложировая</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Фармацевтика и БАД</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Корма для животных</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Косметика</a>
+                </div>
+            </div>
+
+            <!-- Бестселлеры -->
+            <div class="mm-panel" id="mm-bestsellers">
+                <h3 class="mm-panel__title">Бестселлеры</h3>
+                <p class="mm-panel__lead">Самые востребованные позиции — те, что заказывают чаще всего.</p>
+                <div class="mm-subgrid">
+                    <a href="/product/kurkumin-0040" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Куркумин 0040</a>
+                    <a href="/product/karmin-0030" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Кармин 0030</a>
+                    <a href="/product/paprika-0015" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Паприка 0015</a>
+                    <a href="/product/antocian-0050" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Антоциан 0050</a>
+                    <a href="/product/eco-gibiskus" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® ECO Гибискус</a>
+                    <a href="/product/saharnyy-koler-mp2" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Сахарный колер MP 2</a>
+                </div>
+            </div>
+
+            <!-- Новинки -->
+            <div class="mm-panel" id="mm-novinki">
+                <h3 class="mm-panel__title">Новинки</h3>
+                <p class="mm-panel__lead">Свежие позиции каталога — недавно введённые в производство.</p>
+                <div class="mm-subgrid">
+                    <a href="/product/eco-skyblue" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® ECO Небесный синий</a>
+                    <a href="/product/eco-turquoise" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® ECO Бирюзовая волна</a>
+                    <a href="/product/eco-kryzhovnik" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® ECO Крыжовник</a>
+                    <a href="/product/eco-lesnye-yagody" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® ECO Лесные ягоды</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- =================
+     БЛОК 1: HERO + ПОИСК
+     ================= -->
+<section class="hero">
+    <div class="container hero__inner">
+        <span class="hero__eyebrow">с 2004 года · ISO 22000 · FSSC</span>
+        <h1 class="hero__title">Цвет, который<br>создаёт <span class="accent">природа</span></h1>
+        <p class="hero__subtitle">Пищевые красители и растительные экстракты Luxomix® — насыщенный цвет без компромиссов в стабильности и безопасности.</p>
+
+        <div class="hero-search sd-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" id="heroSearch" placeholder="Например: куркумин, кармин, антоцианин…" autocomplete="off">
+            <button>Найти</button>
+            <div class="search-dropdown" id="heroSearchDropdown" role="listbox"></div>
+        </div>
+
+        <div class="hero__metrics">
+            <div class="hero__metric">
+                <div class="hero__metric-num">20+</div>
+                <div class="hero__metric-label">лет на рынке</div>
+            </div>
+            <div class="hero__metric">
+                <div class="hero__metric-num">2 000+</div>
+                <div class="hero__metric-label">позиций каталога</div>
+            </div>
+            <div class="hero__metric">
+                <div class="hero__metric-num">13</div>
+                <div class="hero__metric-label">цветов в палитре</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- декоративная полоса-шкала -->
+    <div class="color-strip">
+        <span style="background:var(--dye-yellow)"></span>
+        <span style="background:var(--dye-orange)"></span>
+        <span style="background:var(--dye-red-orange)"></span>
+        <span style="background:var(--dye-red)"></span>
+        <span style="background:var(--dye-pink)"></span>
+        <span style="background:var(--dye-purple)"></span>
+        <span style="background:var(--dye-dark-purple)"></span>
+        <span style="background:var(--dye-blue)"></span>
+        <span style="background:var(--dye-turquoise)"></span>
+        <span style="background:var(--dye-green)"></span>
+        <span style="background:var(--dye-brown)"></span>
+        <span style="background:var(--dye-red-brown)"></span>
+        <span style="background:var(--dye-black)"></span>
+    </div>
+</section>
+
+<!-- =================
+     БЛОК 2: ОСНОВНЫЕ КАТЕГОРИИ
+     ================= -->
+<section class="section">
+    <div class="container">
+        <div class="main-cats">
+            <a href="/category/po-cvetu" class="main-cat main-cat--color">
+                <div class="main-cat__icon">
+                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="22" cy="22" r="14" fill="currentColor" opacity="0.4"/>
+                        <circle cx="42" cy="22" r="14" fill="currentColor" opacity="0.4"/>
+                        <circle cx="32" cy="42" r="14" fill="currentColor" opacity="0.4"/>
+                    </svg>
+                </div>
+                <h2 class="main-cat__title">По цвету</h2>
+                <p class="main-cat__desc">Выберите нужный оттенок — от мягкого жёлтого куркумина до глубокого чёрного растительного угля.</p>
+                <span class="main-cat__arrow">
+                    Перейти к подбору
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+            </a>
+
+            <a href="/category/po-primeneniyu" class="main-cat main-cat--apply">
+                <div class="main-cat__icon">
+                    <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="10" y="20" width="20" height="32" rx="2"/>
+                        <rect x="36" y="14" width="18" height="38" rx="2"/>
+                        <line x1="14" y1="28" x2="26" y2="28"/>
+                        <line x1="14" y1="36" x2="26" y2="36"/>
+                        <line x1="40" y1="22" x2="50" y2="22"/>
+                        <line x1="40" y1="30" x2="50" y2="30"/>
+                        <line x1="40" y1="38" x2="50" y2="38"/>
+                    </svg>
+                </div>
+                <h2 class="main-cat__title">По применению</h2>
+                <p class="main-cat__desc">Готовые решения для конкретной отрасли: кондитерская, молочная, напитки, мясная, фармацевтика и БАД.</p>
+                <span class="main-cat__arrow">
+                    Подобрать решение
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- =================
+     БЛОК 3: ЦВЕТОВАЯ ЛИНЕЙКА
+     ================= -->
+<section class="section section-color-line">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title" style="margin-bottom:0">Цветовая линейка<br>красителей Luxomix</h2>
+            <p class="section-lead">Реальные оттенки готовой продукции. Кликните по цвету, чтобы посмотреть товары и подобрать аналог.</p>
+        </div>
+
+        <div class="color-grid">
+            <a href="/category/zheltyy" class="color-card" style="background:var(--dye-yellow); color:#1A1A1A">
+                <div class="color-card__name">Жёлтый</div>
+                <div class="color-card__hex">#F5C518</div>
+            </a>
+            <a href="/category/oranzhevyy" class="color-card" style="background:var(--dye-orange)">
+                <div class="color-card__name">Оранжевый</div>
+                <div class="color-card__hex">#F39200</div>
+            </a>
+            <a href="/category/krasno-oranzhevyy" class="color-card" style="background:var(--dye-red-orange)">
+                <div class="color-card__name">Красно-оранжевый</div>
+                <div class="color-card__hex">#E84E1B</div>
+            </a>
+            <a href="/category/krasnyy" class="color-card" style="background:var(--dye-red)">
+                <div class="color-card__name">Красный</div>
+                <div class="color-card__hex">#D52B1E</div>
+            </a>
+            <a href="/category/malinovyy" class="color-card" style="background:var(--dye-pink)">
+                <div class="color-card__name">Малиновый</div>
+                <div class="color-card__hex">#E6007E</div>
+            </a>
+            <a href="/category/fioletovyy" class="color-card" style="background:var(--dye-purple)">
+                <div class="color-card__name">Фиолетовый</div>
+                <div class="color-card__hex">#7E3A93</div>
+            </a>
+            <a href="/category/temno-fioletovyy" class="color-card" style="background:var(--dye-dark-purple)">
+                <div class="color-card__name">Тёмно-фиолетовый</div>
+                <div class="color-card__hex">#3B1E5E</div>
+            </a>
+            <a href="/category/siniy" class="color-card" style="background:var(--dye-blue)">
+                <div class="color-card__name">Синий</div>
+                <div class="color-card__hex">#2E5A87</div>
+            </a>
+            <a href="/category/biryuzovyy" class="color-card" style="background:var(--dye-turquoise)">
+                <div class="color-card__name">Бирюзовый</div>
+                <div class="color-card__hex">#1E7A7A</div>
+            </a>
+            <a href="/category/zelenyy" class="color-card" style="background:var(--dye-green); color:#1A1A1A">
+                <div class="color-card__name">Зелёный</div>
+                <div class="color-card__hex">#9DC23B</div>
+            </a>
+            <a href="/category/korichnevyy" class="color-card" style="background:var(--dye-brown)">
+                <div class="color-card__name">Коричневый</div>
+                <div class="color-card__hex">#6B4423</div>
+            </a>
+            <a href="/category/krasno-korichnevyy" class="color-card" style="background:var(--dye-red-brown)">
+                <div class="color-card__name">Красно-коричневый</div>
+                <div class="color-card__hex">#8B2E1F</div>
+            </a>
+            <a href="/category/chernyy" class="color-card" style="background:var(--dye-black)">
+                <div class="color-card__name">Чёрный</div>
+                <div class="color-card__hex">#1A1A1A</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- =================
+     БЛОК 4: СЛАЙДЕР «В ПРОДУКТЕ»
+     ================= -->
+<section class="section">
+    <div class="container">
+        <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:32px; gap:32px; flex-wrap:wrap;">
+            <h2>В продукте</h2>
+            <a href="/in-product" style="color:var(--c-accent); font-weight:500; display:inline-flex; align-items:center; gap:8px;">
+                Все применения
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+
+        <div class="slider-wrap">
+            <div class="slider" id="slider">
+                <div class="slide slide-1 active">
+                    <div class="slide__content">
+                        <span class="slide__tag">Кондитерская промышленность</span>
+                        <h3 class="slide__title">Шоколад<br>и глазурь</h3>
+                        <p class="slide__lead">Жирорастворимые красители Luxomix® дают стабильный цвет в шоколадных массах при температурах до +180°C без расслоения.</p>
+                        <a href="/in-product" class="slide__btn">
+                            Подробнее
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="slide slide-2">
+                    <div class="slide__content">
+                        <span class="slide__tag">Молочная промышленность</span>
+                        <h3 class="slide__title">Йогурты<br>и десерты</h3>
+                        <p class="slide__lead">Растительные экстракты Luxomix® ECO обеспечивают натуральный оттенок при pH 3,5–4,5 без выпадения осадка в течение всего срока годности.</p>
+                        <a href="/in-product" class="slide__btn">
+                            Подробнее
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="slide slide-3">
+                    <div class="slide__content">
+                        <span class="slide__tag">Напитки</span>
+                        <h3 class="slide__title">Соки<br>и лимонады</h3>
+                        <p class="slide__lead">Антоциановые красители для прозрачных напитков. Светостойкость 8/10, термостойкость 9/10. Расход — от 0,02% к массе готового продукта.</p>
+                        <a href="/in-product" class="slide__btn">
+                            Подробнее
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <button class="slider-arrow slider-arrow--prev" id="prevBtn" aria-label="Предыдущий">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="slider-arrow slider-arrow--next" id="nextBtn" aria-label="Следующий">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+
+            <div class="slider-dots" id="sliderDots">
+                <button class="slider-dot active" data-slide="0"></button>
+                <button class="slider-dot" data-slide="1"></button>
+                <button class="slider-dot" data-slide="2"></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =================
+     БЛОК 4.5: НОВИНКИ (товары с is_new=true, ТЗ §5.3)
+     ================= -->
+<section class="new-products">
+    <div class="container">
+        <div class="new-products__head">
+            <div>
+                <h2>Новинки каталога</h2>
+                <p>Свежие позиции — недавно введённые в производство SKU и линейка Luxomix® ECO без Е-кодов.</p>
+            </div>
+            <a href="/category/novinki" class="new-products__head-all">
+                Все новинки
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+
+        <div class="new-grid">
+            <a class="new-card" href="/product/eco-skyblue" style="--card-bg:#F0F4F9">
+                <div class="new-card__visual">
+                    <span class="new-card__badge">Новинка</span>
+                    <span class="new-card__line new-card__line--eco">ECO</span>
+                    <span class="new-card__swatch" style="--swatch:#2E5A87"></span>
+                </div>
+                <div class="new-card__body">
+                    <div class="new-card__name">Luxomix® ECO Небесный синий</div>
+                    <div class="new-card__meta">Растительный экстракт · без Е-кода · водорастворимый</div>
+                    <span class="new-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </div>
+            </a>
+
+            <a class="new-card" href="/product/eco-turquoise" style="--card-bg:#EAF4F4">
+                <div class="new-card__visual">
+                    <span class="new-card__badge">Новинка</span>
+                    <span class="new-card__line new-card__line--eco">ECO</span>
+                    <span class="new-card__swatch" style="--swatch:#1E7A7A"></span>
+                </div>
+                <div class="new-card__body">
+                    <div class="new-card__name">Luxomix® ECO Бирюзовая волна</div>
+                    <div class="new-card__meta">Растительный экстракт · без Е-кода · для напитков и кондитерки</div>
+                    <span class="new-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </div>
+            </a>
+
+            <a class="new-card" href="/product/eco-kryzhovnik" style="--card-bg:#F2F7E5">
+                <div class="new-card__visual">
+                    <span class="new-card__badge">Новинка</span>
+                    <span class="new-card__line new-card__line--eco">ECO</span>
+                    <span class="new-card__swatch" style="--swatch:#9DC23B"></span>
+                </div>
+                <div class="new-card__body">
+                    <div class="new-card__name">Luxomix® ECO Крыжовник</div>
+                    <div class="new-card__meta">Растительный экстракт · без Е-кода · салатовый оттенок</div>
+                    <span class="new-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </div>
+            </a>
+
+            <a class="new-card" href="/product/eco-lesnye-yagody" style="--card-bg:#F7E8EE">
+                <div class="new-card__visual">
+                    <span class="new-card__badge">Новинка</span>
+                    <span class="new-card__line new-card__line--eco">ECO</span>
+                    <span class="new-card__swatch" style="--swatch:#8B1E5E"></span>
+                </div>
+                <div class="new-card__body">
+                    <div class="new-card__name">Luxomix® ECO Лесные ягоды</div>
+                    <div class="new-card__meta">Растительный экстракт · без Е-кода · ягодный микс</div>
+                    <span class="new-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </div>
+            </a>
+
+            <a class="new-card" href="/product/eco-lavanda" style="--card-bg:#F0EAF5">
+                <div class="new-card__visual">
+                    <span class="new-card__badge">Новинка</span>
+                    <span class="new-card__line new-card__line--eco">ECO</span>
+                    <span class="new-card__swatch" style="--swatch:#7E3A93"></span>
+                </div>
+                <div class="new-card__body">
+                    <div class="new-card__name">Luxomix® ECO Лаванда</div>
+                    <div class="new-card__meta">Растительный экстракт · без Е-кода · десерты и косметика</div>
+                    <span class="new-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </div>
+            </a>
+
+            <a class="new-card" href="/product/antocianin-0053" style="--card-bg:#EFE3F0">
+                <div class="new-card__visual">
+                    <span class="new-card__badge">Новинка</span>
+                    <span class="new-card__line">Luxomix®</span>
+                    <span class="new-card__swatch" style="--swatch:#A23B7A"></span>
+                </div>
+                <div class="new-card__body">
+                    <div class="new-card__name">Luxomix® Антоцианин 0053</div>
+                    <div class="new-card__meta">E163 · фиолетово-красный · водорастворимый · для йогуртов</div>
+                    <span class="new-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </div>
+            </a>
+
+            <a class="new-card" href="/product/karmin-1131" style="--card-bg:#FBE4E5">
+                <div class="new-card__visual">
+                    <span class="new-card__badge">Новинка</span>
+                    <span class="new-card__line">Luxomix®</span>
+                    <span class="new-card__swatch" style="--swatch:#D52B1E"></span>
+                </div>
+                <div class="new-card__body">
+                    <div class="new-card__name">Luxomix® Кармин 1131</div>
+                    <div class="new-card__meta">E120 · холодный красный · порошок · водорастворимый</div>
+                    <span class="new-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </div>
+            </a>
+
+            <a class="new-card" href="/product/saharnyy-koler-mp2-ts" style="--card-bg:#EFE7DF">
+                <div class="new-card__visual">
+                    <span class="new-card__badge">Новинка</span>
+                    <span class="new-card__line">Luxomix®</span>
+                    <span class="new-card__swatch" style="--swatch:#6B4423"></span>
+                </div>
+                <div class="new-card__body">
+                    <div class="new-card__name">Luxomix® Сахарный колер MP 2 TS</div>
+                    <div class="new-card__meta">E150c · тёмно-коричневый · термостойкий до +200 °C</div>
+                    <span class="new-card__cta">Подробнее <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- =================
+     БЛОК 5: ПРИМЕНЕНИЕ
+     ================= -->
+<section class="section" style="background:var(--c-surface)">
+    <div class="container">
+        <div class="section-header" style="display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:32px; flex-wrap:wrap;">
+            <h2>Применение</h2>
+            <p class="section-lead" style="color:var(--c-text-muted); max-width:380px;">Подбор красителей и экстрактов по отраслям пищевого производства.</p>
+        </div>
+
+        <div class="apply-grid">
+            <a href="/category/konditerskaya" class="apply-card">
+                <div class="apply-card__img"><img src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=600&q=80" alt="Кондитерская"></div>
+                <div class="apply-card__body">
+                    <h3 class="apply-card__title">Кондитерская</h3>
+                    <p class="apply-card__desc">Мармелад, желе, карамель, шоколадные массы, глазури.</p>
+                </div>
+            </a>
+            <a href="/category/molochnaya" class="apply-card">
+                <div class="apply-card__img"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?w=600&q=80" alt="Молочная"></div>
+                <div class="apply-card__body">
+                    <h3 class="apply-card__title">Молочная</h3>
+                    <p class="apply-card__desc">Йогурты, творожные десерты, мороженое, сырные продукты.</p>
+                </div>
+            </a>
+            <a href="/category/napitki" class="apply-card">
+                <div class="apply-card__img"><img src="https://images.unsplash.com/photo-1496318447583-f524534e9ce1?w=600&q=80" alt="Напитки"></div>
+                <div class="apply-card__body">
+                    <h3 class="apply-card__title">Напитки</h3>
+                    <p class="apply-card__desc">Соки, лимонады, спортивные и энергетические напитки.</p>
+                </div>
+            </a>
+            <a href="/category/myasnaya" class="apply-card">
+                <div class="apply-card__img"><img src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=600&q=80" alt="Мясная"></div>
+                <div class="apply-card__body">
+                    <h3 class="apply-card__title">Мясная</h3>
+                    <p class="apply-card__desc">Колбасные изделия, паштеты, мясные деликатесы.</p>
+                </div>
+            </a>
+            <a href="/category/hlebopekarnaya" class="apply-card">
+                <div class="apply-card__img"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80" alt="Хлебопекарная"></div>
+                <div class="apply-card__body">
+                    <h3 class="apply-card__title">Хлебопекарная</h3>
+                    <p class="apply-card__desc">Цветной хлеб, сдоба, печенье, кремы для тортов.</p>
+                </div>
+            </a>
+            <a href="/category/maslozhirovaya" class="apply-card">
+                <div class="apply-card__img"><img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=600&q=80" alt="Масложировая"></div>
+                <div class="apply-card__body">
+                    <h3 class="apply-card__title">Масложировая</h3>
+                    <p class="apply-card__desc">Маргарины, спреды, майонезы, соусы.</p>
+                </div>
+            </a>
+            <a href="/category/farma-bad" class="apply-card">
+                <div class="apply-card__img"><img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=600&q=80" alt="Фармацевтика"></div>
+                <div class="apply-card__body">
+                    <h3 class="apply-card__title">Фармацевтика и БАД</h3>
+                    <p class="apply-card__desc">Капсулы, таблетки, сиропы, биодобавки.</p>
+                </div>
+            </a>
+            <a href="/category/korma" class="apply-card">
+                <div class="apply-card__img"><img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80" alt="Корма для животных"></div>
+                <div class="apply-card__body">
+                    <h3 class="apply-card__title">Корма для животных</h3>
+                    <p class="apply-card__desc">Влажные и сухие корма, лакомства, премиксы.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- =================
+     CTA БАННЕР «НЕ НАШЛИ НУЖНЫЙ ОТТЕНОК?»
+     ================= -->
+<section style="padding:0 0 96px;">
+    <div class="container">
+        <div class="cta">
+            <div>
+                <h2>Не нашли<br>нужный оттенок?</h2>
+                <p class="cta__lead">Наши технологи подберут краситель под ваше ТЗ — pH, термостойкость, светостойкость, чистая этикетка. Расчёт партии в течение рабочего дня.</p>
+                <div class="cta__features">
+                    <div class="cta__feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        ISO 22000 · FSSC
+                    </div>
+                    <div class="cta__feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Образцы бесплатно
+                    </div>
+                    <div class="cta__feature">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        Поддержка технологов
+                    </div>
+                </div>
+            </div>
+
+            <form class="cta-form" onsubmit="event.preventDefault(); alert('Заявка отправлена (демо)');">
+                <div class="cta-form__title">Оставить заявку</div>
+                <input type="text" placeholder="Имя*" required>
+                <input type="tel" placeholder="Телефон*" required>
+                <input type="email" placeholder="E-mail">
+                <textarea placeholder="Опишите задачу: продукт, желаемый оттенок, объём"></textarea>
+                <button type="submit">Отправить заявку</button>
+                <p class="cta-form__hint">Отправляя форму, вы соглашаетесь с политикой обработки персональных данных.</p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- =================
+     ПОДВАЛ
+     ================= -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div>
+                <div class="logo">
+                    <span class="logo__mark" style="color:#fff">luxomix</span>
+                    <span class="logo__tagline">natural color</span>
+                </div>
+                <p class="footer__about">Натуральные пищевые красители и растительные экстракты для производителей продукции категории «чистая этикетка». ООО «БАРГУС продакшн», с 2004 года.</p>
+                <div class="footer__certs">
+                    <span class="footer__cert">ISO 22000</span>
+                    <span class="footer__cert">FSSC 22000</span>
+                </div>
+            </div>
+
+            <div class="footer__col">
+                <h4>Каталог</h4>
+                <ul>
+                    <li><a href="/category/po-cvetu">По цвету</a></li>
+                    <li><a href="/category/po-primeneniyu">По применению</a></li>
+                    <li><a href="/category/bestsellers">Бестселлеры</a></li>
+                    <li><a href="/category/novinki">Новинки</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/in-product">В продукте</a></li>
+                    <li><a href="/blog">Блог</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
+                    <li><a href="/about#certs">Сертификаты</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4>Контакты</h4>
+                <div class="footer__contact-item">
+                    <strong>Телефон</strong>
+                    <a href="tel:88007070870">8 (800) 707-08-70</a>
+                </div>
+                <div class="footer__contact-item">
+                    <strong>E-mail</strong>
+                    <a href="mailto:info@luxomix.ru">info@luxomix.ru</a>
+                </div>
+                <div class="footer__warehouses">
+                    <div class="footer__warehouse"><strong>Москва</strong>склад · самовывоз</div>
+                    <div class="footer__warehouse"><strong>СПб</strong>склад · доставка</div>
+                    <div class="footer__warehouse"><strong>Алматы</strong>склад · РК</div>
+                    <div class="footer__warehouse"><strong>Гомель</strong>склад · РБ</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <span>© 2004–2026 LUXOMIX® · ООО «БАРГУС продакшн»</span>
+            <span>
+                <a href="/privacy">Политика конфиденциальности</a> ·
+                <a href="/terms">Пользовательское соглашение</a>
+            </span>
+        </div>
+    </div>
+
+    <!-- декоративная полоса-шкала -->
+    <div class="color-strip">
+        <span style="background:var(--dye-yellow)"></span>
+        <span style="background:var(--dye-orange)"></span>
+        <span style="background:var(--dye-red-orange)"></span>
+        <span style="background:var(--dye-red)"></span>
+        <span style="background:var(--dye-pink)"></span>
+        <span style="background:var(--dye-purple)"></span>
+        <span style="background:var(--dye-dark-purple)"></span>
+        <span style="background:var(--dye-blue)"></span>
+        <span style="background:var(--dye-turquoise)"></span>
+        <span style="background:var(--dye-green)"></span>
+        <span style="background:var(--dye-brown)"></span>
+        <span style="background:var(--dye-red-brown)"></span>
+        <span style="background:var(--dye-black)"></span>
+    </div>
+</footer>
+
+<script>
+/* ============================
+   СЛАЙДЕР «В ПРОДУКТЕ» (ТЗ §3.5)
+   Автопрокрутка 5с, точки, стрелки, пауза при hover
+   ============================ */
+(function() {
+    const slider = document.getElementById('slider');
+    if (!slider) return;
+    const slides = slider.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.slider-dot');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    let idx = 0;
+    let timer = null;
+
+    function go(n) {
+        slides[idx].classList.remove('active');
+        dots[idx].classList.remove('active');
+        idx = (n + slides.length) % slides.length;
+        slides[idx].classList.add('active');
+        dots[idx].classList.add('active');
+    }
+    function start() { stop(); timer = setInterval(() => go(idx + 1), 5000); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    prevBtn.addEventListener('click', () => { go(idx - 1); start(); });
+    nextBtn.addEventListener('click', () => { go(idx + 1); start(); });
+    dots.forEach((d, i) => d.addEventListener('click', () => { go(i); start(); }));
+    slider.addEventListener('mouseenter', stop);
+    slider.addEventListener('mouseleave', start);
+
+    // Свайп для touch (ТЗ §3.5)
+    let startX = 0;
+    slider.addEventListener('touchstart', e => { startX = e.touches[0].clientX; stop(); });
+    slider.addEventListener('touchend', e => {
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 50) go(dx < 0 ? idx + 1 : idx - 1);
+        start();
+    });
+
+    start();
+})();
+
+/* ============================
+   МЕГАМЕНЮ (ТЗ §2.7)
+   click — открыть/закрыть, hover слева — переключить панель,
+   Esc / клик по оверлею / клик вне — закрыть
+   ============================ */
+(function() {
+    const btn = document.getElementById('catalogBtn');
+    const menu = document.getElementById('megamenu');
+    const overlay = document.getElementById('mmOverlay');
+    const closeBtn = document.getElementById('mmClose');
+    const items = menu.querySelectorAll('.mm-item');
+    const panels = menu.querySelectorAll('.mm-panel');
+
+    function open() {
+        // Закрыть бургер если открыт
+        if (window.__closeBurger) window.__closeBurger();
+        menu.classList.add('is-open');
+        overlay.classList.add('is-open');
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        menu.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    function toggle() { menu.classList.contains('is-open') ? close() : open(); }
+
+    function switchPanel(target) {
+        items.forEach(i => i.classList.toggle('is-active', i.dataset.target === target));
+        panels.forEach(p => p.classList.toggle('is-active', p.id === 'mm-' + target));
+    }
+
+    btn.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    closeBtn.addEventListener('click', close);
+
+    items.forEach(item => {
+        // ТЗ §2.7: «при наведении на раздел слева — в правой колонке мгновенно отображается список подкатегорий»
+        item.addEventListener('mouseenter', () => switchPanel(item.dataset.target));
+        item.addEventListener('focus', () => switchPanel(item.dataset.target));
+        item.addEventListener('click', () => switchPanel(item.dataset.target));
+    });
+
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+    });
+
+    // Закрытие мегаменю при клике по ссылке-подкатегории
+    menu.querySelectorAll('.mm-sublink').forEach(a => a.addEventListener('click', close));
+
+    // Экспортируем close для бургера (чтобы они были взаимоисключаемы)
+    window.__closeMegamenu = close;
+})();
+
+/* ============================
+   БУРГЕР-МЕНЮ (мобильная навигация ≤1080px)
+   click — открыть/закрыть; клик по ссылке / Esc / клик вне — закрыть
+   Взаимоисключаемо с мегаменю
+   ============================ */
+(function() {
+    const btn = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileNav');
+    if (!btn || !menu) return;
+
+    function open() {
+        // Закрыть мегаменю если открыто
+        if (window.__closeMegamenu) window.__closeMegamenu();
+        menu.classList.add('is-open');
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+    }
+    function close() {
+        menu.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+    }
+    function toggle() { menu.classList.contains('is-open') ? close() : open(); }
+
+    btn.addEventListener('click', toggle);
+
+    // Закрытие при клике по любой ссылке
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+    // Esc — закрыть
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+    });
+
+    // Клик вне меню (не по бургеру) — закрыть
+    document.addEventListener('click', e => {
+        if (!menu.classList.contains('is-open')) return;
+        if (menu.contains(e.target) || btn.contains(e.target)) return;
+        close();
+    });
+
+    // Закрытие при ресайзе на desktop
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1080 && menu.classList.contains('is-open')) close();
+    });
+
+    // Экспорт close для мегаменю
+    window.__closeBurger = close;
+})();
+</script>
+
+
+<!-- ====== Поиск с подсказками (ТЗ §7) ====== -->
+<style>
+.sd-wrap { position: relative; }
+.search-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0; right: 0;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 16px;
+    box-shadow: 0 24px 48px -16px rgba(14,45,23,.18);
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 9999;
+    padding: 16px;
+    display: none;
+}
+.search-dropdown.is-open { display: block; }
+.sd-section { margin-bottom: 16px; }
+.sd-section:last-child { margin-bottom: 0; }
+.sd-section__title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--c-text-muted);
+    margin-bottom: 8px;
+    padding: 0 4px;
+}
+.sd-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 4px; }
+.sd-chip {
+    background: var(--c-surface);
+    color: var(--c-text);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    transition: background .12s, color .12s;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    line-height: 1.4;
+    /* Override any inherited absolute positioning from parent button rules */
+    position: static;
+    height: auto;
+    transform: none;
+    right: auto;
+    top: auto;
+    font-family: var(--f-body);
+    letter-spacing: 0;
+}
+.sd-chip:hover, .sd-chip.is-active { background: var(--c-accent); color: #fff; }
+
+.sd-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: var(--c-text);
+    text-decoration: none;
+    transition: background .12s;
+    cursor: pointer;
+}
+.sd-item:hover, .sd-item.is-active { background: var(--c-surface); }
+.sd-item__icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--c-accent);
+    color: #fff;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--f-heading);
+    font-size: 14px;
+}
+.sd-item__icon--cat svg { width: 18px; height: 18px; }
+.sd-item__body { flex: 1; min-width: 0; }
+.sd-item__name {
+    font-weight: 500;
+    font-size: var(--fs-body-s);
+    color: var(--c-text);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sd-item__meta {
+    font-size: 11px;
+    color: var(--c-text-muted);
+    margin-top: 2px;
+}
+.sd-item__name mark { background: rgba(105,128,255,.18); color: var(--c-text); font-weight: 600; padding: 0 1px; border-radius: 2px; }
+
+.sd-show-all {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px;
+    background: var(--c-primary);
+    color: #fff;
+    border-radius: 10px;
+    font-family: var(--f-heading);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    transition: background .15s;
+}
+.sd-show-all:hover { background: var(--c-primary-alt); color: #fff; }
+.sd-show-all svg { width: 14px; height: 14px; }
+
+.sd-empty {
+    padding: 24px;
+    text-align: center;
+    color: var(--c-text-muted);
+    font-size: var(--fs-body-s);
+}
+.sd-empty strong { color: var(--c-text); display: block; margin-bottom: 4px; }
+
+/* Hero search dark theme override */
+.hero .search-dropdown {
+    color: var(--c-text);
+    text-align: left;
+}
+</style>
+
+<script id="search-index" type="application/json">
+{"popular":["кармин","куркумин","для шоколада","для йогурта","натуральный красный","антоцианин","паприка","спирулина"],"categories":[{"name":"Жёлтый","slug":"zheltyy","parent":"По цвету","count":23,"color":"#F5C518"},{"name":"Оранжевый","slug":"oranzhevyy","parent":"По цвету","count":17,"color":"#F39200"},{"name":"Красный","slug":"krasnyy","parent":"По цвету","count":24,"color":"#D52B1E"},{"name":"Малиновый","slug":"malinovyy","parent":"По цвету","count":10,"color":"#E6007E"},{"name":"Фиолетовый","slug":"fioletovyy","parent":"По цвету","count":6,"color":"#7E3A93"},{"name":"Синий","slug":"siniy","parent":"По цвету","count":4,"color":"#2E5A87"},{"name":"Зелёный","slug":"zelenyy","parent":"По цвету","count":12,"color":"#9DC23B"},{"name":"Коричневый","slug":"korichnevyy","parent":"По цвету","count":11,"color":"#6B4423"},{"name":"Чёрный","slug":"chernyy","parent":"По цвету","count":5,"color":"#1A1A1A"},{"name":"Кондитерская","slug":"konditerskaya","parent":"По применению","count":94,"color":"#0E2D17"},{"name":"Молочная","slug":"molochnaya","parent":"По применению","count":67,"color":"#0E2D17"},{"name":"Напитки","slug":"napitki","parent":"По применению","count":58,"color":"#0E2D17"},{"name":"Мясная","slug":"myasnaya","parent":"По применению","count":52,"color":"#0E2D17"},{"name":"Хлебопекарная","slug":"hlebopekarnaya","parent":"По применению","count":71,"color":"#0E2D17"},{"name":"Фарма и БАД","slug":"farma-bad","parent":"По применению","count":38,"color":"#0E2D17"},{"name":"Кармин","slug":"karmin","parent":"Красители","count":22,"color":"#D52B1E"},{"name":"Куркумин","slug":"kurkumin","parent":"Красители","count":4,"color":"#F5C518"},{"name":"Антоцианин","slug":"antocianin","parent":"Красители","count":4,"color":"#A23B7A"},{"name":"Хлорофилл","slug":"hlorofill","parent":"Красители","count":11,"color":"#5BA833"},{"name":"Аннато","slug":"annato","parent":"Красители","count":9,"color":"#F39200"}],"products":[{"name":"Luxomix® Куркумин 0040","slug":"куркумин-0040","color":"Лимонно-желтый","group":"КУРКУМИН","color_hex":"#F5C518"},{"name":"Luxomix® Куркумин 0140","slug":"куркумин-0140","color":"Желтый","group":"КУРКУМИН","color_hex":"#F5C518"},{"name":"Luxomix® Аннато-куркумин 0025","slug":"аннато-куркумин-0025","color":"Желто-оранжевый","group":"АННАТО-КУРКУМИН","color_hex":"#F5A623"},{"name":"Luxomix® Аннато-куркумин 0026","slug":"аннато-куркумин-0026","color":"Желто-оранжевый","group":"АННАТО-КУРКУМИН","color_hex":"#F5A623"},{"name":"Luxomix® Бета-каротин 0001","slug":"бета-каротин-0001","color":"Желтый","group":"БЕТА-КАРОТИН","color_hex":"#F5C518"},{"name":"Luxomix® Бета-каротин 0002","slug":"бета-каротин-0002","color":"Желтый","group":"БЕТА-КАРОТИН","color_hex":"#F5C518"},{"name":"Luxomix® Аннато 0020","slug":"аннато-0020","color":"Желто-оранжевый","group":"АННАТО","color_hex":"#F5A623"},{"name":"Luxomix® Аннато 0021","slug":"аннато-0021","color":"Желто-оранжевый","group":"АННАТО","color_hex":"#F5A623"},{"name":"Luxomix® Паприка каротин","slug":"паприка-каротин","color":"Оранжево-золотистый","group":"ПАПРИКА","color_hex":"#FFA500"},{"name":"Luxomix® Паприка 0011","slug":"паприка-0011","color":"Оранжевый","group":"ПАПРИКА","color_hex":"#F39200"},{"name":"Luxomix® Свекольный 0055","slug":"свекольный-0055","color":"Красно-розовый","group":"СВЕКОЛЬНЫЙ","color_hex":"#E84E8B"},{"name":"Luxomix® Свекольный 0555 МР","slug":"свекольный-0555-мр","color":"Красно-розовый","group":"СВЕКОЛЬНЫЙ","color_hex":"#E84E8B"},{"name":"Luxomix® Кармин 0030","slug":"кармин-0030","color":"Малиновый","group":"КАРМИН","color_hex":"#E6007E"},{"name":"Luxomix® Кармин 0031","slug":"кармин-0031","color":"Малиново-черничный","group":"КАРМИН","color_hex":"#8B1E5E"},{"name":"Luxomix® Антоцианин 0050","slug":"антоцианин-0050","color":"Красно-фиолетовый","group":"АНТОЦИАНИН","color_hex":"#A23B7A"},{"name":"Luxomix® Антоцианин 0051","slug":"антоцианин-0051","color":"Красно-фиолетовый","group":"АНТОЦИАНИН","color_hex":"#A23B7A"},{"name":"Luxomix® Спирулина 0070","slug":"спирулина-0070","color":"Синий","group":"СПИРУЛИНА","color_hex":"#2E5A87"},{"name":"Luxomix® Спирулина 0071","slug":"спирулина-0071","color":"Синий","group":"СПИРУЛИНА","color_hex":"#2E5A87"},{"name":"Luxomix® Хлорофилл 0041","slug":"хлорофилл-0041","color":"Желто-зеленый","group":"ХЛОРОФИЛЛ","color_hex":"#9DC23B"},{"name":"Luxomix® Хлорофилл 0041 МР","slug":"хлорофилл-0041-мр","color":"Желто-зеленый","group":"ХЛОРОФИЛЛ","color_hex":"#9DC23B"},{"name":"Luxomix® Сахарный колер 150А                                         (Ароматическая карамель WS 100)","slug":"сахарный-колер-150а-ароматическая-карамель-ws-100","color":"Светло-коричневый","group":"САХАРНЫЙ КОЛЕР","color_hex":"#A66B3C"},{"name":"Luxomix® Сахарный колер Е150А (жидкость)","slug":"сахарный-колер-е150а-жидкость","color":"Коричневый","group":"САХАРНЫЙ КОЛЕР","color_hex":"#6B4423"},{"name":"Luxomix® Растительный уголь 0060Е","slug":"растительный-уголь-0060е","color":"Черный","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color_hex":"#1A1A1A"},{"name":"Luxomix® Растительный уголь 0061","slug":"растительный-уголь-0061","color":"Черный","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color_hex":"#1A1A1A"},{"name":"Luxomix® Диоксид титана 0062","slug":"диоксид-титана-0062","color":"Белый","group":"ДИОКСИД ТИТАНА","color_hex":"#F0F0F0"},{"name":"Luxomix® Диоксид титана 0063","slug":"диоксид-титана-0063","color":"Белый","group":"ДИОКСИД ТИТАНА","color_hex":"#F0F0F0"},{"name":"Luxomix® Карбонат кальция Е170","slug":"карбонат-кальция-е170","color":"Белый","group":"КАРБОНАТ КАЛЬЦИЯ","color_hex":"#F0F0F0"}]}
+</script>
+<script>
+/* ============================ ПОИСК С ПОДСКАЗКАМИ (ТЗ §7) ============================
+   Использование: initSearchSuggest(inputElement, dropdownElement)
+   - onFocus → дефолтные подсказки (популярные запросы, топ-категории, топ-товары)
+   - onInput ≥ 2 символа, debounce 300мс → результаты по запросу (до 3 кат + 5 товаров + «Показать все»)
+   - Esc / клик вне / выбор → закрытие
+   - ↑/↓ → навигация, Enter → переход
+   - Вхождение запроса выделяется жирным
+*/
+function initSearchSuggest(input, dropdown, searchIndex) {
+    if (!input || !dropdown) return;
+    input.setAttribute('autocomplete', 'off');
+
+    const POPULAR = searchIndex.popular;
+    const CATEGORIES = searchIndex.categories;
+    const PRODUCTS = searchIndex.products;
+    let debounceTimer = null;
+    let activeIdx = -1;
+    let currentItems = [];
+
+    function highlight(text, query) {
+        if (!query) return text;
+        const q = query.trim();
+        if (!q) return text;
+        const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+        return text.replace(re, '<mark>$1</mark>');
+    }
+
+    function renderDefault() {
+        let html = '';
+        // Popular queries (chips)
+        if (POPULAR && POPULAR.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Популярные запросы</div><div class="sd-chips">';
+            POPULAR.forEach(q => {
+                html += `<button class="sd-chip" data-query="${q}">${q}</button>`;
+            });
+            html += '</div></div>';
+        }
+        // Top categories
+        const topCats = CATEGORIES.slice(0, 3);
+        if (topCats.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Категории</div>';
+            topCats.forEach(c => {
+                html += `<a class="sd-item" href="/category/${c.slug}" data-nav>
+                    <span class="sd-item__icon" style="background:${c.color}"></span>
+                    <span class="sd-item__body">
+                        <span class="sd-item__name">${c.name}</span>
+                        <span class="sd-item__meta">${c.parent} · ${c.count} товаров</span>
+                    </span>
+                </a>`;
+            });
+            html += '</div>';
+        }
+        // Top products
+        const topProds = PRODUCTS.slice(0, 3);
+        if (topProds.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Товары</div>';
+            topProds.forEach(p => {
+                html += `<a class="sd-item" href="/product/${p.slug}" data-nav>
+                    <span class="sd-item__icon" style="background:${p.color_hex}"></span>
+                    <span class="sd-item__body">
+                        <span class="sd-item__name">${p.name}</span>
+                        <span class="sd-item__meta">${p.color}</span>
+                    </span>
+                </a>`;
+            });
+            html += '</div>';
+        }
+        dropdown.innerHTML = html;
+        activeIdx = -1;
+        currentItems = dropdown.querySelectorAll('.sd-chip, .sd-item');
+        attachItemHandlers();
+    }
+
+    function renderResults(query) {
+        const q = query.toLowerCase().trim();
+        const catHits = CATEGORIES.filter(c => c.name.toLowerCase().includes(q) || c.parent.toLowerCase().includes(q)).slice(0, 3);
+        const prodHits = PRODUCTS.filter(p => p.name.toLowerCase().includes(q) || (p.color || '').toLowerCase().includes(q) || (p.group || '').toLowerCase().includes(q)).slice(0, 5);
+
+        let html = '';
+        if (catHits.length === 0 && prodHits.length === 0) {
+            html = `<div class="sd-empty">
+                <strong>Ничего не найдено</strong>
+                Попробуйте популярный запрос:
+            </div>
+            <div class="sd-section"><div class="sd-chips">
+                ${POPULAR.slice(0, 6).map(q => `<button class="sd-chip" data-query="${q}">${q}</button>`).join('')}
+            </div></div>`;
+            dropdown.innerHTML = html;
+            activeIdx = -1;
+            currentItems = dropdown.querySelectorAll('.sd-chip, .sd-item');
+            attachItemHandlers();
+            return;
+        }
+
+        if (catHits.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Категории</div>';
+            catHits.forEach(c => {
+                html += `<a class="sd-item" href="/category/${c.slug}" data-nav>
+                    <span class="sd-item__icon" style="background:${c.color}"></span>
+                    <span class="sd-item__body">
+                        <span class="sd-item__name">${highlight(c.name, query)}</span>
+                        <span class="sd-item__meta">${c.parent} · ${c.count} товаров</span>
+                    </span>
+                </a>`;
+            });
+            html += '</div>';
+        }
+        if (prodHits.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Товары</div>';
+            prodHits.forEach(p => {
+                html += `<a class="sd-item" href="/product/${p.slug}" data-nav>
+                    <span class="sd-item__icon" style="background:${p.color_hex}"></span>
+                    <span class="sd-item__body">
+                        <span class="sd-item__name">${highlight(p.name, query)}</span>
+                        <span class="sd-item__meta">${p.color}</span>
+                    </span>
+                </a>`;
+            });
+            html += '</div>';
+        }
+        html += `<a class="sd-show-all" href="/search?q=${encodeURIComponent(query)}" data-nav>
+            Показать все результаты по запросу «${query}»
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>`;
+        dropdown.innerHTML = html;
+        activeIdx = -1;
+        currentItems = dropdown.querySelectorAll('.sd-chip, .sd-item, .sd-show-all');
+        attachItemHandlers();
+    }
+
+    function attachItemHandlers() {
+        dropdown.querySelectorAll('.sd-chip').forEach(c => {
+            c.addEventListener('click', e => {
+                e.preventDefault();
+                input.value = c.dataset.query;
+                input.focus();
+                renderResults(c.dataset.query);
+            });
+        });
+        // For href-linked items the browser default click will navigate.
+        // We just preventDefault on the demo to avoid 404s and alert instead.
+        dropdown.querySelectorAll('[data-nav]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                // In production: window.location.href = a.href;
+                alert('Переход: ' + a.getAttribute('href') + ' (демо)');
+                close();
+            });
+        });
+    }
+
+    function setActive(i) {
+        currentItems.forEach(el => el.classList.remove('is-active'));
+        if (i >= 0 && i < currentItems.length) {
+            currentItems[i].classList.add('is-active');
+            currentItems[i].scrollIntoView({ block: 'nearest' });
+        }
+        activeIdx = i;
+    }
+
+    function open() {
+        if (input.value.trim().length >= 2) {
+            renderResults(input.value);
+        } else {
+            renderDefault();
+        }
+        dropdown.classList.add('is-open');
+    }
+    function close() {
+        dropdown.classList.remove('is-open');
+        activeIdx = -1;
+    }
+
+    input.addEventListener('focus', open);
+    input.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            const v = input.value.trim();
+            if (v.length >= 2) renderResults(v);
+            else renderDefault();
+        }, 300);
+    });
+    input.addEventListener('keydown', e => {
+        if (!dropdown.classList.contains('is-open')) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setActive(Math.min(activeIdx + 1, currentItems.length - 1));
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setActive(Math.max(activeIdx - 1, -1));
+        } else if (e.key === 'Enter') {
+            if (activeIdx >= 0 && currentItems[activeIdx]) {
+                e.preventDefault();
+                currentItems[activeIdx].click();
+            } else if (input.value.trim().length >= 1) {
+                e.preventDefault();
+                alert('Переход на /search?q=' + encodeURIComponent(input.value.trim()) + ' (демо)');
+                close();
+            }
+        } else if (e.key === 'Escape') {
+            close();
+            input.blur();
+        }
+    });
+
+    document.addEventListener('click', e => {
+        if (!dropdown.classList.contains('is-open')) return;
+        if (input.contains(e.target) || dropdown.contains(e.target)) return;
+        close();
+    });
+}
+
+</script>
+
+<script>
+(function() {
+    const idx = JSON.parse(document.getElementById('search-index').textContent);
+    initSearchSuggest(document.getElementById('heroSearch'), document.getElementById('heroSearchDropdown'), idx);
+})();
+</script>
+</body>
+</html>

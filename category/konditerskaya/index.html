@@ -1,0 +1,1656 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кондитерская — красители для кондитерских изделий | Luxomix®</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================ ТОКЕНЫ ============================ */
+:root {
+    --c-primary: #0E2D17;
+    --c-primary-alt: #1F7A3A;
+    --c-accent: #6980FF;
+    --c-accent-hover: #4A60E0;
+    --c-bg: #FFFFFF;
+    --c-surface: #F5F6F8;
+    --c-text: #1A1A1A;
+    --c-text-muted: #6B7280;
+    --c-border: #E5E7EB;
+
+    --dye-yellow: #F5C518; --dye-orange: #F39200; --dye-red-orange: #E84E1B;
+    --dye-red: #D52B1E; --dye-pink: #E6007E; --dye-purple: #7E3A93;
+    --dye-dark-purple: #3B1E5E; --dye-blue: #2E5A87; --dye-turquoise: #1E7A7A;
+    --dye-green: #9DC23B; --dye-brown: #6B4423; --dye-red-brown: #8B2E1F;
+    --dye-black: #1A1A1A;
+
+    --f-heading: 'Bebas Neue', Impact, sans-serif;
+    --f-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --fs-h1: 56px; --fs-h2: 40px; --fs-h3: 24px;
+    --fs-body-l: 18px; --fs-body-m: 16px; --fs-body-s: 14px;
+
+    --container: 1280px;
+    --container-pad: 24px;
+
+    --header-h: 80px;
+    --search-h: 72px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--f-body);
+    font-size: var(--fs-body-m);
+    line-height: 1.55;
+    color: var(--c-text);
+    background: var(--c-bg);
+    -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--container-pad); }
+
+h1, h2, h3 { font-family: var(--f-heading); font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-family: var(--f-body); font-size: var(--fs-h3); font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.3; }
+
+/* ============================ ШАПКА ============================ */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--c-bg);
+    border-bottom: 1px solid var(--c-border);
+    height: var(--header-h);
+}
+.header__inner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 100%;
+}
+
+.logo { display: flex; flex-direction: column; line-height: 1; margin-right: 8px; flex-shrink: 0; }
+.logo__mark { font-family: var(--f-heading); font-size: 32px; color: var(--c-primary); letter-spacing: 1px; text-transform: lowercase; }
+.logo__mark::after { content: '®'; font-family: var(--f-heading); font-size: 16px; vertical-align: super; margin-left: 2px; color: inherit; }
+.logo__tagline { font-size: 11px; font-weight: 300; color: var(--c-text-muted); letter-spacing: 1.5px; margin-top: -2px; }
+
+.btn-catalog {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--c-accent); color: #fff;
+    padding: 12px 22px; border-radius: 999px;
+    font-family: var(--f-heading); font-size: 16px; letter-spacing: 1px;
+    transition: background .15s ease;
+}
+.btn-catalog:hover { background: var(--c-accent-hover); }
+.btn-catalog svg { width: 18px; height: 18px; }
+.btn-catalog__chevron { transition: transform .25s ease; }
+.btn-catalog.is-open .btn-catalog__chevron { transform: rotate(180deg); }
+
+.nav { display: flex; gap: 28px; }
+.nav a { font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); transition: color .15s; }
+.nav a:hover { color: var(--c-accent); }
+
+.header__phone {
+    margin-left: auto;
+    font-weight: 600; color: var(--c-primary); white-space: nowrap; font-size: var(--fs-body-m);
+}
+
+.btn-burger {
+    display: none;
+    width: 44px; height: 44px;
+    align-items: center; justify-content: center;
+    border-radius: 12px; background: var(--c-surface); color: var(--c-text);
+    transition: background .15s; flex-shrink: 0;
+}
+.btn-burger:hover { background: var(--c-border); }
+.btn-burger svg { width: 22px; height: 22px; }
+.btn-burger .icon-close { display: none; }
+.btn-burger.is-open .icon-burger { display: none; }
+.btn-burger.is-open .icon-close { display: block; }
+
+/* ============================ ПОЛНОШИРИННЫЙ ПОИСК ПОД ШАПКОЙ ============================ */
+.search-strip {
+    position: sticky;
+    top: var(--header-h);
+    z-index: 90;
+    background: #fff;
+    border-bottom: 1px solid var(--c-border);
+    padding: 16px 0;
+}
+.search-strip__inner {
+    position: relative;
+    width: 100%;
+}
+.search-strip input {
+    width: 100%;
+    height: 56px;
+    border: 1px solid var(--c-border);
+    border-radius: 14px;
+    padding: 0 130px 0 56px;
+    font-family: inherit;
+    font-size: var(--fs-body-m);
+    background: var(--c-surface);
+    transition: background .15s, border-color .15s;
+}
+.search-strip input:focus { outline: none; border-color: var(--c-accent); background: #fff; }
+.search-strip .icon {
+    position: absolute;
+    left: 20px;
+    top: 50%; transform: translateY(-50%);
+    width: 22px; height: 22px;
+    color: var(--c-text-muted);
+    pointer-events: none;
+}
+.search-strip button {
+    position: absolute;
+    right: 8px;
+    top: 50%; transform: translateY(-50%);
+    height: 42px; padding: 0 24px;
+    background: var(--c-accent); color: #fff;
+    border-radius: 10px;
+    font-family: var(--f-heading); font-size: 14px; letter-spacing: 1px;
+    transition: background .15s;
+}
+.search-strip button:hover { background: var(--c-accent-hover); }
+
+/* ============================ МОБИЛЬНОЕ МЕНЮ ============================ */
+.mobile-nav {
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0;
+    background: #fff;
+    border-bottom: 1px solid var(--c-border);
+    box-shadow: 0 24px 48px -16px rgba(14,45,23,.18);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+    z-index: 95;
+    display: none;
+}
+.mobile-nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.mobile-nav .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.mobile-nav a {
+    padding: 14px 16px;
+    font-size: var(--fs-body-m);
+    font-weight: 500;
+    color: var(--c-text);
+    border-radius: 10px;
+    transition: background .15s, color .15s;
+}
+.mobile-nav a:hover { background: var(--c-surface); color: var(--c-accent); }
+.mobile-nav__phone {
+    margin-top: 8px;
+    padding-top: 18px !important;
+    border-top: 1px solid var(--c-border);
+    color: var(--c-primary) !important;
+    font-weight: 600 !important;
+    border-radius: 0 !important;
+}
+
+/* ============================ МЕГАМЕНЮ ============================ */
+.megamenu-overlay {
+    position: fixed;
+    inset: var(--header-h) 0 0 0;
+    background: rgba(0,0,0,.4);
+    z-index: 88;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s;
+}
+.megamenu-overlay.is-open { opacity: 1; pointer-events: auto; }
+.megamenu {
+    position: fixed;
+    top: var(--header-h);
+    left: 0; right: 0;
+    background: #fff;
+    z-index: 93;
+    border-bottom: 1px solid var(--c-border);
+    box-shadow: 0 24px 48px -16px rgba(14,45,23,.18);
+    transform: translateY(-12px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+    max-height: calc(100vh - var(--header-h));
+    overflow-y: auto;
+}
+.megamenu.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.megamenu__inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 480px;
+    padding: 32px 0;
+}
+.megamenu__left { border-right: 1px solid var(--c-border); padding-right: 16px; display: flex; flex-direction: column; gap: 2px; }
+.mm-item {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; padding: 14px 16px; border-radius: 10px;
+    font-family: var(--f-body); font-size: var(--fs-body-m); font-weight: 500;
+    color: var(--c-text); text-align: left;
+    transition: background .15s, color .15s; cursor: pointer;
+}
+.mm-item:hover, .mm-item.is-active { background: var(--c-surface); color: var(--c-primary); }
+.mm-item.is-active { background: rgba(105,128,255,.08); color: var(--c-accent); }
+.mm-item svg { width: 16px; height: 16px; opacity: .5; transition: transform .15s; }
+.mm-item:hover svg, .mm-item.is-active svg { transform: translateX(3px); opacity: 1; }
+.megamenu__right { padding: 8px 0 8px 48px; }
+.mm-panel { display: none; animation: mmFade .25s ease; }
+.mm-panel.is-active { display: block; }
+@keyframes mmFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.mm-panel__title { font-family: var(--f-heading); font-size: 32px; text-transform: uppercase; color: var(--c-primary); margin-bottom: 8px; }
+.mm-panel__lead { font-size: var(--fs-body-s); color: var(--c-text-muted); margin-bottom: 28px; max-width: 520px; }
+.mm-subgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
+.mm-sublink {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 8px;
+    color: var(--c-text); font-size: var(--fs-body-m);
+    transition: background .12s, color .12s;
+}
+.mm-sublink:hover { background: var(--c-surface); color: var(--c-accent); }
+.mm-sublink__swatch {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,.06);
+}
+.mm-sublink__bullet { color: var(--c-text-muted); font-size: 12px; width: 18px; text-align: center; }
+
+/* ============================ ХЛЕБНЫЕ КРОШКИ ============================ */
+.breadcrumbs {
+    padding: 24px 0 12px;
+    font-size: var(--fs-body-s);
+    color: var(--c-text-muted);
+}
+.breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.breadcrumbs li { display: flex; align-items: center; gap: 8px; }
+.breadcrumbs li::after { content: '/'; color: var(--c-border); }
+.breadcrumbs li:last-child::after { display: none; }
+.breadcrumbs a { color: var(--c-text-muted); transition: color .12s; }
+.breadcrumbs a:hover { color: var(--c-accent); }
+.breadcrumbs li:last-child { color: var(--c-text); font-weight: 500; }
+
+/* ============================ ЗАГОЛОВОК СТРАНИЦЫ ============================ */
+.page-head {
+    padding: 8px 0 32px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+.page-head__title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.page-head__swatch {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--c-primary) 0%, var(--c-primary-alt) 100%);
+    box-shadow: 0 8px 24px -8px rgba(14, 45, 23, 0.5);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.page-head__swatch svg { width: 32px; height: 32px; }
+.page-head__lead {
+    font-size: var(--fs-body-m);
+    color: var(--c-text-muted);
+    max-width: 480px;
+}
+
+/* ============================ ДОЧЕРНИЕ КАТЕГОРИИ ============================ */
+.children-wrap { padding-bottom: 36px; }
+.children-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--c-text-muted);
+    margin-bottom: 14px;
+}
+.children-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+.child-cat {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 20px;
+    background: var(--c-surface);
+    border-radius: 16px;
+    border: 1px solid transparent;
+    transition: border-color .15s, background .15s, transform .15s;
+}
+.child-cat:hover { border-color: var(--c-accent); background: #fff; transform: translateY(-2px); }
+.child-cat__icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--dye-red);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    font-family: var(--f-heading);
+    font-size: 20px;
+}
+.child-cat__name { font-weight: 600; font-size: var(--fs-body-m); }
+.child-cat__count { font-size: var(--fs-body-s); color: var(--c-text-muted); margin-top: 2px; }
+
+/* ============================ ОСНОВНОЕ: СЕТКА КАТАЛОГА ============================ */
+.catalog {
+    padding: 12px 0 96px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 36px;
+    align-items: flex-start;
+}
+
+/* ============================ SIDEBAR ============================ */
+.sidebar { display: flex; flex-direction: column; gap: 24px; }
+
+/* Фильтры */
+.filters {
+    background: var(--c-surface);
+    border-radius: 18px;
+    padding: 20px;
+}
+.filters__title {
+    font-family: var(--f-heading);
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--c-primary);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.filters__reset {
+    font-size: 12px;
+    color: var(--c-text-muted);
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: color .12s;
+    display: inline-block;
+}
+.filters__reset:hover { color: var(--c-accent); text-decoration: underline; }
+
+.filter-group { border-top: 1px solid var(--c-border); padding: 14px 0; }
+.filter-group:first-of-type { border-top: none; padding-top: 4px; }
+.filter-group__label {
+    font-size: var(--fs-body-s);
+    font-weight: 600;
+    color: var(--c-text);
+    margin-bottom: 10px;
+}
+.filter-list { display: flex; flex-direction: column; gap: 4px; max-height: 180px; overflow-y: auto; padding-right: 4px; }
+.filter-list::-webkit-scrollbar { width: 4px; }
+.filter-list::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 2px; }
+.filter-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 6px 4px;
+    cursor: pointer;
+    user-select: none;
+    font-size: var(--fs-body-s);
+    color: var(--c-text);
+    transition: color .1s;
+    border-radius: 6px;
+}
+.filter-row:hover { color: var(--c-accent); }
+.filter-row input[type="checkbox"] {
+    appearance: none;
+    width: 16px; height: 16px;
+    border: 1.5px solid var(--c-border);
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+    transition: border-color .12s, background .12s;
+}
+.filter-row input[type="checkbox"]:checked {
+    background: var(--c-accent);
+    border-color: var(--c-accent);
+}
+.filter-row input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    inset: 1px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23fff'%3E%3Cpath d='M16.7 5.3a1 1 0 010 1.4l-8 8a1 1 0 01-1.4 0l-4-4a1 1 0 011.4-1.4L8 12.6l7.3-7.3a1 1 0 011.4 0z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+.filter-row__count {
+    margin-left: auto;
+    font-size: 11px;
+    color: var(--c-text-muted);
+}
+
+/* Соседние категории */
+.siblings {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 18px;
+    padding: 20px;
+}
+.siblings__title {
+    font-family: var(--f-heading);
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--c-primary);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+.siblings__list { display: flex; flex-direction: column; gap: 2px; }
+.sibling {
+    display: flex; align-items: center; gap: 12px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    color: var(--c-text);
+    font-size: var(--fs-body-s);
+    transition: background .12s, color .12s;
+}
+.sibling:hover { background: var(--c-surface); color: var(--c-accent); }
+.sibling__swatch {
+    width: 16px; height: 16px; border-radius: 4px;
+    flex-shrink: 0;
+    border: 1px solid rgba(0,0,0,.06);
+}
+
+/* ============================ ГЛАВНАЯ КОЛОНКА (ТОВАРЫ) ============================ */
+.main-col { min-width: 0; }
+
+.toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+.toolbar__count { font-size: var(--fs-body-s); color: var(--c-text-muted); }
+.toolbar__count strong { color: var(--c-text); font-size: var(--fs-body-m); font-weight: 600; }
+
+.sort-wrap { position: relative; }
+.sort-wrap select {
+    appearance: none;
+    padding: 10px 40px 10px 16px;
+    border: 1px solid var(--c-border);
+    border-radius: 10px;
+    background: #fff;
+    font-family: inherit;
+    font-size: var(--fs-body-s);
+    color: var(--c-text);
+    cursor: pointer;
+    font-weight: 500;
+}
+.sort-wrap select:focus { outline: none; border-color: var(--c-accent); }
+.sort-wrap::after {
+    content: '';
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid var(--c-text-muted);
+    pointer-events: none;
+}
+
+/* Сетка товаров */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+.product {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 18px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.product:hover {
+    border-color: var(--c-accent);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px -16px rgba(14,45,23,.12);
+}
+.product__visual {
+    aspect-ratio: 4/3;
+    position: relative;
+    background: linear-gradient(135deg, var(--c-surface) 0%, #fff 100%);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+}
+.product__swatch {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    box-shadow: 0 12px 30px -8px var(--swatch-color, var(--dye-red));
+    background: var(--swatch-color, var(--dye-red));
+    position: relative;
+}
+.product__swatch::after {
+    content: '';
+    position: absolute;
+    top: 14%; left: 20%;
+    width: 28%; height: 28%;
+    background: rgba(255,255,255,.35);
+    border-radius: 50%;
+    filter: blur(6px);
+}
+.product__price-badge {
+    position: absolute;
+    top: 14px; left: 14px;
+    background: rgba(255,255,255,.95);
+    backdrop-filter: blur(4px);
+    color: var(--c-primary);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.product__group-badge {
+    position: absolute;
+    top: 14px; right: 14px;
+    background: var(--c-primary);
+    color: #fff;
+    font-family: var(--f-heading);
+    font-size: 11px;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+.product__body { padding: 18px; display: flex; flex-direction: column; flex: 1; }
+.product__name {
+    font-weight: 600;
+    font-size: var(--fs-body-m);
+    margin-bottom: 4px;
+    line-height: 1.3;
+}
+.product__color {
+    font-size: var(--fs-body-s);
+    color: var(--c-text-muted);
+    margin-bottom: 12px;
+}
+
+.product__tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.product__tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    background: var(--c-surface);
+    border-radius: 999px;
+    color: var(--c-text);
+}
+.product__tag--form { background: rgba(105,128,255,.1); color: var(--c-accent); font-weight: 500; }
+
+.product__industries {
+    display: flex; gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    font-size: 11px;
+    color: var(--c-text-muted);
+}
+.product__industries-item { white-space: nowrap; }
+.product__industries-item:not(:last-child)::after { content: '·'; margin: 0 4px; }
+
+.product__btn {
+    margin-top: auto;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: var(--c-primary);
+    color: #fff;
+    border-radius: 10px;
+    font-family: var(--f-heading);
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: background .15s;
+    cursor: pointer;
+}
+.product__btn:hover { background: var(--c-primary-alt); }
+.product__btn svg { width: 14px; height: 14px; }
+
+/* Пустой результат */
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 80px 40px;
+    text-align: center;
+    background: var(--c-surface);
+    border-radius: 18px;
+}
+.empty-state h3 { color: var(--c-primary); margin-bottom: 8px; }
+.empty-state p { color: var(--c-text-muted); }
+
+/* Мобильный фильтр-кнопка */
+.filter-toggle {
+    display: none;
+    width: 100%;
+    padding: 14px;
+    background: var(--c-primary);
+    color: #fff;
+    border-radius: 12px;
+    font-family: var(--f-heading);
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    align-items: center; justify-content: center; gap: 10px;
+}
+.filter-toggle svg { width: 16px; height: 16px; }
+
+/* ============================ ФУТЕР ============================ */
+.footer {
+    background: var(--c-primary);
+    color: rgba(255,255,255,.75);
+    padding: 80px 0 0;
+    position: relative;
+}
+.footer__grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 56px; }
+.footer .logo__mark { color: #fff; }
+.footer .logo__tagline { color: rgba(255,255,255,.5); }
+.footer__about { font-size: var(--fs-body-s); margin-top: 24px; line-height: 1.6; color: rgba(255,255,255,.6); }
+.footer__certs { display: flex; gap: 12px; margin-top: 20px; }
+.footer__cert { padding: 6px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 6px; font-size: 11px; font-weight: 600; letter-spacing: 1px; color: rgba(255,255,255,.85); }
+.footer__col h4 { font-family: var(--f-heading); font-size: 14px; letter-spacing: 2px; color: #fff; margin-bottom: 20px; text-transform: uppercase; }
+.footer__col ul { list-style: none; }
+.footer__col li { margin-bottom: 12px; }
+.footer__col a { font-size: var(--fs-body-s); transition: color .15s; }
+.footer__col a:hover { color: #fff; }
+.footer__contact-item { font-size: var(--fs-body-s); margin-bottom: 16px; line-height: 1.5; }
+.footer__contact-item strong { display: block; color: rgba(255,255,255,.5); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.footer__contact-item a { color: #fff; font-weight: 500; }
+.footer__warehouses { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+.footer__warehouse { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.4; }
+.footer__warehouse strong { color: #fff; display: block; margin-bottom: 2px; font-weight: 500; }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 24px 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,.5); flex-wrap: wrap; gap: 16px; }
+.footer__bottom a { color: rgba(255,255,255,.7); }
+.footer__bottom a:hover { color: #fff; }
+.color-strip { display: flex; height: 10px; width: 100%; }
+.color-strip span { flex: 1; }
+
+/* ============================ АДАПТИВ ============================ */
+@media (max-width: 1080px) {
+    .nav { display: none; }
+    .header__phone { display: none; }
+    .btn-burger { display: flex; }
+    .mobile-nav { display: block; }
+    .megamenu__inner { grid-template-columns: 1fr; padding: 24px 16px; }
+    .megamenu__left { border-right: none; border-bottom: 1px solid var(--c-border); padding: 0 0 16px; margin-bottom: 16px; }
+    .megamenu__right { padding: 0; }
+    .mm-subgrid { grid-template-columns: 1fr; }
+    .children-grid { grid-template-columns: repeat(2, 1fr); }
+    .catalog { grid-template-columns: 1fr; }
+    .filter-toggle { display: flex; }
+    .sidebar { display: none; }
+    .sidebar.is-open { display: flex; }
+    .products { grid-template-columns: repeat(2, 1fr); }
+    .footer__grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+    :root { --fs-h1: 36px; --fs-h2: 26px; --container-pad: 16px; }
+    .search-strip input { height: 50px; font-size: var(--fs-body-s); padding: 0 90px 0 48px; }
+    .search-strip button { padding: 0 16px; font-size: 12px; height: 38px; }
+    .children-grid { grid-template-columns: 1fr; }
+    .products { grid-template-columns: 1fr; }
+    .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+    .page-head__swatch { width: 44px; height: 44px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ ШАПКА ============================ -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="/" class="logo">
+            <span class="logo__mark">luxomix</span>
+            <span class="logo__tagline">natural color</span>
+        </a>
+        <button class="btn-catalog" id="catalogBtn" aria-label="Открыть каталог" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            КАТАЛОГ
+            <svg class="btn-catalog__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <nav class="nav">
+            <a href="/about">О нас</a>
+            <a href="/in-product">В продукте</a>
+            <a href="/blog">Блог</a>
+            <a href="/contacts">Контакты</a>
+        </nav>
+        <a href="tel:88007070870" class="header__phone">8 (800) 707-08-70</a>
+        <button class="btn-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+            <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+</header>
+
+<!-- ============================ МОБИЛЬНОЕ МЕНЮ ============================ -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="container">
+        <a href="/about">О нас</a>
+        <a href="/in-product">В продукте</a>
+        <a href="/blog">Блог</a>
+        <a href="/contacts">Контакты</a>
+        <a href="tel:88007070870" class="mobile-nav__phone">8 (800) 707-08-70</a>
+    </div>
+</nav>
+
+<!-- ============================ ПОЛНОШИРИННЫЙ ПОИСК ============================ -->
+<div class="search-strip">
+    <div class="container">
+        <div class="search-strip__inner sd-wrap">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="Поиск по красителям, оттенкам, применению…" id="searchInput" autocomplete="off">
+            <button>Найти</button>
+            <div class="search-dropdown" id="stripSearchDropdown" role="listbox"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ============================ МЕГАМЕНЮ ============================ -->
+<div class="megamenu-overlay" id="mmOverlay"></div>
+<nav class="megamenu" id="megamenu" aria-hidden="true">
+    <div class="container megamenu__inner">
+        <div class="megamenu__left">
+            <button class="mm-item" data-target="po-cvetu">По цвету <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item is-active" data-target="po-primeneniyu">По применению <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="bestsellers">Бестселлеры <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="novinki">Новинки <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+        <div class="megamenu__right">
+            <div class="mm-panel" id="mm-po-cvetu">
+                <h3 class="mm-panel__title">По цвету</h3>
+                <p class="mm-panel__lead">13 оттенков от жёлтого куркумина до чёрного растительного угля.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F5C518"></span>Жёлтый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F39200"></span>Оранжевый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#E84E1B"></span>Красно-оранжевый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#D52B1E"></span>Красный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#E6007E"></span>Малиновый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#7E3A93"></span>Фиолетовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#3B1E5E"></span>Тёмно-фиолетовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#2E5A87"></span>Синий</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#1E7A7A"></span>Бирюзовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#9DC23B"></span>Зелёный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#6B4423"></span>Коричневый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#8B2E1F"></span>Красно-коричневый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#1A1A1A"></span>Чёрный</a>
+                </div>
+            </div>
+            <div class="mm-panel is-active" id="mm-po-primeneniyu">
+                <h3 class="mm-panel__title">По применению</h3>
+                <p class="mm-panel__lead">Готовые решения для конкретной отрасли пищевого производства.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/konditerskaya" class="mm-sublink" style="background:rgba(105,128,255,.08); color:var(--c-accent); font-weight:500;"><span class="mm-sublink__bullet">→</span>Кондитерская <span style="margin-left:auto; font-size:11px">текущая</span></a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Молочная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Напитки</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Мясная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Хлебопекарная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Масложировая</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Фарма и БАД</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Корма для животных</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-bestsellers">
+                <h3 class="mm-panel__title">Бестселлеры</h3>
+                <p class="mm-panel__lead">Самые востребованные позиции.</p>
+                <div class="mm-subgrid">
+                    <a href="/product/kurkumin-0040" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Куркумин 0040</a>
+                    <a href="/product/karmin-0030" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Кармин 0030</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-novinki">
+                <h3 class="mm-panel__title">Новинки</h3>
+                <p class="mm-panel__lead">Свежие позиции каталога.</p>
+                <div class="mm-subgrid">
+                    <a href="#" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® Антоцианин 5000</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ============================ КОНТЕНТ СТРАНИЦЫ ============================ -->
+<main class="container">
+
+    <!-- Хлебные крошки (ТЗ: полная цепочка родительских категорий) -->
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <ol>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/category/krasnyy">Каталог</a></li>
+            <li><a href="/category/po-primeneniyu">По применению</a></li>
+            <li>Кондитерская</li>
+        </ol>
+    </nav>
+
+    <!-- Заголовок -->
+    <div class="page-head">
+        <div class="page-head__title">
+            <div class="page-head__swatch">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M3 12c0-4 4-8 9-8s9 4 9 8v6H3v-6z"/>
+                    <path d="M3 18h18"/>
+                    <path d="M7 12v2M12 10v4M17 12v2"/>
+                </svg>
+            </div>
+            <div>
+                <h1>Кондитерская</h1>
+                <p style="font-size:13px; color:var(--c-text-muted); margin-top:4px;">94 товаров</p>
+            </div>
+        </div>
+        <p class="page-head__lead">Натуральные пищевые красители для производства шоколада, мармелада, карамели, печенья, тортов, гелей и начинок. Полная палитра — от лимонно-жёлтого до чёрного — со стабильным цветом в широком диапазоне pH и температур.</p>
+    </div>
+
+    <!-- Дочерние категории -->
+    <div class="children-wrap">
+        <div class="children-label">Подкатегории</div>
+        <div class="children-grid">
+            <a href="/category/konditerskaya/shokolad" class="child-cat">
+                <div class="child-cat__icon" style="background:#6B4423">Ш</div>
+                <div>
+                    <div class="child-cat__name">Шоколад</div>
+                    <div class="child-cat__count">27 товаров</div>
+                </div>
+            </a>
+            <a href="/category/konditerskaya/glazuri" class="child-cat">
+                <div class="child-cat__icon" style="background:#E6B95C">Г</div>
+                <div>
+                    <div class="child-cat__name">Глазури</div>
+                    <div class="child-cat__count">84 товаров</div>
+                </div>
+            </a>
+            <a href="/category/konditerskaya/nachinki" class="child-cat">
+                <div class="child-cat__icon" style="background:#E6007E">Н</div>
+                <div>
+                    <div class="child-cat__name">Начинки</div>
+                    <div class="child-cat__count">69 товаров</div>
+                </div>
+            </a>
+            <a href="/category/konditerskaya/karamel" class="child-cat">
+                <div class="child-cat__icon" style="background:#F39200">К</div>
+                <div>
+                    <div class="child-cat__name">Карамель и леденцы</div>
+                    <div class="child-cat__count">48 товаров</div>
+                </div>
+            </a>
+            <a href="/category/konditerskaya/marmelad-zhele" class="child-cat">
+                <div class="child-cat__icon" style="background:#D52B1E">М</div>
+                <div>
+                    <div class="child-cat__name">Мармелад, желе, зефир</div>
+                    <div class="child-cat__count">51 товаров</div>
+                </div>
+            </a>
+            <a href="/category/konditerskaya/pechenye-torty" class="child-cat">
+                <div class="child-cat__icon" style="background:#A66B3C">П</div>
+                <div>
+                    <div class="child-cat__name">Печенье, торты, кексы</div>
+                    <div class="child-cat__count">56 товаров</div>
+                </div>
+            </a>
+            <a href="/category/konditerskaya/geli" class="child-cat">
+                <div class="child-cat__icon" style="background:#9DC23B">Г</div>
+                <div>
+                    <div class="child-cat__name">Кондитерские гели</div>
+                    <div class="child-cat__count">55 товаров</div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Каталог: фильтры + товары -->
+    <div class="catalog">
+
+        <!-- Кнопка фильтров для мобилок -->
+        <button class="filter-toggle" id="filterToggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+            ФИЛЬТРЫ И КАТЕГОРИИ
+        </button>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+
+            <!-- Фильтры -->
+            <div class="filters">
+                <div class="filters__title">Фильтры</div>
+                <a class="filters__reset" id="resetFilters">Сбросить всё</a>
+
+                <div class="filter-group">
+                    <div class="filter-group__label">Подприменение</div>
+                    <div class="filter-list" id="filter-conf-sub"></div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-group__label">Группа красителя</div>
+                    <div class="filter-list" id="filter-group"></div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-group__label">Вид</div>
+                    <div class="filter-list" id="filter-forma"></div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-group__label">Растворимость</div>
+                    <div class="filter-list" id="filter-solubility"></div>
+                </div>
+
+                <div class="filter-group">
+                    <div class="filter-group__label">Цвет</div>
+                    <div class="filter-list" id="filter-color"></div>
+                </div>
+            </div>
+
+            <!-- Соседние категории (тот же уровень) -->
+            <div class="siblings">
+                <div class="siblings__title">Другие отрасли</div>
+                <div class="siblings__list">
+                    <a href="/category/hlebopekarnaya" class="sibling"><span class="sibling__swatch" style="background:#D4A574"></span>Хлебопекарная</a>
+                    <a href="/category/molochnaya" class="sibling"><span class="sibling__swatch" style="background:#F5F5F0"></span>Молочная</a>
+                    <a href="/category/napitki" class="sibling"><span class="sibling__swatch" style="background:#6980FF"></span>Напитки</a>
+                    <a href="/category/myasnaya" class="sibling"><span class="sibling__swatch" style="background:#A23B3B"></span>Мясная</a>
+                    <a href="/category/syry" class="sibling"><span class="sibling__swatch" style="background:#F5C518"></span>Сыры</a>
+                    <a href="/category/ryba" class="sibling"><span class="sibling__swatch" style="background:#7AAACC"></span>Рыба</a>
+                    <a href="/category/maslozhirovaya" class="sibling"><span class="sibling__swatch" style="background:#E6B95C"></span>Масложировая</a>
+                    <a href="/category/bystroe-prigotovlenie" class="sibling"><span class="sibling__swatch" style="background:#9DC23B"></span>Быстрое приготовление</a>
+                    <a href="/category/farma-bad" class="sibling"><span class="sibling__swatch" style="background:#1F7A3A"></span>Фарма и БАД</a>
+                    <a href="/category/korma" class="sibling"><span class="sibling__swatch" style="background:#8B5E3C"></span>Корма для животных</a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN: товары -->
+        <div class="main-col">
+            <div class="toolbar">
+                <div class="toolbar__count"><strong id="resultCount">24</strong> товара</div>
+                <div class="sort-wrap">
+                    <select id="sortSelect">
+                        <option value="default">По умолчанию</option>
+                        <option value="name-asc">Название А→Я</option>
+                        <option value="name-desc">Название Я→А</option>
+                        <option value="group">По группе</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="products" id="productsGrid"></div>
+        </div>
+    </div>
+</main>
+
+<!-- ============================ ФУТЕР ============================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div>
+                <div class="logo">
+                    <span class="logo__mark" style="color:#fff">luxomix</span>
+                    <span class="logo__tagline">natural color</span>
+                </div>
+                <p class="footer__about">Натуральные пищевые красители и растительные экстракты для производителей продукции категории «чистая этикетка». ООО «БАРГУС продакшн», с 2004 года.</p>
+                <div class="footer__certs">
+                    <span class="footer__cert">ISO 22000</span>
+                    <span class="footer__cert">FSSC 22000</span>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h4>Каталог</h4>
+                <ul>
+                    <li><a href="/category/po-cvetu">По цвету</a></li>
+                    <li><a href="/category/po-primeneniyu">По применению</a></li>
+                    <li><a href="/category/bestsellers">Бестселлеры</a></li>
+                    <li><a href="/category/novinki">Новинки</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/in-product">В продукте</a></li>
+                    <li><a href="/blog">Блог</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Контакты</h4>
+                <div class="footer__contact-item">
+                    <strong>Телефон</strong>
+                    <a href="tel:88007070870">8 (800) 707-08-70</a>
+                </div>
+                <div class="footer__contact-item">
+                    <strong>E-mail</strong>
+                    <a href="mailto:info@luxomix.ru">info@luxomix.ru</a>
+                </div>
+                <div class="footer__warehouses">
+                    <div class="footer__warehouse"><strong>Москва</strong>склад · самовывоз</div>
+                    <div class="footer__warehouse"><strong>СПб</strong>склад · доставка</div>
+                    <div class="footer__warehouse"><strong>Алматы</strong>склад · РК</div>
+                    <div class="footer__warehouse"><strong>Гомель</strong>склад · РБ</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>© 2004–2026 LUXOMIX® · ООО «БАРГУС продакшн»</span>
+            <span><a href="/privacy">Политика конфиденциальности</a> · <a href="/terms">Пользовательское соглашение</a></span>
+        </div>
+    </div>
+    <div class="color-strip">
+        <span style="background:var(--dye-yellow)"></span><span style="background:var(--dye-orange)"></span><span style="background:var(--dye-red-orange)"></span><span style="background:var(--dye-red)"></span><span style="background:var(--dye-pink)"></span><span style="background:var(--dye-purple)"></span><span style="background:var(--dye-dark-purple)"></span><span style="background:var(--dye-blue)"></span><span style="background:var(--dye-turquoise)"></span><span style="background:var(--dye-green)"></span><span style="background:var(--dye-brown)"></span><span style="background:var(--dye-red-brown)"></span><span style="background:var(--dye-black)"></span>
+    </div>
+</footer>
+
+<!-- ============================ ДАННЫЕ ТОВАРОВ + СКРИПТЫ ============================ -->
+<script id="products-data" type="application/json">
+[{"name":"Luxomix® Куркумин 0040","group":"КУРКУМИН","color":"Лимонно-желтый","forma":"Жидкость","solubility":"Водо- и жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Мясная продукция","Напитки","Рыба","Сыры","Хлебобулочная продукция"],"conf_subs":["Жировая глазурь","Сахарная глазурь","Фруктовые начинки","Жировые начинки","Шоколад","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"куркумин-0040"},{"name":"Luxomix® Куркумин 0140","group":"КУРКУМИН","color":"Желтый","forma":"Порошок","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Сыры","Фармацевтические продукты и БАДы"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"куркумин-0140"},{"name":"Luxomix® Куркумин 0148","group":"КУРКУМИН","color":"Желтый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Жировые начинки","Шоколад","Кондитерские гели"],"color_hex":"#F5C518","slug":"куркумин-0148"},{"name":"Luxomix® Куркумин 1140","group":"КУРКУМИН","color":"Желтый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"куркумин-1140"},{"name":"Luxomix® Аннато-куркумин 0025","group":"АННАТО-КУРКУМИН","color":"Желто-оранжевый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Мясная продукция","Рыба","Сыры"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#F5A623","slug":"аннато-куркумин-0025"},{"name":"Luxomix® Аннато-куркумин 0026","group":"АННАТО-КУРКУМИН","color":"Желто-оранжевый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Мясная продукция","Рыба","Сыры"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#F5A623","slug":"аннато-куркумин-0026"},{"name":"Luxomix® Бета-каротин 0001","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Мясная продукция","Сыры"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#F5C518","slug":"бета-каротин-0001"},{"name":"Luxomix® Бета-каротин 0002","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Мясная продукция","Сыры"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#F5C518","slug":"бета-каротин-0002"},{"name":"Luxomix® Бета-каротин 0003","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Мясная продукция","Сыры"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#F5C518","slug":"бета-каротин-0003"},{"name":"Luxomix® Бета-каротин 0004","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Молочная продукция","Мясная продукция","Напитки","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"бета-каротин-0004"},{"name":"Luxomix® Бета-каротин 0005","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Молочная продукция","Мясная продукция","Напитки","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"бета-каротин-0005"},{"name":"Luxomix® Бета-каротин 0008","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Напитки","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"бета-каротин-0008"},{"name":"Luxomix® Бета-каротин 3000","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Мясная продукция","Рыба","Сыры","Фармацевтические продукты и БАДы"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#F5C518","slug":"бета-каротин-3000"},{"name":"Luxomix® Бета-каротин 5% WS","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Молочная продукция","Мясная продукция","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Кондитерские гели","Мучные кондитерские изделия"],"color_hex":"#F5C518","slug":"бета-каротин-5-ws"},{"name":"Luxomix® Бета-каротин 0107","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"бета-каротин-0107"},{"name":"Luxomix® Бета-каротин 0110","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Напитки","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"бета-каротин-0110"},{"name":"Luxomix® Бета-каротин 0115","group":"БЕТА-КАРОТИН","color":"Желтый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Молочная продукция","Мясная продукция","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Мучные кондитерские изделия"],"color_hex":"#F5C518","slug":"бета-каротин-0115"},{"name":"Luxomix® Аннато 0020","group":"АННАТО","color":"Желто-оранжевый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Рыба","Сыры","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Кондитерские гели","Карамель"],"color_hex":"#F5A623","slug":"аннато-0020"},{"name":"Luxomix® Аннато 0021","group":"АННАТО","color":"Желто-оранжевый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Напитки","Рыба","Сыры","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#F5A623","slug":"аннато-0021"},{"name":"Luxomix® Аннато 0023","group":"АННАТО","color":"Оранжевый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Сыры","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Карамель"],"color_hex":"#F39200","slug":"аннато-0023"},{"name":"Luxomix® Аннато 0024","group":"АННАТО","color":"Желто-оранжевый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Рыба","Сыры","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Карамель"],"color_hex":"#F5A623","slug":"аннато-0024"},{"name":"Luxomix® Аннато 0027","group":"АННАТО","color":"Желто-оранжевый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Мясная продукция","Рыба","Сыры"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#F5A623","slug":"аннато-0027"},{"name":"Luxomix® Аннато 0121","group":"АННАТО","color":"Желтый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Рыба","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5C518","slug":"аннато-0121"},{"name":"Luxomix® Аннато 1120","group":"АННАТО","color":"Желто-оранжевый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Рыба","Хлебобулочная продукция"],"conf_subs":["Кондитерские гели","Мучные кондитерские изделия","Карамель"],"color_hex":"#F5A623","slug":"аннато-1120"},{"name":"Luxomix® Паприка каротин","group":"ПАПРИКА","color":"Оранжево-золотистый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Мясная продукция","Рыба","Сыры"],"conf_subs":["Сахаристые кондитерские изделия"],"color_hex":"#FFA500","slug":"паприка-каротин"},{"name":"Luxomix® Паприка 0011","group":"ПАПРИКА","color":"Оранжевый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Мясная продукция","Рыба","Сыры"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#F39200","slug":"паприка-0011"},{"name":"Luxomix® Паприка 0012","group":"ПАПРИКА","color":"Оранжевый","forma":"Жидкость","solubility":"Водо- и жирорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Рыба","Сыры","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Жировая глазурь","Сахарная глазурь","Фруктовые начинки","Жировые начинки","Шоколад","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F39200","slug":"паприка-0012"},{"name":"Luxomix® Паприка 0013","group":"ПАПРИКА","color":"Оранжевый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Карамель"],"color_hex":"#F39200","slug":"паприка-0013"},{"name":"Luxomix® Паприка 0014","group":"ПАПРИКА","color":"Оранжевый","forma":"Жидкость","solubility":"Водо- и жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция"],"conf_subs":["Жировая глазурь","Сахарная глазурь","Фруктовые начинки","Жировые начинки","Шоколад","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#F39200","slug":"паприка-0014"},{"name":"Luxomix® Паприка 0015","group":"ПАПРИКА","color":"Оранжевый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Рыба","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#F39200","slug":"паприка-0015"},{"name":"Luxomix® Паприка 1112","group":"ПАПРИКА","color":"Оранжевый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Продукты быстрого приготовления","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#F39200","slug":"паприка-1112"},{"name":"Luxomix® Свекольный 0055","group":"СВЕКОЛЬНЫЙ","color":"Красно-розовый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Продукты быстрого приготовления","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Мучные кондитерские изделия"],"color_hex":"#E84E8B","slug":"свекольный-0055"},{"name":"Luxomix® Свекольный 0555 МР","group":"СВЕКОЛЬНЫЙ","color":"Красно-розовый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#E84E8B","slug":"свекольный-0555-мр"},{"name":"Luxomix® Кармин 0030","group":"КАРМИН","color":"Малиновый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Мясная продукция","Продукты быстрого приготовления","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Карамель"],"color_hex":"#E6007E","slug":"кармин-0030"},{"name":"Luxomix® Кармин 0031","group":"КАРМИН","color":"Малиново-черничный","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия"],"color_hex":"#8B1E5E","slug":"кармин-0031"},{"name":"Luxomix® Кармин 0032","group":"КАРМИН","color":"Клубничный","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#E84E5E","slug":"кармин-0032"},{"name":"Luxomix® Кармин 0033","group":"КАРМИН","color":"Красный ягодный","forma":"Жидкость","solubility":"Жиродисперсный","industries":["group","is","Кондитерские продукция","Масложировая продкция"],"conf_subs":["Жировые начинки","Шоколад","Мучные кондитерские изделия"],"color_hex":"#C2272D","slug":"кармин-0033"},{"name":"Luxomix® Кармин 0035","group":"КАРМИН","color":"Малиновый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#E6007E","slug":"кармин-0035"},{"name":"Luxomix® Кармин 0036","group":"КАРМИН","color":"От малинового до клубничного","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Мучные кондитерские изделия"],"color_hex":"#E03862","slug":"кармин-0036"},{"name":"Luxomix® Кармин 0037","group":"КАРМИН","color":"Клубнично-красный","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Напитки","Рыба"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Мучные кондитерские изделия"],"color_hex":"#E03A2E","slug":"кармин-0037"},{"name":"Luxomix® Кармин 0038","group":"КАРМИН","color":"От малинового-красного до клубнично-красного","forma":"Жидкость","solubility":"Вододисперсный","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Хлебобулочная продукция"],"conf_subs":["Мучные кондитерские изделия"],"color_hex":"#D02842","slug":"кармин-0038"},{"name":"Luxomix® Кармин 0130","group":"КАРМИН","color":"Малиново-красный","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Мясная продукция","Продукты быстрого приготовления","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Мучные кондитерские изделия","Карамель"],"color_hex":"#C71F4A","slug":"кармин-0130"},{"name":"Luxomix® Кармин 0131","group":"КАРМИН","color":"Малиново-красный","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Напитки","Продукты быстрого приготовления","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#C71F4A","slug":"кармин-0131"},{"name":"Luxomix® Кармин 0133","group":"КАРМИН","color":"Малиново-красный","forma":"Порошок","solubility":"Вододисперсный и жиродисперсный","industries":["group","is","Кондитерские продукция","Масложировая продкция","Мясная продукция","Рыба","Хлебобулочная продукция"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#C71F4A","slug":"кармин-0133"},{"name":"Luxomix® Кармин 0233","group":"КАРМИН","color":"От малинового-красного до клубнично-красного","forma":"Жидкость","solubility":"Вододисперсный и жиродисперсный","industries":["group","is","Кондитерские продукция","Мясная продукция","Рыба","Хлебобулочная продукция"],"conf_subs":["Мучные кондитерские изделия"],"color_hex":"#D02842","slug":"кармин-0233"},{"name":"Luxomix® Кармин 0235","group":"КАРМИН","color":"Малиновый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#E6007E","slug":"кармин-0235"},{"name":"Luxomix® Кармин 1130","group":"КАРМИН","color":"От красного до бордового","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Мясная продукция","Хлебобулочная продукция"],"conf_subs":["Мучные кондитерские изделия","Карамель"],"color_hex":"#9B1B26","slug":"кармин-1130"},{"name":"Luxomix® Кармин 1131","group":"КАРМИН","color":"Холодный красный","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Мясная продукция","Хлебобулочная продукция"],"conf_subs":["Мучные кондитерские изделия","Карамель"],"color_hex":"#C73645","slug":"кармин-1131"},{"name":"Luxomix® Кармин 1133","group":"КАРМИН","color":"Красный","forma":"Порошок","solubility":"Маслодисперсный","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Хлебобулочная продукция"],"conf_subs":["Жировая глазурь","Шоколад","Мучные кондитерские изделия","Карамель"],"color_hex":"#D52B1E","slug":"кармин-1133"},{"name":"Luxomix® Кармин V","group":"КАРМИН","color":"Сине-фиолетовый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция"],"conf_subs":["Сахарная глазурь","Сахаристые кондитерские изделия"],"color_hex":"#5B3A93","slug":"кармин-v"},{"name":"Luxomix® Кармин VI","group":"КАРМИН","color":"Фиолетовый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция"],"conf_subs":["Сахарная глазурь","Сахаристые кондитерские изделия"],"color_hex":"#7E3A93","slug":"кармин-vi"},{"name":"Luxomix® Кармин VII","group":"КАРМИН","color":"Красно-фиолетовый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция"],"conf_subs":["Сахарная глазурь","Сахаристые кондитерские изделия"],"color_hex":"#A23B7A","slug":"кармин-vii"},{"name":"Luxomix® Кармин 0330","group":"КАРМИН","color":"Фиолетовый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Кондитерские гели","Сахаристые кондитерские изделия","Карамель"],"color_hex":"#7E3A93","slug":"кармин-0330"},{"name":"Luxomix® Кармин 0333 МР","group":"КАРМИН","color":"Фиолетовый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#7E3A93","slug":"кармин-0333-мр"},{"name":"Luxomix® Кармин 0339 МР","group":"КАРМИН","color":"Черничный","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#3B1E5E","slug":"кармин-0339-мр"},{"name":"Luxomix® Антоцианин 0050","group":"АНТОЦИАНИН","color":"Красно-фиолетовый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#A23B7A","slug":"антоцианин-0050"},{"name":"Luxomix® Антоцианин 0051","group":"АНТОЦИАНИН","color":"Красно-фиолетовый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#A23B7A","slug":"антоцианин-0051"},{"name":"Luxomix® Антоцианин 0053","group":"АНТОЦИАНИН","color":"Красно-фиолетовый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#A23B7A","slug":"антоцианин-0053"},{"name":"Luxomix® Антоцианин 5000","group":"АНТОЦИАНИН","color":"Красно-фиолетовый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки"],"conf_subs":["Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия"],"color_hex":"#A23B7A","slug":"антоцианин-5000"},{"name":"Luxomix® Спирулина 0070","group":"СПИРУЛИНА","color":"Синий","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия"],"color_hex":"#2E5A87","slug":"спирулина-0070"},{"name":"Luxomix® Спирулина 0071","group":"СПИРУЛИНА","color":"Синий","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия"],"color_hex":"#2E5A87","slug":"спирулина-0071"},{"name":"Luxomix® Спирулина 0072","group":"СПИРУЛИНА","color":"Синий","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Продукты быстрого приготовления","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Мучные кондитерские изделия","Карамель"],"color_hex":"#2E5A87","slug":"спирулина-0072"},{"name":"Luxomix® Спирулина 0074","group":"СПИРУЛИНА","color":"Синий","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Продукты быстрого приготовления","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Мучные кондитерские изделия","Карамель"],"color_hex":"#2E5A87","slug":"спирулина-0074"},{"name":"Luxomix® Хлорофилл 0041","group":"ХЛОРОФИЛЛ","color":"Желто-зеленый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#9DC23B","slug":"хлорофилл-0041"},{"name":"Luxomix® Хлорофилл 0041 МР","group":"ХЛОРОФИЛЛ","color":"Желто-зеленый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#9DC23B","slug":"хлорофилл-0041-мр"},{"name":"Luxomix® Хлорофилл 0042","group":"ХЛОРОФИЛЛ","color":"Зеленый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#5BA833","slug":"хлорофилл-0042"},{"name":"Luxomix® Хлорофилл 0043","group":"ХЛОРОФИЛЛ","color":"Зеленый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#5BA833","slug":"хлорофилл-0043"},{"name":"Luxomix® Хлорофилл 0044","group":"ХЛОРОФИЛЛ","color":"Фисташковый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#93C572","slug":"хлорофилл-0044"},{"name":"Luxomix® Хлорофилл 0044 МР","group":"ХЛОРОФИЛЛ","color":"Желто-зеленый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#9DC23B","slug":"хлорофилл-0044-мр"},{"name":"Luxomix® Хлорофилл 0045 Лайм","group":"ХЛОРОФИЛЛ","color":"Лаймовый или Желто-зеленый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия"],"color_hex":"#BFD630","slug":"хлорофилл-0045-лайм"},{"name":"Luxomix® Хлорофилл 0048 МР Фисташка","group":"ХЛОРОФИЛЛ","color":"Светло-зеленый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#9DC23B","slug":"хлорофилл-0048-мр-фисташка"},{"name":"Luxomix® Хлорофилл 0142","group":"ХЛОРОФИЛЛ","color":"Темно-зеленый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Мучные кондитерские изделия","Карамель"],"color_hex":"#2D5E22","slug":"хлорофилл-0142"},{"name":"Luxomix® Хлорофилл 0431","group":"ХЛОРОФИЛЛ","color":"Желто-зеленый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахаристые кондитерские изделия","Мучные кондитерские изделия"],"color_hex":"#9DC23B","slug":"хлорофилл-0431"},{"name":"Luxomix® Хлорофилл 1141","group":"ХЛОРОФИЛЛ","color":"Зеленый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Напитки","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Мучные кондитерские изделия","Карамель"],"color_hex":"#5BA833","slug":"хлорофилл-1141"},{"name":"Luxomix® Сахарный колер 150А                                         (Ароматическая карамель WS 100)","group":"САХАРНЫЙ КОЛЕР","color":"Светло-коричневый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#A66B3C","slug":"сахарный-колер-150а-ароматическая-карамель-ws-100"},{"name":"Luxomix® Сахарный колер Е150А (жидкость)","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#6B4423","slug":"сахарный-колер-е150а-жидкость"},{"name":"Luxomix® Сахарный колер Е150А (порошок)","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#6B4423","slug":"сахарный-колер-е150а-порошок"},{"name":"Luxomix® Сахарный колер Е150С (жидкость)","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#6B4423","slug":"сахарный-колер-е150с-жидкость"},{"name":"Luxomix® Сахарный колер Е150С (порошок)","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#6B4423","slug":"сахарный-колер-е150с-порошок"},{"name":"Luxomix® Сахарный колер Е150D (жидкость)","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#6B4423","slug":"сахарный-колер-е150d-жидкость"},{"name":"Luxomix® Сахарный колер Е150D (порошок)","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#6B4423","slug":"сахарный-колер-е150d-порошок"},{"name":"Luxomix® Сахарный колер микс","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Жидкость","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Корма для животных","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#6B4423","slug":"сахарный-колер-микс"},{"name":"Luxomix® Сахарный колер микс IV МР","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Продукты быстрого приготовления"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#6B4423","slug":"сахарный-колер-микс-iv-мр"},{"name":"Luxomix® Сахарный колер микс III МР 2","group":"САХАРНЫЙ КОЛЕР","color":"Коричневый","forma":"Жидкость","solubility":"Жирорастворимый","industries":["group","is","Кондитерские продукция","Масложировая продкция","Продукты быстрого приготовления"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад"],"color_hex":"#6B4423","slug":"сахарный-колер-микс-iii-мр-2"},{"name":"Luxomix® Колер микс красный","group":"САХАРНЫЙ КОЛЕР","color":"Красно-коричневый","forma":"Порошок","solubility":"Водорастворимый","industries":["group","is","Кондитерские продукция","Молочная продукция","Мясная продукция","Напитки","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#8B2E1F","slug":"колер-микс-красный"},{"name":"Luxomix® Растительный уголь 0060Е","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color":"Черный","forma":"Жидкость","solubility":"Вододисперсный","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Молочная продукция","Продукты быстрого приготовления","Рыба","Сыры","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Мучные кондитерские изделия","Карамель"],"color_hex":"#1A1A1A","slug":"растительный-уголь-0060е"},{"name":"Luxomix® Растительный уголь 0061","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color":"Черный","forma":"Порошок","solubility":"Водо - и жиродисперсный","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Молочная продукция","Продукты быстрого приготовления","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Жировая глазурь","Сахарная глазурь","Фруктовые начинки","Жировые начинки","Шоколад","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#1A1A1A","slug":"растительный-уголь-0061"},{"name":"Luxomix® Растительный уголь 0260","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color":"Черный","forma":"Жидкость","solubility":"Жиродисперсный","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Продукты быстрого приготовления","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Жировая глазурь","Жировые начинки","Карамель"],"color_hex":"#1A1A1A","slug":"растительный-уголь-0260"},{"name":"Luxomix® Растительный уголь 0360","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color":"Черный","forma":"Жидкость","solubility":"Вододисперсный","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Молочная продукция","Продукты быстрого приготовления","Рыба","Сыры","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Мучные кондитерские изделия","Карамель"],"color_hex":"#1A1A1A","slug":"растительный-уголь-0360"},{"name":"Luxomix® Растительный уголь 0460","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color":"Черный","forma":"Жидкость","solubility":"Вододисперсный","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Молочная продукция","Продукты быстрого приготовления","Рыба","Сыры","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Мучные кондитерские изделия","Карамель"],"color_hex":"#1A1A1A","slug":"растительный-уголь-0460"},{"name":"Luxomix® Диоксид титана 0062","group":"ДИОКСИД ТИТАНА","color":"Белый","forma":"Жидкость","solubility":"Вододисперсный","industries":["group","is","Кондитерские продукция","Молочная продукция","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия"],"color_hex":"#F0F0F0","slug":"диоксид-титана-0062"},{"name":"Luxomix® Диоксид титана 0063","group":"ДИОКСИД ТИТАНА","color":"Белый","forma":"Порошок","solubility":"Водо - и жиродисперсный","industries":["group","is","Кондитерские продукция","Масложировая продкция","Молочная продукция","Напитки","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Жировая глазурь","Сахарная глазурь","Фруктовые начинки","Жировые начинки","Шоколад","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F0F0F0","slug":"диоксид-титана-0063"},{"name":"Luxomix® Диоксид титана 0064","group":"ДИОКСИД ТИТАНА","color":"Белый","forma":"Жидкость","solubility":"Вододисперсный","industries":["group","is","Кондитерские продукция","Молочная продукция","Рыба","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Сахарная глазурь","Фруктовые начинки","Кондитерские гели","Сахаристые кондитерские изделия","Мучные кондитерские изделия","Карамель"],"color_hex":"#F0F0F0","slug":"диоксид-титана-0064"},{"name":"Luxomix® Карбонат кальция Е170","group":"КАРБОНАТ КАЛЬЦИЯ","color":"Белый","forma":"Порошок","solubility":"Вододисперсный","industries":["group","is","Кондитерские продукция","Корма для животных","Масложировая продкция","Фармацевтические продукты и БАДы","Хлебобулочная продукция"],"conf_subs":["Жировая глазурь","Жировые начинки","Шоколад","Кондитерские гели","Мучные кондитерские изделия"],"color_hex":"#F0F0F0","slug":"карбонат-кальция-е170"}]
+</script>
+
+<script>
+/* ============================ Данные ============================ */
+const PRODUCTS = JSON.parse(document.getElementById('products-data').textContent);
+
+const INDUSTRY_SHORT = {
+    'Кондитерские продукция': 'Кондитерская',
+    'Хлебобулочная продукция': 'Хлебопекарная',
+    'Масложировая продкция': 'Масложировая',
+    'Сыры': 'Сыры',
+    'Молочная продукция': 'Молочная',
+    'Мясная продукция': 'Мясная',
+    'Рыба': 'Рыба',
+    'Напитки': 'Напитки',
+    'Продукты быстрого приготовления': 'Быстрое приготовление',
+    'Корма для животных': 'Корма',
+    'Фармацевтические продукты и БАДы': 'Фарма и БАД'
+};
+const GROUP_TITLE = {
+    'КАРМИН': 'Кармин', 'СВЕКОЛЬНЫЙ': 'Свекольный', 'АНТОЦИАНИН': 'Антоцианин',
+    'САХАРНЫЙ КОЛЕР': 'Сахарный колер', 'КУРКУМИН': 'Куркумин', 'АННАТО': 'Аннато',
+    'АННАТО-КУРКУМИН': 'Аннато-куркумин', 'БЕТА-КАРОТИН': 'Бета-каротин',
+    'ПАПРИКА': 'Паприка', 'СПИРУЛИНА': 'Спирулина', 'ХЛОРОФИЛЛ': 'Хлорофилл',
+    'РАСТИТЕЛЬНЫЙ УГОЛЬ': 'Растительный уголь', 'ДИОКСИД ТИТАНА': 'Диоксид титана',
+    'КАРБОНАТ КАЛЬЦИЯ': 'Карбонат кальция'
+};
+
+/* Состояние фильтров */
+const state = {
+    conf_sub: new Set(),
+    group: new Set(),
+    forma: new Set(),
+    solubility: new Set(),
+    color: new Set(),
+    query: '',
+    sort: 'default'
+};
+
+/* ============================ Сбор уникальных значений ============================ */
+function uniqueCounts(field, getter) {
+    const map = new Map();
+    PRODUCTS.forEach(p => {
+        const vals = getter(p);
+        (Array.isArray(vals) ? vals : [vals]).forEach(v => {
+            if (!v) return;
+            map.set(v, (map.get(v) || 0) + 1);
+        });
+    });
+    return [...map.entries()].sort((a,b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+}
+
+const facets = {
+    conf_sub: uniqueCounts('conf_sub', p => p.conf_subs),
+    group: uniqueCounts('group', p => p.group),
+    forma: uniqueCounts('forma', p => p.forma),
+    solubility: uniqueCounts('solubility', p => p.solubility),
+    color: uniqueCounts('color', p => p.color)
+};
+
+/* ============================ Рендер фильтров ============================ */
+function renderFilterList(containerId, facetKey, labelFormatter) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    el.innerHTML = '';
+    facets[facetKey].forEach(([value, count]) => {
+        const label = document.createElement('label');
+        label.className = 'filter-row';
+        const display = labelFormatter ? labelFormatter(value) : value;
+        label.innerHTML = `
+            <input type="checkbox" data-facet="${facetKey}" value="${value.replace(/"/g, '&quot;')}">
+            <span>${display}</span>
+            <span class="filter-row__count">${count}</span>
+        `;
+        el.appendChild(label);
+    });
+}
+
+renderFilterList('filter-conf-sub', 'conf_sub');
+renderFilterList('filter-group', 'group', v => GROUP_TITLE[v] || v);
+renderFilterList('filter-forma', 'forma');
+renderFilterList('filter-solubility', 'solubility');
+renderFilterList('filter-color', 'color');
+
+/* Обработка чекбоксов */
+document.querySelectorAll('.filter-row input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+        const f = cb.dataset.facet;
+        const v = cb.value;
+        if (cb.checked) state[f].add(v); else state[f].delete(v);
+        renderProducts();
+    });
+});
+
+/* Сброс */
+document.getElementById('resetFilters').addEventListener('click', () => {
+    Object.keys(state).forEach(k => { if (state[k] instanceof Set) state[k].clear(); });
+    state.query = '';
+    document.getElementById('searchInput').value = '';
+    document.querySelectorAll('.filter-row input[type="checkbox"]').forEach(cb => cb.checked = false);
+    renderProducts();
+});
+
+/* Поиск */
+document.getElementById('searchInput').addEventListener('input', e => {
+    state.query = e.target.value.toLowerCase().trim();
+    renderProducts();
+});
+
+/* Сортировка */
+document.getElementById('sortSelect').addEventListener('change', e => {
+    state.sort = e.target.value;
+    renderProducts();
+});
+
+/* ============================ Фильтрация + рендер товаров ============================ */
+function filterProducts() {
+    return PRODUCTS.filter(p => {
+        if (state.conf_sub.size) {
+            const has = p.conf_subs.some(s => state.conf_sub.has(s));
+            if (!has) return false;
+        }
+        if (state.group.size && !state.group.has(p.group)) return false;
+        if (state.forma.size && !state.forma.has(p.forma)) return false;
+        if (state.solubility.size && !state.solubility.has(p.solubility)) return false;
+        if (state.color.size && !state.color.has(p.color)) return false;
+        if (state.query) {
+            const hay = (p.name + ' ' + p.color + ' ' + p.group + ' ' + p.forma + ' ' + p.solubility + ' ' + p.conf_subs.join(' ')).toLowerCase();
+            if (!hay.includes(state.query)) return false;
+        }
+        return true;
+    });
+}
+
+function sortProducts(list) {
+    const arr = [...list];
+    switch(state.sort) {
+        case 'name-asc': arr.sort((a,b) => a.name.localeCompare(b.name, 'ru')); break;
+        case 'name-desc': arr.sort((a,b) => b.name.localeCompare(a.name, 'ru')); break;
+        case 'group': arr.sort((a,b) => a.group.localeCompare(b.group, 'ru') || a.name.localeCompare(b.name, 'ru')); break;
+    }
+    return arr;
+}
+
+function renderProducts() {
+    const filtered = sortProducts(filterProducts());
+    document.getElementById('resultCount').textContent = filtered.length;
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = '';
+    if (filtered.length === 0) {
+        grid.innerHTML = '<div class="empty-state"><h3>Ничего не найдено</h3><p>Попробуйте сбросить часть фильтров или изменить поисковый запрос.</p></div>';
+        return;
+    }
+    filtered.forEach(p => {
+        const card = document.createElement('a');
+        card.className = 'product';
+        card.href = '/product/' + p.slug;
+        const subTags = p.conf_subs.slice(0, 3)
+            .map(i => `<span class="product__industries-item">${i}</span>`).join('');
+        const more = p.conf_subs.length > 3 ? `<span class="product__industries-item">+${p.conf_subs.length - 3}</span>` : '';
+        card.innerHTML = `
+            <div class="product__visual">
+                <span class="product__price-badge">Цена по запросу</span>
+                <span class="product__group-badge">${GROUP_TITLE[p.group] || p.group}</span>
+                <span class="product__swatch" style="--swatch-color:${p.color_hex}"></span>
+            </div>
+            <div class="product__body">
+                <div class="product__name">${p.name}</div>
+                <div class="product__color">${p.color}</div>
+                <div class="product__tags">
+                    <span class="product__tag product__tag--form">${p.forma}</span>
+                    <span class="product__tag">${p.solubility}</span>
+                </div>
+                <div class="product__industries">${subTags}${more}</div>
+                <button class="product__btn" onclick="event.preventDefault(); alert('Заявка на ${p.name.replace(/'/g, '\\\\\'')} — демо');">
+                    Оставить заявку
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+renderProducts();
+
+/* ============================ Мобильный toggle фильтров ============================ */
+document.getElementById('filterToggle').addEventListener('click', () => {
+    document.getElementById('sidebar').classList.toggle('is-open');
+});
+
+/* ============================ Мегаменю и бургер (как на главной) ============================ */
+(function() {
+    const btn = document.getElementById('catalogBtn');
+    const menu = document.getElementById('megamenu');
+    const overlay = document.getElementById('mmOverlay');
+    const items = menu.querySelectorAll('.mm-item');
+    const panels = menu.querySelectorAll('.mm-panel');
+
+    function open() {
+        if (window.__closeBurger) window.__closeBurger();
+        menu.classList.add('is-open');
+        overlay.classList.add('is-open');
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        menu.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+    function toggle() { menu.classList.contains('is-open') ? close() : open(); }
+    function switchPanel(target) {
+        items.forEach(i => i.classList.toggle('is-active', i.dataset.target === target));
+        panels.forEach(p => p.classList.toggle('is-active', p.id === 'mm-' + target));
+    }
+
+    btn.addEventListener('click', toggle);
+    overlay.addEventListener('click', close);
+    items.forEach(item => {
+        item.addEventListener('mouseenter', () => switchPanel(item.dataset.target));
+        item.addEventListener('click', () => switchPanel(item.dataset.target));
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+    });
+    menu.querySelectorAll('.mm-sublink').forEach(a => a.addEventListener('click', close));
+    window.__closeMegamenu = close;
+})();
+
+(function() {
+    const btn = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileNav');
+    function open() {
+        if (window.__closeMegamenu) window.__closeMegamenu();
+        menu.classList.add('is-open');
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+    }
+    function close() {
+        menu.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+    }
+    btn.addEventListener('click', () => menu.classList.contains('is-open') ? close() : open());
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+    });
+    document.addEventListener('click', e => {
+        if (!menu.classList.contains('is-open')) return;
+        if (menu.contains(e.target) || btn.contains(e.target)) return;
+        close();
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1080 && menu.classList.contains('is-open')) close();
+    });
+    window.__closeBurger = close;
+})();
+</script>
+
+
+<!-- ====== Поиск с подсказками (ТЗ §7) ====== -->
+<style>
+.sd-wrap { position: relative; }
+.search-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0; right: 0;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 16px;
+    box-shadow: 0 24px 48px -16px rgba(14,45,23,.18);
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 200;
+    padding: 16px;
+    display: none;
+}
+.search-dropdown.is-open { display: block; }
+.sd-section { margin-bottom: 16px; }
+.sd-section:last-child { margin-bottom: 0; }
+.sd-section__title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--c-text-muted);
+    margin-bottom: 8px;
+    padding: 0 4px;
+}
+.sd-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 4px; }
+.sd-chip {
+    background: var(--c-surface);
+    color: var(--c-text);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    transition: background .12s, color .12s;
+    border: none;
+    cursor: pointer;
+}
+.sd-chip:hover, .sd-chip.is-active { background: var(--c-accent); color: #fff; }
+
+.sd-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: var(--c-text);
+    text-decoration: none;
+    transition: background .12s;
+    cursor: pointer;
+}
+.sd-item:hover, .sd-item.is-active { background: var(--c-surface); }
+.sd-item__icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--c-accent);
+    color: #fff;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--f-heading);
+    font-size: 14px;
+}
+.sd-item__icon--cat svg { width: 18px; height: 18px; }
+.sd-item__body { flex: 1; min-width: 0; }
+.sd-item__name {
+    font-weight: 500;
+    font-size: var(--fs-body-s);
+    color: var(--c-text);
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sd-item__meta {
+    font-size: 11px;
+    color: var(--c-text-muted);
+    margin-top: 2px;
+}
+.sd-item__name mark { background: rgba(105,128,255,.18); color: var(--c-text); font-weight: 600; padding: 0 1px; border-radius: 2px; }
+
+.sd-show-all {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 12px;
+    background: var(--c-primary);
+    color: #fff;
+    border-radius: 10px;
+    font-family: var(--f-heading);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-top: 8px;
+    transition: background .15s;
+}
+.sd-show-all:hover { background: var(--c-primary-alt); color: #fff; }
+.sd-show-all svg { width: 14px; height: 14px; }
+
+.sd-empty {
+    padding: 24px;
+    text-align: center;
+    color: var(--c-text-muted);
+    font-size: var(--fs-body-s);
+}
+.sd-empty strong { color: var(--c-text); display: block; margin-bottom: 4px; }
+
+/* Hero search dark theme override */
+.hero .search-dropdown {
+    color: var(--c-text);
+    text-align: left;
+}
+</style>
+
+<script id="search-index" type="application/json">
+{"popular":["кармин","куркумин","для шоколада","для йогурта","натуральный красный","антоцианин","паприка","спирулина"],"categories":[{"name":"Жёлтый","slug":"zheltyy","parent":"По цвету","count":23,"color":"#F5C518"},{"name":"Оранжевый","slug":"oranzhevyy","parent":"По цвету","count":17,"color":"#F39200"},{"name":"Красный","slug":"krasnyy","parent":"По цвету","count":24,"color":"#D52B1E"},{"name":"Малиновый","slug":"malinovyy","parent":"По цвету","count":10,"color":"#E6007E"},{"name":"Фиолетовый","slug":"fioletovyy","parent":"По цвету","count":6,"color":"#7E3A93"},{"name":"Синий","slug":"siniy","parent":"По цвету","count":4,"color":"#2E5A87"},{"name":"Зелёный","slug":"zelenyy","parent":"По цвету","count":12,"color":"#9DC23B"},{"name":"Коричневый","slug":"korichnevyy","parent":"По цвету","count":11,"color":"#6B4423"},{"name":"Чёрный","slug":"chernyy","parent":"По цвету","count":5,"color":"#1A1A1A"},{"name":"Кондитерская","slug":"konditerskaya","parent":"По применению","count":94,"color":"#0E2D17"},{"name":"Молочная","slug":"molochnaya","parent":"По применению","count":67,"color":"#0E2D17"},{"name":"Напитки","slug":"napitki","parent":"По применению","count":58,"color":"#0E2D17"},{"name":"Мясная","slug":"myasnaya","parent":"По применению","count":52,"color":"#0E2D17"},{"name":"Хлебопекарная","slug":"hlebopekarnaya","parent":"По применению","count":71,"color":"#0E2D17"},{"name":"Фарма и БАД","slug":"farma-bad","parent":"По применению","count":38,"color":"#0E2D17"},{"name":"Кармин","slug":"karmin","parent":"Красители","count":22,"color":"#D52B1E"},{"name":"Куркумин","slug":"kurkumin","parent":"Красители","count":4,"color":"#F5C518"},{"name":"Антоцианин","slug":"antocianin","parent":"Красители","count":4,"color":"#A23B7A"},{"name":"Хлорофилл","slug":"hlorofill","parent":"Красители","count":11,"color":"#5BA833"},{"name":"Аннато","slug":"annato","parent":"Красители","count":9,"color":"#F39200"}],"products":[{"name":"Luxomix® Куркумин 0040","slug":"куркумин-0040","color":"Лимонно-желтый","group":"КУРКУМИН","color_hex":"#F5C518"},{"name":"Luxomix® Куркумин 0140","slug":"куркумин-0140","color":"Желтый","group":"КУРКУМИН","color_hex":"#F5C518"},{"name":"Luxomix® Аннато-куркумин 0025","slug":"аннато-куркумин-0025","color":"Желто-оранжевый","group":"АННАТО-КУРКУМИН","color_hex":"#F5A623"},{"name":"Luxomix® Аннато-куркумин 0026","slug":"аннато-куркумин-0026","color":"Желто-оранжевый","group":"АННАТО-КУРКУМИН","color_hex":"#F5A623"},{"name":"Luxomix® Бета-каротин 0001","slug":"бета-каротин-0001","color":"Желтый","group":"БЕТА-КАРОТИН","color_hex":"#F5C518"},{"name":"Luxomix® Бета-каротин 0002","slug":"бета-каротин-0002","color":"Желтый","group":"БЕТА-КАРОТИН","color_hex":"#F5C518"},{"name":"Luxomix® Аннато 0020","slug":"аннато-0020","color":"Желто-оранжевый","group":"АННАТО","color_hex":"#F5A623"},{"name":"Luxomix® Аннато 0021","slug":"аннато-0021","color":"Желто-оранжевый","group":"АННАТО","color_hex":"#F5A623"},{"name":"Luxomix® Паприка каротин","slug":"паприка-каротин","color":"Оранжево-золотистый","group":"ПАПРИКА","color_hex":"#FFA500"},{"name":"Luxomix® Паприка 0011","slug":"паприка-0011","color":"Оранжевый","group":"ПАПРИКА","color_hex":"#F39200"},{"name":"Luxomix® Свекольный 0055","slug":"свекольный-0055","color":"Красно-розовый","group":"СВЕКОЛЬНЫЙ","color_hex":"#E84E8B"},{"name":"Luxomix® Свекольный 0555 МР","slug":"свекольный-0555-мр","color":"Красно-розовый","group":"СВЕКОЛЬНЫЙ","color_hex":"#E84E8B"},{"name":"Luxomix® Кармин 0030","slug":"кармин-0030","color":"Малиновый","group":"КАРМИН","color_hex":"#E6007E"},{"name":"Luxomix® Кармин 0031","slug":"кармин-0031","color":"Малиново-черничный","group":"КАРМИН","color_hex":"#8B1E5E"},{"name":"Luxomix® Антоцианин 0050","slug":"антоцианин-0050","color":"Красно-фиолетовый","group":"АНТОЦИАНИН","color_hex":"#A23B7A"},{"name":"Luxomix® Антоцианин 0051","slug":"антоцианин-0051","color":"Красно-фиолетовый","group":"АНТОЦИАНИН","color_hex":"#A23B7A"},{"name":"Luxomix® Спирулина 0070","slug":"спирулина-0070","color":"Синий","group":"СПИРУЛИНА","color_hex":"#2E5A87"},{"name":"Luxomix® Спирулина 0071","slug":"спирулина-0071","color":"Синий","group":"СПИРУЛИНА","color_hex":"#2E5A87"},{"name":"Luxomix® Хлорофилл 0041","slug":"хлорофилл-0041","color":"Желто-зеленый","group":"ХЛОРОФИЛЛ","color_hex":"#9DC23B"},{"name":"Luxomix® Хлорофилл 0041 МР","slug":"хлорофилл-0041-мр","color":"Желто-зеленый","group":"ХЛОРОФИЛЛ","color_hex":"#9DC23B"},{"name":"Luxomix® Сахарный колер 150А                                         (Ароматическая карамель WS 100)","slug":"сахарный-колер-150а-ароматическая-карамель-ws-100","color":"Светло-коричневый","group":"САХАРНЫЙ КОЛЕР","color_hex":"#A66B3C"},{"name":"Luxomix® Сахарный колер Е150А (жидкость)","slug":"сахарный-колер-е150а-жидкость","color":"Коричневый","group":"САХАРНЫЙ КОЛЕР","color_hex":"#6B4423"},{"name":"Luxomix® Растительный уголь 0060Е","slug":"растительный-уголь-0060е","color":"Черный","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color_hex":"#1A1A1A"},{"name":"Luxomix® Растительный уголь 0061","slug":"растительный-уголь-0061","color":"Черный","group":"РАСТИТЕЛЬНЫЙ УГОЛЬ","color_hex":"#1A1A1A"},{"name":"Luxomix® Диоксид титана 0062","slug":"диоксид-титана-0062","color":"Белый","group":"ДИОКСИД ТИТАНА","color_hex":"#F0F0F0"},{"name":"Luxomix® Диоксид титана 0063","slug":"диоксид-титана-0063","color":"Белый","group":"ДИОКСИД ТИТАНА","color_hex":"#F0F0F0"},{"name":"Luxomix® Карбонат кальция Е170","slug":"карбонат-кальция-е170","color":"Белый","group":"КАРБОНАТ КАЛЬЦИЯ","color_hex":"#F0F0F0"}]}
+</script>
+<script>
+/* ============================ ПОИСК С ПОДСКАЗКАМИ (ТЗ §7) ============================
+   Использование: initSearchSuggest(inputElement, dropdownElement)
+   - onFocus → дефолтные подсказки (популярные запросы, топ-категории, топ-товары)
+   - onInput ≥ 2 символа, debounce 300мс → результаты по запросу (до 3 кат + 5 товаров + «Показать все»)
+   - Esc / клик вне / выбор → закрытие
+   - ↑/↓ → навигация, Enter → переход
+   - Вхождение запроса выделяется жирным
+*/
+function initSearchSuggest(input, dropdown, searchIndex) {
+    if (!input || !dropdown) return;
+    input.setAttribute('autocomplete', 'off');
+
+    const POPULAR = searchIndex.popular;
+    const CATEGORIES = searchIndex.categories;
+    const PRODUCTS = searchIndex.products;
+    let debounceTimer = null;
+    let activeIdx = -1;
+    let currentItems = [];
+
+    function highlight(text, query) {
+        if (!query) return text;
+        const q = query.trim();
+        if (!q) return text;
+        const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+        return text.replace(re, '<mark>$1</mark>');
+    }
+
+    function renderDefault() {
+        let html = '';
+        // Popular queries (chips)
+        if (POPULAR && POPULAR.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Популярные запросы</div><div class="sd-chips">';
+            POPULAR.forEach(q => {
+                html += `<button class="sd-chip" data-query="${q}">${q}</button>`;
+            });
+            html += '</div></div>';
+        }
+        // Top categories
+        const topCats = CATEGORIES.slice(0, 3);
+        if (topCats.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Категории</div>';
+            topCats.forEach(c => {
+                html += `<a class="sd-item" href="/category/${c.slug}" data-nav>
+                    <span class="sd-item__icon" style="background:${c.color}"></span>
+                    <span class="sd-item__body">
+                        <span class="sd-item__name">${c.name}</span>
+                        <span class="sd-item__meta">${c.parent} · ${c.count} товаров</span>
+                    </span>
+                </a>`;
+            });
+            html += '</div>';
+        }
+        // Top products
+        const topProds = PRODUCTS.slice(0, 3);
+        if (topProds.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Товары</div>';
+            topProds.forEach(p => {
+                html += `<a class="sd-item" href="/product/${p.slug}" data-nav>
+                    <span class="sd-item__icon" style="background:${p.color_hex}"></span>
+                    <span class="sd-item__body">
+                        <span class="sd-item__name">${p.name}</span>
+                        <span class="sd-item__meta">${p.color}</span>
+                    </span>
+                </a>`;
+            });
+            html += '</div>';
+        }
+        dropdown.innerHTML = html;
+        activeIdx = -1;
+        currentItems = dropdown.querySelectorAll('.sd-chip, .sd-item');
+        attachItemHandlers();
+    }
+
+    function renderResults(query) {
+        const q = query.toLowerCase().trim();
+        const catHits = CATEGORIES.filter(c => c.name.toLowerCase().includes(q) || c.parent.toLowerCase().includes(q)).slice(0, 3);
+        const prodHits = PRODUCTS.filter(p => p.name.toLowerCase().includes(q) || (p.color || '').toLowerCase().includes(q) || (p.group || '').toLowerCase().includes(q)).slice(0, 5);
+
+        let html = '';
+        if (catHits.length === 0 && prodHits.length === 0) {
+            html = `<div class="sd-empty">
+                <strong>Ничего не найдено</strong>
+                Попробуйте популярный запрос:
+            </div>
+            <div class="sd-section"><div class="sd-chips">
+                ${POPULAR.slice(0, 6).map(q => `<button class="sd-chip" data-query="${q}">${q}</button>`).join('')}
+            </div></div>`;
+            dropdown.innerHTML = html;
+            activeIdx = -1;
+            currentItems = dropdown.querySelectorAll('.sd-chip, .sd-item');
+            attachItemHandlers();
+            return;
+        }
+
+        if (catHits.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Категории</div>';
+            catHits.forEach(c => {
+                html += `<a class="sd-item" href="/category/${c.slug}" data-nav>
+                    <span class="sd-item__icon" style="background:${c.color}"></span>
+                    <span class="sd-item__body">
+                        <span class="sd-item__name">${highlight(c.name, query)}</span>
+                        <span class="sd-item__meta">${c.parent} · ${c.count} товаров</span>
+                    </span>
+                </a>`;
+            });
+            html += '</div>';
+        }
+        if (prodHits.length) {
+            html += '<div class="sd-section"><div class="sd-section__title">Товары</div>';
+            prodHits.forEach(p => {
+                html += `<a class="sd-item" href="/product/${p.slug}" data-nav>
+                    <span class="sd-item__icon" style="background:${p.color_hex}"></span>
+                    <span class="sd-item__body">
+                        <span class="sd-item__name">${highlight(p.name, query)}</span>
+                        <span class="sd-item__meta">${p.color}</span>
+                    </span>
+                </a>`;
+            });
+            html += '</div>';
+        }
+        html += `<a class="sd-show-all" href="/search?q=${encodeURIComponent(query)}" data-nav>
+            Показать все результаты по запросу «${query}»
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>`;
+        dropdown.innerHTML = html;
+        activeIdx = -1;
+        currentItems = dropdown.querySelectorAll('.sd-chip, .sd-item, .sd-show-all');
+        attachItemHandlers();
+    }
+
+    function attachItemHandlers() {
+        dropdown.querySelectorAll('.sd-chip').forEach(c => {
+            c.addEventListener('click', e => {
+                e.preventDefault();
+                input.value = c.dataset.query;
+                input.focus();
+                renderResults(c.dataset.query);
+            });
+        });
+        // For href-linked items the browser default click will navigate.
+        // We just preventDefault on the demo to avoid 404s and alert instead.
+        dropdown.querySelectorAll('[data-nav]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                // In production: window.location.href = a.href;
+                alert('Переход: ' + a.getAttribute('href') + ' (демо)');
+                close();
+            });
+        });
+    }
+
+    function setActive(i) {
+        currentItems.forEach(el => el.classList.remove('is-active'));
+        if (i >= 0 && i < currentItems.length) {
+            currentItems[i].classList.add('is-active');
+            currentItems[i].scrollIntoView({ block: 'nearest' });
+        }
+        activeIdx = i;
+    }
+
+    function open() {
+        if (input.value.trim().length >= 2) {
+            renderResults(input.value);
+        } else {
+            renderDefault();
+        }
+        dropdown.classList.add('is-open');
+    }
+    function close() {
+        dropdown.classList.remove('is-open');
+        activeIdx = -1;
+    }
+
+    input.addEventListener('focus', open);
+    input.addEventListener('input', () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            const v = input.value.trim();
+            if (v.length >= 2) renderResults(v);
+            else renderDefault();
+        }, 300);
+    });
+    input.addEventListener('keydown', e => {
+        if (!dropdown.classList.contains('is-open')) return;
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            setActive(Math.min(activeIdx + 1, currentItems.length - 1));
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            setActive(Math.max(activeIdx - 1, -1));
+        } else if (e.key === 'Enter') {
+            if (activeIdx >= 0 && currentItems[activeIdx]) {
+                e.preventDefault();
+                currentItems[activeIdx].click();
+            } else if (input.value.trim().length >= 1) {
+                e.preventDefault();
+                alert('Переход на /search?q=' + encodeURIComponent(input.value.trim()) + ' (демо)');
+                close();
+            }
+        } else if (e.key === 'Escape') {
+            close();
+            input.blur();
+        }
+    });
+
+    document.addEventListener('click', e => {
+        if (!dropdown.classList.contains('is-open')) return;
+        if (input.contains(e.target) || dropdown.contains(e.target)) return;
+        close();
+    });
+}
+
+</script>
+
+<script>
+(function() {
+    const idx = JSON.parse(document.getElementById('search-index').textContent);
+    initSearchSuggest(document.getElementById('searchInput'), document.getElementById('stripSearchDropdown'), idx);
+})();
+</script>
+</body>
+</html>
