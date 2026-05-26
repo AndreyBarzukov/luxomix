@@ -1,0 +1,11 @@
+# Cloudflare Pages: динамические маршруты по ТЗ §1.1
+# 200 = rewrite (URL остаётся в адресной строке)
+
+# Старый формат /news/* → /blog/* (ТЗ §12 — 301 для SEO-веса)
+/news/*           /blog/:splat                              301
+
+# Динамические шаблоны
+/category/*       /_templates/category.html?slug=:splat     200
+/product/*        /_templates/product.html?slug=:splat      200
+/in-product/*     /_templates/in-product-detail.html?slug=:splat  200
+/blog/*           /_templates/blog-detail.html?slug=:splat   200

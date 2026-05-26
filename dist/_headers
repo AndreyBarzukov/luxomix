@@ -1,0 +1,14 @@
+# Безопасность (ТЗ §8)
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+
+# HTML — без долгого кеша (для итераций прототипа)
+/*.html
+  Cache-Control: public, max-age=300, must-revalidate
+
+# Шаблоны не индексировать
+/_templates/*
+  X-Robots-Tag: noindex

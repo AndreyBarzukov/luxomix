@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>В продукте — LUXOMIX® · Применение натуральных красителей в готовой продукции</title>
+<meta name="description" content="Применение натуральных красителей и растительных экстрактов Luxomix® в готовой продукции: шоколад, йогурт, мармелад, напитки, колбасы, выпечка, БАД.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================ ТОКЕНЫ БРЕНДА (ТЗ §2.3, §2.4) ============================ */
+:root {
+    --c-primary:        #0E2D17;
+    --c-primary-alt:    #1F7A3A;
+    --c-accent:         #6980FF;
+    --c-accent-hover:   #4A60E0;
+    --c-bg:             #FFFFFF;
+    --c-surface:        #F5F6F8;
+    --c-text:           #1A1A1A;
+    --c-text-muted:     #6B7280;
+    --c-border:         #E5E7EB;
+
+    --dye-yellow:       #F5C518;
+    --dye-orange:       #F39200;
+    --dye-red-orange:   #E84E1B;
+    --dye-red:          #D52B1E;
+    --dye-pink:         #E6007E;
+    --dye-purple:       #7E3A93;
+    --dye-dark-purple:  #3B1E5E;
+    --dye-blue:         #2E5A87;
+    --dye-turquoise:    #1E7A7A;
+    --dye-green:        #9DC23B;
+    --dye-brown:        #6B4423;
+    --dye-red-brown:    #8B2E1F;
+    --dye-black:        #1A1A1A;
+
+    --f-heading: 'Bebas Neue', 'Impact', sans-serif;
+    --f-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --fs-h1: 56px;
+    --fs-h2: 40px;
+    --fs-h3: 24px;
+    --fs-body-l: 18px;
+    --fs-body-m: 16px;
+    --fs-body-s: 14px;
+
+    --container: 1280px;
+    --container-pad: 24px;
+    --header-h: 80px;
+}
+
+/* ============================ БАЗА ============================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--f-body); font-size: var(--fs-body-m); line-height: 1.55; color: var(--c-text); background: var(--c-bg); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--container-pad); }
+h1, h2, h3 { font-family: var(--f-heading); font-weight: 400; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.1; }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-family: var(--f-body); font-size: var(--fs-h3); font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.3; }
+
+/* ============================ ШАПКА (ТЗ §2.8) ============================ */
+.header { position: sticky; top: 0; z-index: 100; background: var(--c-bg); border-bottom: 1px solid var(--c-border); height: var(--header-h); }
+.header__inner { display: flex; align-items: center; gap: 24px; height: 100%; }
+.logo { display: flex; flex-direction: column; line-height: 1; margin-right: 8px; flex-shrink: 0; }
+.logo__mark { font-family: var(--f-heading); font-size: 32px; color: var(--c-primary); letter-spacing: 1px; position: relative; text-transform: lowercase; }
+.logo__mark::after { content: '®'; font-family: var(--f-heading); font-size: 16px; vertical-align: super; margin-left: 2px; color: inherit; }
+.logo__tagline { font-size: 11px; font-weight: 300; color: var(--c-text-muted); letter-spacing: 1.5px; margin-top: -2px; }
+
+.btn-catalog { display: inline-flex; align-items: center; gap: 10px; background: var(--c-accent); color: #fff; padding: 12px 22px; border-radius: 999px; font-family: var(--f-heading); font-size: 16px; letter-spacing: 1px; transition: background .15s ease; }
+.btn-catalog:hover { background: var(--c-accent-hover); }
+.btn-catalog svg { width: 18px; height: 18px; }
+.btn-catalog__chevron { transition: transform .25s ease; }
+.btn-catalog.is-open .btn-catalog__chevron { transform: rotate(180deg); }
+
+.nav { display: flex; gap: 28px; }
+.nav a { font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); position: relative; transition: color .15s ease; }
+.nav a:hover { color: var(--c-accent); }
+.nav a.is-current { color: var(--c-accent); }
+.nav a.is-current::after { content: ''; position: absolute; left: 0; right: 0; bottom: -28px; height: 3px; background: var(--c-accent); border-radius: 2px 2px 0 0; }
+.header__phone { margin-left: auto; font-weight: 600; color: var(--c-primary); white-space: nowrap; font-size: var(--fs-body-m); }
+
+.btn-burger { display: none; width: 44px; height: 44px; align-items: center; justify-content: center; border-radius: 12px; background: var(--c-surface); color: var(--c-text); transition: background .15s ease; flex-shrink: 0; }
+.btn-burger:hover { background: var(--c-border); }
+.btn-burger svg { width: 22px; height: 22px; }
+.btn-burger .icon-close { display: none; }
+.btn-burger.is-open .icon-burger { display: none; }
+.btn-burger.is-open .icon-close { display: block; }
+
+.mobile-nav { position: fixed; top: var(--header-h); left: 0; right: 0; background: #fff; border-bottom: 1px solid var(--c-border); box-shadow: 0 24px 48px -16px rgba(14, 45, 23, 0.18); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; z-index: 95; display: none; }
+.mobile-nav.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.mobile-nav .container { display: flex; flex-direction: column; gap: 2px; padding-top: 20px; padding-bottom: 20px; }
+.mobile-nav a { padding: 14px 16px; font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); border-radius: 10px; transition: background .15s, color .15s; }
+.mobile-nav a:hover { background: var(--c-surface); color: var(--c-accent); }
+.mobile-nav__phone { margin-top: 8px; padding-top: 18px !important; border-top: 1px solid var(--c-border); color: var(--c-primary) !important; font-weight: 600 !important; border-radius: 0 !important; }
+
+/* ============================ МЕГАМЕНЮ (ТЗ §2.7) ============================ */
+.megamenu-overlay { position: fixed; inset: var(--header-h) 0 0 0; background: rgba(0,0,0,.4); z-index: 90; opacity: 0; pointer-events: none; transition: opacity .2s ease; }
+.megamenu-overlay.is-open { opacity: 1; pointer-events: auto; }
+.megamenu { position: fixed; top: var(--header-h); left: 0; right: 0; background: #fff; z-index: 95; border-bottom: 1px solid var(--c-border); box-shadow: 0 24px 48px -16px rgba(14, 45, 23, 0.18); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
+.megamenu.is-open { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.megamenu__inner { display: grid; grid-template-columns: 280px 1fr; min-height: 480px; gap: 0; padding: 32px 0; }
+.megamenu__left { border-right: 1px solid var(--c-border); padding-right: 16px; display: flex; flex-direction: column; gap: 2px; }
+.mm-item { display: flex; align-items: center; justify-content: space-between; width: 100%; padding: 14px 16px; border-radius: 10px; font-family: var(--f-body); font-size: var(--fs-body-m); font-weight: 500; color: var(--c-text); text-align: left; transition: background .15s, color .15s; cursor: pointer; }
+.mm-item:hover, .mm-item.is-active { background: var(--c-surface); color: var(--c-primary); }
+.mm-item.is-active { background: rgba(105, 128, 255, 0.08); color: var(--c-accent); }
+.mm-item svg { width: 16px; height: 16px; opacity: 0.5; transition: transform .15s; }
+.mm-item:hover svg, .mm-item.is-active svg { transform: translateX(3px); opacity: 1; }
+.megamenu__right { padding: 8px 0 8px 48px; }
+.mm-panel { display: none; animation: mmFade .25s ease; }
+.mm-panel.is-active { display: block; }
+@keyframes mmFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+.mm-panel__title { font-family: var(--f-heading); font-size: 32px; text-transform: uppercase; color: var(--c-primary); margin-bottom: 8px; }
+.mm-panel__lead { font-size: var(--fs-body-s); color: var(--c-text-muted); margin-bottom: 28px; max-width: 520px; }
+.mm-subgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
+.mm-sublink { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 8px; color: var(--c-text); font-size: var(--fs-body-m); transition: background .12s, color .12s; }
+.mm-sublink:hover { background: var(--c-surface); color: var(--c-accent); }
+.mm-sublink__swatch { width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.06); }
+.mm-sublink__bullet { color: var(--c-text-muted); font-size: 12px; width: 18px; text-align: center; }
+.megamenu__close { display: none; }
+@media (max-width: 900px) {
+    .megamenu { top: 0; height: 100vh; max-height: 100vh; }
+    .megamenu-overlay { display: none; }
+    .megamenu__inner { grid-template-columns: 1fr; padding: 24px 16px; min-height: 0; }
+    .megamenu__left { border-right: none; border-bottom: 1px solid var(--c-border); padding: 0 0 16px; margin-bottom: 16px; }
+    .megamenu__right { padding: 0; }
+    .mm-subgrid { grid-template-columns: 1fr; }
+    .megamenu__close { position: absolute; top: 16px; right: 16px; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: var(--c-surface); border-radius: 50%; cursor: pointer; }
+}
+
+/* ============================ ПОИСК-ПОЛОСА (ТЗ §7) ============================ */
+.search-strip { position: sticky; top: var(--header-h); z-index: 80; background: #fff; border-bottom: 1px solid var(--c-border); padding: 16px 0; }
+.search-strip__inner { position: relative; width: 100%; }
+.search-strip input { width: 100%; height: 56px; border: 1px solid var(--c-border); border-radius: 14px; padding: 0 130px 0 56px; font-family: inherit; font-size: var(--fs-body-m); background: var(--c-surface); transition: background .15s, border-color .15s; }
+.search-strip input:focus { outline: none; border-color: var(--c-accent); background: #fff; }
+.search-strip .icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; color: var(--c-text-muted); pointer-events: none; }
+.search-strip > .container > .search-strip__inner > button { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); height: 42px; padding: 0 24px; background: var(--c-accent); color: #fff; border-radius: 10px; font-family: var(--f-heading); font-size: 14px; letter-spacing: 1px; transition: background .15s; }
+.search-strip > .container > .search-strip__inner > button:hover { background: var(--c-accent-hover); }
+
+/* ============================ ХЛЕБНЫЕ КРОШКИ ============================ */
+.breadcrumbs { padding: 24px 0 0; font-size: var(--fs-body-s); color: var(--c-text-muted); }
+.breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.breadcrumbs li { display: flex; align-items: center; gap: 8px; }
+.breadcrumbs li::after { content: '/'; color: var(--c-border); }
+.breadcrumbs li:last-child::after { display: none; }
+.breadcrumbs a { color: var(--c-text-muted); transition: color .12s; }
+.breadcrumbs a:hover { color: var(--c-accent); }
+.breadcrumbs li:last-child { color: var(--c-text); font-weight: 500; }
+
+/* ============================ PAGE HEAD ============================ */
+.page-head { padding: 32px 0 48px; }
+.page-head__eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--c-accent); font-weight: 600; margin-bottom: 14px; padding: 4px 12px; border: 1px solid rgba(105,128,255,.25); border-radius: 999px; background: rgba(105,128,255,.05); }
+.page-head__title { color: var(--c-primary); margin-bottom: 18px; max-width: 880px; }
+.page-head__title .accent { color: var(--c-accent); }
+.page-head__lead { font-size: var(--fs-body-l); color: var(--c-text-muted); line-height: 1.55; max-width: 720px; }
+
+/* ============================ ФИЛЬТР ПО ОТРАСЛИ (табы) ============================ */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--c-border);
+    margin-bottom: 40px;
+}
+.filter-bar__label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--c-text-muted);
+    margin-right: 8px;
+}
+.filter-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 16px;
+    background: var(--c-surface);
+    color: var(--c-text);
+    border-radius: 999px;
+    font-size: var(--fs-body-s);
+    font-weight: 500;
+    transition: background .12s, color .12s;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.filter-pill:hover { background: var(--c-border); }
+.filter-pill.is-active { background: var(--c-primary); color: #fff; }
+.filter-pill__count { opacity: 0.55; font-size: 12px; font-weight: 600; }
+.filter-pill.is-active .filter-pill__count { opacity: 0.7; }
+
+/* ============================ СЕТКА КАРТОЧЕК ============================ */
+.results-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px; flex-wrap: wrap; gap: 12px; }
+.results-meta__count { font-size: var(--fs-body-s); color: var(--c-text-muted); }
+.results-meta__count strong { color: var(--c-text); font-weight: 600; }
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.article-card {
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.article-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--c-accent);
+    box-shadow: 0 24px 48px -20px rgba(14, 45, 23, 0.18);
+}
+.article-card__visual {
+    aspect-ratio: 16/10;
+    background: var(--c-surface);
+    position: relative;
+    overflow: hidden;
+}
+.article-card__visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .4s ease;
+}
+.article-card:hover .article-card__visual img { transform: scale(1.05); }
+.article-card__tag {
+    position: absolute; top: 14px; left: 14px;
+    background: rgba(14,45,23,0.88);
+    color: #fff;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    font-weight: 500;
+}
+.article-card__body {
+    padding: 22px 24px 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.article-card__title {
+    font-size: var(--fs-body-l);
+    font-weight: 600;
+    color: var(--c-primary);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+.article-card__desc {
+    font-size: var(--fs-body-s);
+    color: var(--c-text-muted);
+    line-height: 1.55;
+    margin-bottom: 16px;
+    flex: 1;
+    /* Ограничение в 3 строки */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.article-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--c-border);
+    gap: 12px;
+}
+.article-card__products {
+    font-size: 12px;
+    color: var(--c-text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.article-card__products svg { width: 14px; height: 14px; color: var(--c-primary-alt); }
+.article-card__more {
+    font-size: var(--fs-body-s);
+    color: var(--c-accent);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap .15s;
+}
+.article-card:hover .article-card__more { gap: 10px; }
+.article-card__more svg { width: 16px; height: 16px; }
+
+/* Пустое состояние */
+.empty-state {
+    text-align: center;
+    padding: 64px 24px;
+    background: var(--c-surface);
+    border-radius: 20px;
+    color: var(--c-text-muted);
+}
+.empty-state__title { font-size: var(--fs-body-l); color: var(--c-text); font-weight: 600; margin-bottom: 8px; }
+.empty-state__text { font-size: var(--fs-body-s); margin-bottom: 20px; }
+
+/* ============================ CTA «ВОПРОС ТЕХНОЛОГУ» ============================ */
+.tech-cta {
+    margin-top: 64px;
+    background: var(--c-primary);
+    color: #fff;
+    border-radius: 28px;
+    padding: 48px;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+.tech-cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 95% 0%, rgba(105,128,255,.25), transparent 55%);
+    pointer-events: none;
+}
+.tech-cta > * { position: relative; z-index: 1; }
+.tech-cta__eyebrow { display: inline-block; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--dye-yellow); font-weight: 600; margin-bottom: 14px; padding: 4px 12px; border: 1px solid rgba(245,197,24,.3); border-radius: 999px; background: rgba(245,197,24,.08); }
+.tech-cta h2 { color: #fff; margin-bottom: 16px; }
+.tech-cta__lead { font-size: var(--fs-body-l); color: rgba(255,255,255,0.85); line-height: 1.55; margin-bottom: 24px; }
+.tech-cta__features { display: flex; flex-direction: column; gap: 10px; }
+.tech-cta__feature { display: flex; align-items: center; gap: 10px; font-size: var(--fs-body-s); color: rgba(255,255,255,0.9); }
+.tech-cta__feature svg { width: 18px; height: 18px; color: var(--dye-yellow); flex-shrink: 0; }
+.tech-cta__actions { display: flex; flex-direction: column; gap: 12px; }
+
+.btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: var(--c-accent); color: #fff; padding: 18px 28px; border-radius: 14px; font-family: var(--f-heading); font-size: 18px; letter-spacing: 1px; transition: background .15s; text-transform: uppercase; }
+.btn-primary:hover { background: var(--c-accent-hover); }
+.btn-primary svg { width: 18px; height: 18px; }
+.btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: transparent; color: #fff; padding: 17px 28px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.3); font-family: var(--f-heading); font-size: 16px; letter-spacing: 1px; transition: background .15s, border-color .15s; text-transform: uppercase; }
+.btn-ghost:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.6); }
+.btn-ghost svg { width: 16px; height: 16px; }
+
+/* ============================ МОДАЛЬНОЕ ОКНО ============================ */
+.modal-overlay { position: fixed; inset: 0; background: rgba(14,45,23,.6); backdrop-filter: blur(6px); z-index: 1000; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .25s; padding: 24px; }
+.modal-overlay.is-open { opacity: 1; pointer-events: auto; }
+.modal { background: #fff; border-radius: 24px; max-width: 520px; width: 100%; padding: 32px; transform: translateY(20px); transition: transform .25s; max-height: 90vh; overflow-y: auto; position: relative; }
+.modal-overlay.is-open .modal { transform: translateY(0); }
+.modal__close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; border-radius: 50%; background: var(--c-surface); display: flex; align-items: center; justify-content: center; color: var(--c-text-muted); cursor: pointer; transition: background .12s; }
+.modal__close:hover { background: var(--c-border); }
+.modal__close svg { width: 18px; height: 18px; }
+.modal__head { margin-bottom: 22px; padding-right: 40px; }
+.modal__title { font-family: var(--f-heading); font-size: 28px; color: var(--c-primary); text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
+.modal__lead { font-size: var(--fs-body-s); color: var(--c-text-muted); }
+.form-field { margin-bottom: 12px; }
+.form-field input, .form-field textarea { width: 100%; padding: 14px 16px; border: 1px solid var(--c-border); border-radius: 10px; font-family: inherit; font-size: var(--fs-body-m); color: var(--c-text); background: #fff; transition: border-color .15s; }
+.form-field input:focus, .form-field textarea:focus { outline: none; border-color: var(--c-accent); }
+.form-field textarea { resize: vertical; min-height: 80px; }
+.form-checkbox { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: var(--c-text-muted); margin: 14px 0 18px; }
+.form-checkbox input { flex-shrink: 0; margin-top: 2px; }
+.form-checkbox a { color: var(--c-accent); text-decoration: underline; }
+
+/* ============================ ПОДВАЛ ============================ */
+.section-padding { padding: 32px 0 96px; }
+.footer { background: var(--c-primary); color: rgba(255,255,255,0.78); padding: 64px 0 0; }
+.footer__grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 48px; }
+.footer .logo__mark { color: #fff; }
+.footer .logo__tagline { color: rgba(255,255,255,0.5); }
+.footer__about { font-size: var(--fs-body-s); color: rgba(255,255,255,0.7); margin: 20px 0 18px; line-height: 1.55; }
+.footer__certs { display: flex; gap: 8px; flex-wrap: wrap; }
+.footer__cert { display: inline-flex; padding: 6px 12px; border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; font-size: 11px; letter-spacing: 1px; color: #fff; }
+.footer__col h4 { font-family: var(--f-heading); font-size: 16px; color: #fff; letter-spacing: 1px; margin-bottom: 18px; text-transform: uppercase; font-weight: 400; }
+.footer__col ul { list-style: none; }
+.footer__col li { margin-bottom: 12px; }
+.footer__col a { font-size: var(--fs-body-s); transition: color .15s; }
+.footer__col a:hover { color: #fff; }
+.footer__contact-item { margin-bottom: 14px; display: flex; flex-direction: column; gap: 2px; }
+.footer__contact-item strong { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.55); font-weight: 500; }
+.footer__contact-item a { color: #fff; font-weight: 500; }
+.footer__warehouses { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.footer__warehouse { padding: 10px 12px; background: rgba(255,255,255,0.06); border-radius: 10px; font-size: 11px; color: rgba(255,255,255,0.78); }
+.footer__warehouse strong { color: #fff; display: block; margin-bottom: 2px; font-weight: 500; }
+.footer__bottom { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.1); font-size: 12px; color: rgba(255,255,255,0.55); flex-wrap: wrap; gap: 16px; }
+.footer__bottom a { color: rgba(255,255,255,0.7); }
+.footer__bottom a:hover { color: #fff; }
+.color-strip { display: flex; height: 10px; width: 100%; }
+.color-strip span { flex: 1; }
+
+/* ============================ АДАПТИВ ============================ */
+@media (max-width: 1080px) {
+    .nav, .header__phone { display: none; }
+    .btn-burger { display: flex; margin-left: auto; }
+    .mobile-nav { display: block; }
+    .header__inner { gap: 14px; }
+    .articles-grid { grid-template-columns: 1fr 1fr; }
+    .tech-cta { grid-template-columns: 1fr; padding: 36px; gap: 28px; }
+}
+@media (max-width: 720px) {
+    h1 { font-size: 40px; }
+    h2 { font-size: 30px; }
+    .page-head { padding: 24px 0 32px; }
+    .articles-grid { grid-template-columns: 1fr; gap: 16px; }
+    .tech-cta { padding: 28px 24px; }
+    .footer__grid { grid-template-columns: 1fr; gap: 32px; }
+    .footer__warehouses { grid-template-columns: 1fr; }
+    .search-strip input { height: 50px; font-size: var(--fs-body-s); padding: 0 90px 0 48px; }
+    .search-strip > .container > .search-strip__inner > button { padding: 0 16px; font-size: 12px; height: 38px; }
+    .breadcrumbs { padding: 18px 0 0; }
+    .filter-bar { padding-bottom: 24px; margin-bottom: 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header">
+    <div class="container header__inner">
+        <a href="/" class="logo">
+            <span class="logo__mark">luxomix</span>
+            <span class="logo__tagline">natural color</span>
+        </a>
+        <button class="btn-catalog" id="catalogBtn" aria-label="Открыть каталог" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            КАТАЛОГ
+            <svg class="btn-catalog__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <nav class="nav">
+            <a href="/about">О нас</a>
+            <a href="/in-product" class="is-current">В продукте</a>
+            <a href="/blog">Блог</a>
+            <a href="/contacts">Контакты</a>
+        </nav>
+        <a href="tel:88007070870" class="header__phone">8 (800) 707-08-70</a>
+        <button class="btn-burger" id="burgerBtn" aria-label="Меню" aria-expanded="false">
+            <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+</header>
+
+<!-- Мобильное меню -->
+<nav class="mobile-nav" id="mobileNav" aria-hidden="true">
+    <div class="container">
+        <a href="/about">О нас</a>
+        <a href="/in-product">В продукте</a>
+        <a href="/blog">Блог</a>
+        <a href="/contacts">Контакты</a>
+        <a href="tel:88007070870" class="mobile-nav__phone">8 (800) 707-08-70</a>
+    </div>
+</nav>
+
+<!-- ============ МЕГАМЕНЮ (ТЗ §2.7) ============ -->
+<div class="megamenu-overlay" id="mmOverlay"></div>
+<nav class="megamenu" id="megamenu" aria-hidden="true">
+    <button class="megamenu__close" id="mmClose" aria-label="Закрыть меню">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="container megamenu__inner">
+        <div class="megamenu__left" role="tablist">
+            <button class="mm-item is-active" data-target="po-cvetu">По цвету <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="po-primeneniyu">По применению <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="bestsellers">Бестселлеры <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+            <button class="mm-item" data-target="novinki">Новинки <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+        </div>
+        <div class="megamenu__right">
+            <div class="mm-panel is-active" id="mm-po-cvetu">
+                <h3 class="mm-panel__title">По цвету</h3>
+                <p class="mm-panel__lead">13 оттенков от жёлтого куркумина до чёрного растительного угля.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F5C518"></span>Жёлтый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#F39200"></span>Оранжевый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#E84E1B"></span>Красно-оранжевый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#D52B1E"></span>Красный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#E6007E"></span>Малиновый / розовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#7E3A93"></span>Фиолетовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#3B1E5E"></span>Тёмно-фиолетовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#2E5A87"></span>Синий</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#1E7A7A"></span>Бирюзовый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#9DC23B"></span>Зелёный</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#6B4423"></span>Коричневый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#8B2E1F"></span>Красно-коричневый</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__swatch" style="background:#1A1A1A"></span>Чёрный</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-po-primeneniyu">
+                <h3 class="mm-panel__title">По применению</h3>
+                <p class="mm-panel__lead">Готовые решения для конкретной отрасли пищевого производства.</p>
+                <div class="mm-subgrid">
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Кондитерская</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Молочная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Напитки</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Мясная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Хлебопекарная</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Масложировая</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Фармацевтика и БАД</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Корма для животных</a>
+                    <a href="/category/krasnyy" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Косметика</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-bestsellers">
+                <h3 class="mm-panel__title">Бестселлеры</h3>
+                <p class="mm-panel__lead">Самые востребованные позиции — те, что заказывают чаще всего.</p>
+                <div class="mm-subgrid">
+                    <a href="/product/kurkumin-0040" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Куркумин 0040</a>
+                    <a href="/product/karmin-0030" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Кармин 0030</a>
+                    <a href="/product/paprika-0015" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Паприка 0015</a>
+                    <a href="/product/antocian-0050" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Антоциан 0050</a>
+                    <a href="/product/eco-gibiskus" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® ECO Гибискус</a>
+                    <a href="/product/saharnyy-koler-mp2" class="mm-sublink"><span class="mm-sublink__bullet">→</span>Luxomix® Сахарный колер MP 2</a>
+                </div>
+            </div>
+            <div class="mm-panel" id="mm-novinki">
+                <h3 class="mm-panel__title">Новинки</h3>
+                <p class="mm-panel__lead">Свежие позиции каталога — недавно введённые в производство.</p>
+                <div class="mm-subgrid">
+                    <a href="/product/eco-skyblue" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® ECO Небесный синий</a>
+                    <a href="/product/eco-turquoise" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® ECO Бирюзовая волна</a>
+                    <a href="/product/eco-kryzhovnik" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® ECO Крыжовник</a>
+                    <a href="/product/eco-lesnye-yagody" class="mm-sublink"><span class="mm-sublink__bullet">★</span>Luxomix® ECO Лесные ягоды</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ============ ПОИСК-ПОЛОСА (ТЗ §7) ============ -->
+<div class="search-strip">
+    <div class="container">
+        <div class="search-strip__inner">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" placeholder="Поиск по красителям, оттенкам, применению…" autocomplete="off">
+            <button>Найти</button>
+        </div>
+    </div>
+</div>
+
+<main>
+
+    <!-- ============ ХЛЕБНЫЕ КРОШКИ ============ -->
+    <div class="container">
+        <nav class="breadcrumbs" aria-label="Хлебные крошки">
+            <ol>
+                <li><a href="/">Главная</a></li>
+                <li>В продукте</li>
+            </ol>
+        </nav>
+
+        <!-- ============ ЗАГОЛОВОК СТРАНИЦЫ ============ -->
+        <header class="page-head">
+            <span class="page-head__eyebrow">Каталог применений</span>
+            <h1 class="page-head__title">В продукте <span class="accent">·</span><br>как работают красители Luxomix®</h1>
+            <p class="page-head__lead">Реальные сценарии применения натуральных красителей и растительных экстрактов в готовой продукции. Технологические рекомендации, дозировки, поведение пигмента в среде, рекомендуемые SKU из каталога.</p>
+        </header>
+
+        <div class="section-padding">
+
+            <!-- ============ ФИЛЬТР ПО ОТРАСЛИ ============ -->
+            <div class="filter-bar" id="filterBar">
+                <span class="filter-bar__label">Отрасль:</span>
+                <button class="filter-pill is-active" data-industry="all">Все <span class="filter-pill__count" id="cnt-all">16</span></button>
+                <button class="filter-pill" data-industry="konditerskaya">Кондитерская <span class="filter-pill__count">4</span></button>
+                <button class="filter-pill" data-industry="molochnaya">Молочная <span class="filter-pill__count">3</span></button>
+                <button class="filter-pill" data-industry="napitki">Напитки <span class="filter-pill__count">2</span></button>
+                <button class="filter-pill" data-industry="myasnaya">Мясная <span class="filter-pill__count">2</span></button>
+                <button class="filter-pill" data-industry="hlebopekarnaya">Хлебопекарная <span class="filter-pill__count">2</span></button>
+                <button class="filter-pill" data-industry="maslozhirovaya">Масложировая <span class="filter-pill__count">1</span></button>
+                <button class="filter-pill" data-industry="farma-bad">Фарма и БАД <span class="filter-pill__count">1</span></button>
+                <button class="filter-pill" data-industry="korma">Корма <span class="filter-pill__count">1</span></button>
+            </div>
+
+            <!-- ============ СЧЁТЧИК ============ -->
+            <div class="results-meta">
+                <div class="results-meta__count">Показано <strong id="visibleCount">16</strong> из <strong>16</strong> применений</div>
+            </div>
+
+            <!-- ============ СЕТКА КАРТОЧЕК ============ -->
+            <div class="articles-grid" id="articlesGrid">
+                <!-- Карточки заполняются из JSON ниже -->
+            </div>
+
+            <div class="empty-state" id="emptyState" style="display:none;">
+                <div class="empty-state__title">Применений в этой отрасли пока нет</div>
+                <div class="empty-state__text">Попробуйте выбрать другую отрасль или вернитесь ко всем применениям.</div>
+                <button class="filter-pill" onclick="document.querySelector('[data-industry=all]').click()">Показать все</button>
+            </div>
+
+            <!-- ============ CTA «ВОПРОС ТЕХНОЛОГУ» (ТЗ §11.2) ============ -->
+            <section class="tech-cta">
+                <div>
+                    <span class="tech-cta__eyebrow">Вопрос технологу</span>
+                    <h2>Не нашли своё<br>применение?</h2>
+                    <p class="tech-cta__lead">Технолог LUXOMIX® соберёт спецификацию под ваш продукт, подберёт краситель и пришлёт пробную партию для тестирования в рецептуре.</p>
+                    <div class="tech-cta__features">
+                        <div class="tech-cta__feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            Подбор под pH, температуру, светостойкость
+                        </div>
+                        <div class="tech-cta__feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            Бесплатные образцы для пилота
+                        </div>
+                        <div class="tech-cta__feature">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            Сопровождение на этапе пробной партии
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-cta__actions">
+                    <button class="btn-primary" id="openOrderModal">
+                        Задать вопрос
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </button>
+                    <a href="tel:88007070870" class="btn-ghost">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92 v3 a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67 A2 2 0 0 1 4.11 2 h3 a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11 L8.09 9.91 a16 16 0 0 0 6 6 l1.27-1.27 a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7 A2 2 0 0 1 22 16.92z"/></svg>
+                        8 (800) 707-08-70
+                    </a>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+</main>
+
+<!-- ============ МОДАЛЬНОЕ ОКНО ВОПРОСА ТЕХНОЛОГУ ============ -->
+<div class="modal-overlay" id="orderModal">
+    <div class="modal">
+        <button class="modal__close" id="closeOrderModal" aria-label="Закрыть">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="modal__head">
+            <div class="modal__title">Вопрос технологу</div>
+            <div class="modal__lead">Опишите продукт и задачу — технолог свяжется в течение рабочего дня и подберёт краситель.</div>
+        </div>
+        <form id="orderForm" onsubmit="event.preventDefault(); alert('Вопрос отправлен (демо). Технолог свяжется с вами.'); document.getElementById('orderModal').classList.remove('is-open');">
+            <div class="form-field"><input type="text" placeholder="Имя*" required></div>
+            <div class="form-field"><input type="tel" placeholder="Телефон*" required></div>
+            <div class="form-field"><input type="email" placeholder="E-mail"></div>
+            <div class="form-field"><input type="text" placeholder="Компания"></div>
+            <div class="form-field"><textarea placeholder="Опишите задачу: продукт, желаемый оттенок, pH, температура процесса"></textarea></div>
+            <label class="form-checkbox">
+                <input type="checkbox" required>
+                <span>Согласен на обработку персональных данных в соответствии с <a href="/privacy">политикой конфиденциальности</a></span>
+            </label>
+            <button type="submit" class="btn-primary" style="width:100%;">Отправить вопрос</button>
+        </form>
+    </div>
+</div>
+
+<!-- ============ ПОДВАЛ ============ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer__grid">
+            <div>
+                <div class="logo">
+                    <span class="logo__mark" style="color:#fff">luxomix</span>
+                    <span class="logo__tagline">natural color</span>
+                </div>
+                <p class="footer__about">Натуральные пищевые красители и растительные экстракты для производителей продукции категории «чистая этикетка». ООО «БАРГУС продакшн», с 2004 года.</p>
+                <div class="footer__certs">
+                    <span class="footer__cert">ISO 22000</span>
+                    <span class="footer__cert">FSSC 22000</span>
+                </div>
+            </div>
+            <div class="footer__col">
+                <h4>Каталог</h4>
+                <ul>
+                    <li><a href="/category/po-cvetu">По цвету</a></li>
+                    <li><a href="/category/po-primeneniyu">По применению</a></li>
+                    <li><a href="/category/bestsellers">Бестселлеры</a></li>
+                    <li><a href="/category/novinki">Новинки</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Компания</h4>
+                <ul>
+                    <li><a href="/about">О нас</a></li>
+                    <li><a href="/in-product">В продукте</a></li>
+                    <li><a href="/blog">Блог</a></li>
+                    <li><a href="/contacts">Контакты</a></li>
+                    <li><a href="/about#certs">Сертификаты</a></li>
+                </ul>
+            </div>
+            <div class="footer__col">
+                <h4>Контакты</h4>
+                <div class="footer__contact-item">
+                    <strong>Телефон</strong>
+                    <a href="tel:88007070870">8 (800) 707-08-70</a>
+                </div>
+                <div class="footer__contact-item">
+                    <strong>E-mail</strong>
+                    <a href="mailto:sales@bargus-trade.ru">sales@bargus-trade.ru</a>
+                </div>
+                <div class="footer__warehouses">
+                    <div class="footer__warehouse"><strong>Москва</strong>склад · самовывоз</div>
+                    <div class="footer__warehouse"><strong>СПб</strong>склад · доставка</div>
+                    <div class="footer__warehouse"><strong>Алматы</strong>склад · РК</div>
+                    <div class="footer__warehouse"><strong>Гомель</strong>склад · РБ</div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <span>© 2004–2026 LUXOMIX® · ООО «БАРГУС продакшн»</span>
+            <span>
+                <a href="/privacy">Политика конфиденциальности</a> ·
+                <a href="/terms">Пользовательское соглашение</a>
+            </span>
+        </div>
+    </div>
+    <div class="color-strip">
+        <span style="background:var(--dye-yellow)"></span>
+        <span style="background:var(--dye-orange)"></span>
+        <span style="background:var(--dye-red-orange)"></span>
+        <span style="background:var(--dye-red)"></span>
+        <span style="background:var(--dye-pink)"></span>
+        <span style="background:var(--dye-purple)"></span>
+        <span style="background:var(--dye-dark-purple)"></span>
+        <span style="background:var(--dye-blue)"></span>
+        <span style="background:var(--dye-turquoise)"></span>
+        <span style="background:var(--dye-green)"></span>
+        <span style="background:var(--dye-brown)"></span>
+        <span style="background:var(--dye-red-brown)"></span>
+        <span style="background:var(--dye-black)"></span>
+    </div>
+</footer>
+
+<!-- ============ ДАННЫЕ ПРИМЕНЕНИЙ (модель InProductArticle, ТЗ §11) ============ -->
+<script id="articles-data" type="application/json">
+[
+    {"slug":"shokolad-i-glazur","title":"Шоколад и глазурь","industry":"konditerskaya","industryLabel":"Кондитерская","desc":"Жирорастворимые красители для шоколадных масс и кондитерских глазурей. Стабильный цвет при температуре до +180 °C, без расслоения, с пониженным расходом за счёт высокой красящей способности.","products":6,"img":"https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=900&q=80"},
+    {"slug":"marmelad-zhele","title":"Мармелад и желе","industry":"konditerskaya","industryLabel":"Кондитерская","desc":"Антоциановые и кармин-красители для прозрачных желейных масс. Сохранение оттенка при варке сиропа и в кислой среде пектиновых гелей.","products":8,"img":"https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=900&q=80"},
+    {"slug":"karamel-ledency","title":"Карамель и леденцы","industry":"konditerskaya","industryLabel":"Кондитерская","desc":"Термостойкие пигменты для леденцовой массы при варке до +160 °C. Полная палитра от прозрачно-жёлтого до глубокого красного, без потери блеска готового изделия.","products":5,"img":"https://images.unsplash.com/photo-1582716401301-b2407dc7563d?w=900&q=80"},
+    {"slug":"vypechka-konditerskie-izdeliya","title":"Выпечка и кондитерские изделия","industry":"konditerskaya","industryLabel":"Кондитерская","desc":"Кремы для тортов, печенье, пряники, бисквиты. Жиро- и водорастворимые красители для всех этапов: тесто, начинка, декор, глазурь.","products":12,"img":"https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=900&q=80"},
+
+    {"slug":"yogurty-tvorozhnye-deserty","title":"Йогурты и творожные десерты","industry":"molochnaya","industryLabel":"Молочная","desc":"Кислоустойчивые антоцианы и кармины для pH 3,5–4,5. Натуральный оттенок без выпадения осадка в течение всего срока годности. Линейка ECO для clean label.","products":9,"img":"https://images.unsplash.com/photo-1488477181946-6428a0291777?w=900&q=80"},
+    {"slug":"morozhenoe","title":"Мороженое и фруктовый лёд","industry":"molochnaya","industryLabel":"Молочная","desc":"Цветостойкость при заморозке и кратковременном таянии. Подбор оттенков под фруктовые миксы. Расход — от 0,02% к массе готового продукта.","products":7,"img":"https://images.unsplash.com/photo-1488900128323-21503983a07e?w=900&q=80"},
+    {"slug":"syry-tvorozhnye-produkty","title":"Сыры и творожные продукты","industry":"molochnaya","industryLabel":"Молочная","desc":"Аннато и бета-каротин для сливочно-жёлтых оттенков твёрдых и плавленых сыров. Подбор интенсивности под технологию созревания и тип молока.","products":4,"img":"https://images.unsplash.com/photo-1452195100486-9cc805987862?w=900&q=80"},
+
+    {"slug":"soki-limonady","title":"Соки и лимонады","industry":"napitki","industryLabel":"Напитки","desc":"Антоциановые красители для прозрачных напитков. Светостойкость 8/10, термостойкость 9/10. Сохранение оттенка в ПЭТ-таре под прямым солнечным светом.","products":11,"img":"https://images.unsplash.com/photo-1496318447583-f524534e9ce1?w=900&q=80"},
+    {"slug":"energetiki-sportivnoe-pitanie","title":"Энергетики и спортивное питание","industry":"napitki","industryLabel":"Напитки","desc":"Яркие оттенки с высокой стабильностью в средах с кофеином, таурином, витаминами группы B. Совместимость с искусственными подсластителями.","products":6,"img":"https://images.unsplash.com/photo-1622543925917-ad6d8910a4e8?w=900&q=80"},
+
+    {"slug":"kolbasnye-izdeliya","title":"Колбасные изделия","industry":"myasnaya","industryLabel":"Мясная","desc":"Кармин и свекольный для варёных, варёно-копчёных и сырокопчёных колбас. Замена нитритной соли в части цветообразования при контроле микробиологии.","products":8,"img":"https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=900&q=80"},
+    {"slug":"myasnye-delikatesy-polufabrikaty","title":"Мясные деликатесы и полуфабрикаты","industry":"myasnaya","industryLabel":"Мясная","desc":"Маринады и инъекционные растворы с натуральными красителями. Стабильный розово-красный цвет при тепловой обработке и охлаждении в вакуумной упаковке.","products":5,"img":"https://images.unsplash.com/photo-1607623488300-5dba62a3b2c3?w=900&q=80"},
+
+    {"slug":"hleb-sdoba","title":"Хлеб и сдоба","industry":"hlebopekarnaya","industryLabel":"Хлебопекарная","desc":"Цветной хлеб — от тыквенно-жёлтого до свекольно-красного и угольно-чёрного. Термостойкость при выпечке +220 °C, сохранение цвета мякиша.","products":7,"img":"https://images.unsplash.com/photo-1509440159596-0249088772ff?w=900&q=80"},
+    {"slug":"pechene-pryaniki","title":"Печенье и пряники","industry":"hlebopekarnaya","industryLabel":"Хлебопекарная","desc":"Декорирование глазурью, помадкой, начинками. Жирорастворимые красители для масляных кремов, водорастворимые — для сахарной глазури.","products":6,"img":"https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=900&q=80"},
+
+    {"slug":"sousy-mayonezy","title":"Соусы, майонезы, маргарины","industry":"maslozhirovaya","industryLabel":"Масложировая","desc":"Бета-каротин и аннато для натурального сливочно-жёлтого оттенка маргаринов и майонезов. Эмульсионная стабильность и совместимость с растительными жирами.","products":4,"img":"https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=900&q=80"},
+
+    {"slug":"bad-kapsuly-sirupy","title":"БАД, капсулы, сиропы","industry":"farma-bad","industryLabel":"Фарма и БАД","desc":"Натуральные красители для оболочек твёрдых и мягких капсул, таблеток и питьевых сиропов. Соответствие фармакопейным требованиям, прослеживаемость партий.","products":5,"img":"https://images.unsplash.com/photo-1471864190281-a93a3070b6de?w=900&q=80"},
+
+    {"slug":"korma-dlya-zhivotnyh","title":"Корма для животных","industry":"korma","industryLabel":"Корма","desc":"Влажные и сухие корма, лакомства, премиксы. Натуральные пигменты для привлекательного внешнего вида готовых рационов и желточно-яичных продуктов.","products":4,"img":"https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=900&q=80"}
+]
+</script>
+
+<script>
+/* ============================ РЕНДЕР КАРТОЧЕК И ФИЛЬТР ============================ */
+(function() {
+    const ARTICLES = JSON.parse(document.getElementById('articles-data').textContent);
+    const grid = document.getElementById('articlesGrid');
+    const empty = document.getElementById('emptyState');
+    const counter = document.getElementById('visibleCount');
+    const filterBar = document.getElementById('filterBar');
+
+    function render(industry) {
+        const visible = industry === 'all'
+            ? ARTICLES
+            : ARTICLES.filter(a => a.industry === industry);
+
+        grid.innerHTML = visible.map(a => `
+            <a class="article-card" href="/in-product/${a.slug}">
+                <div class="article-card__visual">
+                    <span class="article-card__tag">${a.industryLabel}</span>
+                    <img src="${a.img}" alt="${a.title}" loading="lazy">
+                </div>
+                <div class="article-card__body">
+                    <h3 class="article-card__title">${a.title}</h3>
+                    <p class="article-card__desc">${a.desc}</p>
+                    <div class="article-card__meta">
+                        <span class="article-card__products">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16 V8 a2 2 0 0 0-1-1.73l-7-4 a2 2 0 0 0-2 0l-7 4 A2 2 0 0 0 3 8 v8 a2 2 0 0 0 1 1.73l7 4 a2 2 0 0 0 2 0l7-4 A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                            ${a.products} ${pluralProducts(a.products)}
+                        </span>
+                        <span class="article-card__more">
+                            Подробнее
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </span>
+                    </div>
+                </div>
+            </a>
+        `).join('');
+
+        counter.textContent = visible.length;
+        empty.style.display = visible.length === 0 ? 'block' : 'none';
+        grid.style.display = visible.length === 0 ? 'none' : 'grid';
+    }
+
+    function pluralProducts(n) {
+        const mod10 = n % 10, mod100 = n % 100;
+        if (mod10 === 1 && mod100 !== 11) return 'товар';
+        if ([2,3,4].includes(mod10) && ![12,13,14].includes(mod100)) return 'товара';
+        return 'товаров';
+    }
+
+    filterBar.addEventListener('click', e => {
+        const pill = e.target.closest('.filter-pill');
+        if (!pill) return;
+        filterBar.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('is-active'));
+        pill.classList.add('is-active');
+        render(pill.dataset.industry);
+    });
+
+    render('all');
+})();
+
+/* ============================ МЕГАМЕНЮ (ТЗ §2.7) ============================ */
+(function() {
+    const btn = document.getElementById('catalogBtn');
+    const menu = document.getElementById('megamenu');
+    const overlay = document.getElementById('mmOverlay');
+    const closeBtn = document.getElementById('mmClose');
+    const items = menu.querySelectorAll('.mm-item');
+    const panels = menu.querySelectorAll('.mm-panel');
+
+    function open() {
+        if (window.__closeBurger) window.__closeBurger();
+        menu.classList.add('is-open');
+        overlay.classList.add('is-open');
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        menu.classList.remove('is-open');
+        overlay.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+    }
+    function switchPanel(target) {
+        items.forEach(i => i.classList.toggle('is-active', i.dataset.target === target));
+        panels.forEach(p => p.classList.toggle('is-active', p.id === 'mm-' + target));
+    }
+    btn.addEventListener('click', () => menu.classList.contains('is-open') ? close() : open());
+    overlay.addEventListener('click', close);
+    closeBtn.addEventListener('click', close);
+    items.forEach(item => {
+        item.addEventListener('mouseenter', () => switchPanel(item.dataset.target));
+        item.addEventListener('focus', () => switchPanel(item.dataset.target));
+        item.addEventListener('click', () => switchPanel(item.dataset.target));
+    });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+    });
+    menu.querySelectorAll('.mm-sublink').forEach(a => a.addEventListener('click', close));
+    window.__closeMegamenu = close;
+})();
+
+/* ============================ БУРГЕР-МЕНЮ ============================ */
+(function() {
+    const btn = document.getElementById('burgerBtn');
+    const menu = document.getElementById('mobileNav');
+    if (!btn || !menu) return;
+    function open() {
+        if (window.__closeMegamenu) window.__closeMegamenu();
+        menu.classList.add('is-open');
+        btn.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+    }
+    function close() {
+        menu.classList.remove('is-open');
+        btn.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+    }
+    btn.addEventListener('click', () => menu.classList.contains('is-open') ? close() : open());
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && menu.classList.contains('is-open')) close();
+    });
+    document.addEventListener('click', e => {
+        if (!menu.classList.contains('is-open')) return;
+        if (menu.contains(e.target) || btn.contains(e.target)) return;
+        close();
+    });
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1080 && menu.classList.contains('is-open')) close();
+    });
+    window.__closeBurger = close;
+})();
+
+/* ============================ МОДАЛЬНОЕ ОКНО ============================ */
+(function() {
+    const modal = document.getElementById('orderModal');
+    const openBtn = document.getElementById('openOrderModal');
+    const closeBtn = document.getElementById('closeOrderModal');
+    if (!modal || !openBtn) return;
+    openBtn.addEventListener('click', () => modal.classList.add('is-open'));
+    closeBtn.addEventListener('click', () => modal.classList.remove('is-open'));
+    modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('is-open'); });
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('is-open')) modal.classList.remove('is-open');
+    });
+})();
+</script>
+
+</body>
+</html>
